@@ -9,12 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bwf1ggxo6jmnv" path="res://Ephemeral/Ephemeral_4.png" id="6_y1dt5"]
 [ext_resource type="Texture2D" uid="uid://fdvr1u3ehy55" path="res://Ephemeral/Ephemeral_5.png" id="7_au0nh"]
 [ext_resource type="Texture2D" uid="uid://llyw8jwdrat0" path="res://Striker/spr_StrikerIdle_strip.png" id="8_6ct3r"]
+[ext_resource type="Texture2D" uid="uid://pw1rvuq8r62k" path="res://Striker/spr_StrikerSlash_stripWithEffect.png" id="10_au0nh"]
 [ext_resource type="Texture2D" uid="uid://dl52p7bskb757" path="res://Striker/spr_StrikerDash_strip.png" id="10_qnedo"]
 [ext_resource type="Texture2D" uid="uid://kwnkddr1mdcc" path="res://Striker/spr_StrikerSlash_stripNoEffect.png" id="10_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://ctgjlk35wees6" path="res://Striker/spr_StrikerRun_strip.png" id="11_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://bf50cbxn00y8s" path="res://Striker/spr_StrikerGetHit_strip.png" id="12_ebjds"]
 [ext_resource type="Texture2D" uid="uid://cebv8psxsmy57" path="res://Striker/spr_StrikerDeath_strip.png" id="12_y1dt5"]
 [ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://boneco_treino.tscn" id="13_k85er"]
+[ext_resource type="Texture2D" uid="uid://cjmv1joa1n22e" path="res://Striker/spr_StrikerJump_strip.png" id="15_76bt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
 size = Vector2(23, 34)
@@ -70,6 +72,48 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-2, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_76bt2"]
+resource_name = "air_attack"
+length = 0.93939394
+loop_mode = 1
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.089999996, 0.12, 0.14999999, 0.17999999, 0.21, 0.24, 0.26999998, 0.29999998, 0.32999998, 0.35999998, 0.39, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_au0nh")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
 }
 
 [sub_resource type="Animation" id="Animation_ebjds"]
@@ -314,6 +358,47 @@ tracks/3/keys = {
 "values": [Vector2(-2, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_sxias"]
+resource_name = "jump"
+length = 0.95
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_76bt2")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
 [sub_resource type="Animation" id="Animation_6ct3r"]
 resource_name = "run"
 length = 0.8
@@ -371,11 +456,13 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lhvu3"]
 _data = {
 &"RESET": SubResource("Animation_44cfe"),
+&"air_attack": SubResource("Animation_76bt2"),
 &"attack": SubResource("Animation_ebjds"),
 &"dash": SubResource("Animation_k85er"),
 &"death": SubResource("Animation_au0nh"),
 &"hit": SubResource("Animation_y1dt5"),
 &"idle": SubResource("Animation_dd465"),
+&"jump": SubResource("Animation_sxias"),
 &"run": SubResource("Animation_6ct3r")
 }
 
@@ -390,6 +477,9 @@ color = Color(0.5649617, 0.5649616, 0.5649616, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dou6j"]
 size = Vector2(28, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhq4y"]
+size = Vector2(28, 34)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f1aav"]
 
@@ -499,9 +589,16 @@ zoom = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/SwordHitbox" unique_id=1855658995]
+[node name="GroundCollision" type="CollisionShape2D" parent="CharacterBody2D/SwordHitbox" unique_id=1855658995]
 position = Vector2(23, -1)
 shape = SubResource("RectangleShape2D_dou6j")
+disabled = true
+
+[node name="AirCollision" type="CollisionShape2D" parent="CharacterBody2D/SwordHitbox" unique_id=1331271281]
+position = Vector2(23, 4.5)
+shape = SubResource("RectangleShape2D_qhq4y")
+disabled = true
+debug_color = Color(0, 0.9411765, 0.7921569, 0.49019608)
 
 [node name="StaticBody2D - Terreno" type="StaticBody2D" parent="." unique_id=1441054208]
 position = Vector2(550.75, 383)
