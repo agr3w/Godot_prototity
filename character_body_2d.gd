@@ -6,6 +6,10 @@ const DASH_SPEED = 800.0
 const DASH_DURATION = 0.2 
 const ATTACK_DURATION = 0.4 # Tempo que a animação de ataque dura!
 
+# --- SISTEMA DE VIDA ---
+var max_health = 100
+var current_health = max_health
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = $AnimationPlayer
@@ -13,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var dust = $GPUParticles2D 
 # Referência da hitbox que acabamos de criar
 @onready var sword_hitbox = $SwordHitbox/CollisionShape2D
+@onready var health_bar = $"../CanvasLayer/ProgressBar"
 
 var is_dashing = false
 var is_attacking = false # Novo estado!
@@ -21,6 +26,9 @@ var facing_direction = 1
 func _ready():
 	# Desliga a hitbox assim que o jogo começa
 	sword_hitbox.disabled = true
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
 	# Garante conexão do sinal mesmo sem bind no editor
 	if not $SwordHitbox.body_entered.is_connected(_on_sword_hitbox_body_entered):
 		$SwordHitbox.body_entered.connect(_on_sword_hitbox_body_entered)
@@ -100,6 +108,31 @@ func start_attack():
 
 
 func _on_sword_hitbox_body_entered(body: Node):
-	# Checa se em quem batemos tem a função "take_damage" (ou seja, é um inimigo)
-	if body.has_method("take_damage"):
-		body.take_damage()
+	if body == self:
+		return
+
+	# Só causa dano em inimigos do grupo enemy
+	if body.is_in_group("enemy") and body.has_method("take_damage"):
+		body.take_damage(1)
+
+
+# --- FUNÇÃO DE TOMAR DANO ---
+func take_damage(amount: int = 10):
+	current_health -= amount
+	
+	# Atualiza a barrinha lá em cima
+	if health_bar:
+		health_bar.value = current_health
+	
+	# Pisca de vermelho rapidão
+	sprite.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color.WHITE
+	
+	if current_health <= 0:
+		die()
+
+func die():
+	# anim.play("death") # Se você tiver a animação de morte, pode chamar aqui depois!
+	print("Morreu!")
+	# Aqui você pode reiniciar a fase: get_tree().reload_current_scene()

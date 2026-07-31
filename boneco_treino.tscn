@@ -3,18 +3,34 @@
 [ext_resource type="Texture2D" uid="uid://c18nha187bm0r" path="res://icon.svg" id="1_cus5a"]
 [ext_resource type="Script" uid="uid://ds4yjm2bxpln6" path="res://boneco_treino.gd" id="1_toqvm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
+size = Vector2(64, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhq4y"]
 size = Vector2(52, 48)
 
-[node name="BonecoTreino" type="CharacterBody2D" unique_id=2071876100]
+[node name="Node2D" type="Node2D" unique_id=129693592]
+
+[node name="BonecoTreino" type="CharacterBody2D" parent="." unique_id=2071876100]
+collision_layer = 2
+collision_mask = 1
 script = ExtResource("1_toqvm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=854899552]
+[node name="HitboxDano" type="Area2D" parent="BonecoTreino" unique_id=1673978219]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BonecoTreino/HitboxDano" unique_id=1484479545]
+shape = SubResource("RectangleShape2D_f1aav")
+
+[node name="Sprite2D" type="Sprite2D" parent="BonecoTreino" unique_id=854899552]
 modulate = Color(1, 0.18039216, 0.39607844, 1)
 position = Vector2(3.8146973e-06, 7.6293945e-06)
 scale = Vector2(0.40625006, 0.37500012)
 texture = ExtResource("1_cus5a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385094488]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BonecoTreino" unique_id=385094488]
 position = Vector2(3.8146973e-06, 7.6293945e-06)
 shape = SubResource("RectangleShape2D_qhq4y")
+
+[connection signal="body_entered" from="BonecoTreino/HitboxDano" to="BonecoTreino" method="_on_hitbox_dano_body_entered"]

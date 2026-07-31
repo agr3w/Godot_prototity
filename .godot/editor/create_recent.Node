@@ -1,12 +1,14 @@
 CollisionShape2D
+Node2D
+Area2D
+ProgressBar
+CanvasLayer
 Sprite2D
 CharacterBody2D
-Area2D
 ColorRect
 Parallax2D
 Camera2D
 GPUParticles2D
 AnimationPlayer
-Node2D
 Node
 StaticBody2D

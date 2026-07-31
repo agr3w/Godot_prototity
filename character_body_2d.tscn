@@ -382,8 +382,10 @@ position = Vector2(509, -169)
 texture = ExtResource("7_au0nh")
 centered = false
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1782267321]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1782267321 groups=["player"]]
 position = Vector2(173, 291.5)
+collision_layer = 1
+collision_mask = 1
 script = ExtResource("1_ghijl")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=438534070]
@@ -410,6 +412,8 @@ offset = Vector2(0, -85)
 zoom = Vector2(2, 2)
 
 [node name="SwordHitbox" type="Area2D" parent="CharacterBody2D" unique_id=449197520]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/SwordHitbox" unique_id=1855658995]
 position = Vector2(23, -1)
@@ -460,5 +464,19 @@ shape = SubResource("RectangleShape2D_ebjds")
 
 [node name="BonecoTreino" parent="." unique_id=2071876100 instance=ExtResource("13_k85er")]
 position = Vector2(573, 331)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894754065]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=614319197]
+anchors_preset = -1
+anchor_left = 0.059000004
+anchor_top = 0.13800001
+anchor_right = 0.059000004
+anchor_bottom = 0.13800001
+offset_left = -44.968002
+offset_top = -15.424011
+offset_right = 41.031998
+offset_bottom = 11.575989
+value = 100.0
 
 [connection signal="body_entered" from="CharacterBody2D/SwordHitbox" to="CharacterBody2D" method="_on_sword_hitbox_body_entered"]
