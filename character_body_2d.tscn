@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://fdvr1u3ehy55" path="res://Ephemeral/Ephemeral_5.png" id="7_au0nh"]
 [ext_resource type="Texture2D" uid="uid://llyw8jwdrat0" path="res://Striker/spr_StrikerIdle_strip.png" id="8_6ct3r"]
 [ext_resource type="Texture2D" uid="uid://dl52p7bskb757" path="res://Striker/spr_StrikerDash_strip.png" id="10_qnedo"]
+[ext_resource type="Texture2D" uid="uid://kwnkddr1mdcc" path="res://Striker/spr_StrikerSlash_stripNoEffect.png" id="10_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://ctgjlk35wees6" path="res://Striker/spr_StrikerRun_strip.png" id="11_wyqjk"]
+[ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://boneco_treino.tscn" id="13_k85er"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
 size = Vector2(28, 34)
@@ -55,6 +57,70 @@ tracks/2/keys = {
 "update": 1,
 "values": [8]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ebjds"]
+resource_name = "attack"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55, 0.6, 0.65000004, 0.7, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_wyqjk")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_k85er"]
 resource_name = "dash"
@@ -96,6 +162,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("10_qnedo")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dd465"]
@@ -139,6 +217,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [8]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_6ct3r"]
 resource_name = "run"
@@ -181,10 +271,23 @@ tracks/2/keys = {
 "update": 1,
 "values": [8]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lhvu3"]
 _data = {
 &"RESET": SubResource("Animation_44cfe"),
+&"attack": SubResource("Animation_ebjds"),
 &"dash": SubResource("Animation_k85er"),
 &"idle": SubResource("Animation_dd465"),
 &"run": SubResource("Animation_6ct3r")
@@ -198,6 +301,9 @@ initial_velocity_max = 30.0
 gravity = Vector3(0, -10, 0)
 scale_max = 2.0
 color = Color(0.5649617, 0.5649616, 0.5649616, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dou6j"]
+size = Vector2(28, 23)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f1aav"]
 
@@ -277,15 +383,14 @@ texture = ExtResource("7_au0nh")
 centered = false
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1782267321]
-position = Vector2(557, 265.5)
+position = Vector2(173, 291.5)
 script = ExtResource("1_ghijl")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=438534070]
-position = Vector2(0, 1)
+position = Vector2(-2, 1)
 scale = Vector2(1, 0.984375)
 texture = ExtResource("8_6ct3r")
 hframes = 8
-frame = 2
 script = ExtResource("3_dd465")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1124893051]
@@ -303,6 +408,12 @@ process_material = SubResource("ParticleProcessMaterial_c543n")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1042236764]
 offset = Vector2(0, -85)
 zoom = Vector2(2, 2)
+
+[node name="SwordHitbox" type="Area2D" parent="CharacterBody2D" unique_id=449197520]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/SwordHitbox" unique_id=1855658995]
+position = Vector2(23, -1)
+shape = SubResource("RectangleShape2D_dou6j")
 
 [node name="StaticBody2D - Terreno" type="StaticBody2D" parent="." unique_id=1441054208]
 position = Vector2(550.75, 383)
@@ -332,3 +443,8 @@ offset_bottom = -440.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D - Parede" unique_id=1869615098]
 position = Vector2(-30.5, -462.75)
 shape = SubResource("RectangleShape2D_ebjds")
+
+[node name="BonecoTreino" parent="." unique_id=2071876100 instance=ExtResource("13_k85er")]
+position = Vector2(573, 331)
+
+[connection signal="body_entered" from="CharacterBody2D/SwordHitbox" to="CharacterBody2D" method="_on_sword_hitbox_body_entered"]
