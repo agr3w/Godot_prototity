@@ -8,6 +8,7 @@ const DASH_DURATION = 0.15
 const ATTACK_DURATION = 0.3
 const AIR_ATTACK_DURATION = 0.25
 const HIT_DURATION = 0.4 # Tempo que ele fica atordoado ao tomar dano
+const LANDING_DELAY = 0.08
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,6 +29,8 @@ var is_dashing = false
 var is_attacking = false
 var is_hurt = false
 var is_dead = false
+var landing_timer = 0.0
+var was_on_floor_last_frame = false
 var facing_direction = 1 
 
 func _ready():
@@ -42,6 +45,7 @@ func _ready():
 		health_bar.value = current_health
 	if not $SwordHitbox.body_entered.is_connected(_on_sword_hitbox_body_entered):
 		$SwordHitbox.body_entered.connect(_on_sword_hitbox_body_entered)
+	was_on_floor_last_frame = is_on_floor()
 
 func _physics_process(delta):
 	if is_dead:
@@ -49,6 +53,7 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
+		was_on_floor_last_frame = is_on_floor()
 		return
 
 	if is_hurt:
@@ -56,18 +61,21 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
+		was_on_floor_last_frame = is_on_floor()
 		return
 
 	if is_dashing:
 		velocity.y = 0 
 		velocity.x = facing_direction * DASH_SPEED
 		move_and_slide()
+		was_on_floor_last_frame = is_on_floor()
 		return 
 
 	if is_attacking and is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y += gravity * delta
 		move_and_slide()
+		was_on_floor_last_frame = is_on_floor()
 		return
 
 	if not is_on_floor():
@@ -118,23 +126,36 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	if is_on_floor() and not was_on_floor_last_frame:
+		landing_timer = LANDING_DELAY
+
+	if landing_timer > 0.0:
+		landing_timer = maxf(landing_timer - delta, 0.0)
+
 	if not is_attacking:
 		if is_on_floor():
-			if direction != 0:
+			if landing_timer > 0.0:
+				dust.emitting = false
+				if anim.has_animation("jump"):
+					anim.play_backwards("jump")
+			elif direction != 0:
 				anim.play("run")
 				dust.emitting = true
 			else:
 				anim.play("idle")
 				dust.emitting = false
-		elif anim.has_animation("jump"):
-			dust.emitting = false
-			if velocity.y < 0:
-				if anim.current_animation != "jump" or not anim.is_playing():
-					anim.play("jump")
-			elif anim.current_animation != "jump" or anim.current_animation_position <= 0.0:
-				anim.play_backwards("jump")
 		else:
 			dust.emitting = false
+			
+			# NOVO: Divide o ar em Subindo e Caindo
+			if velocity.y < 0:
+				# Está subindo
+				anim.play("jump") 
+			else:
+				# Está caindo (toca o pulo invertido para preparar a aterrissagem)
+				anim.play_backwards("jump")
+
+	was_on_floor_last_frame = is_on_floor()
 
 func start_dash():
 	is_dashing = true
@@ -197,11 +218,11 @@ func take_damage(amount: int = 10):
 	is_attacking = false
 	is_dashing = false
 	if is_instance_valid(sword_hitbox):
-		sword_hitbox.disabled = true
+		sword_hitbox.set_deferred("disabled", true)
 	if is_instance_valid(ground_hitbox):
-		ground_hitbox.disabled = true
+		ground_hitbox.set_deferred("disabled", true)
 	if is_instance_valid(air_hitbox):
-		air_hitbox.disabled = true
+		air_hitbox.set_deferred("disabled", true)
 
 	current_health -= amount
 	if health_bar:
