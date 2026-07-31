@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://boneco_treino.tscn" id="13_k85er"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
-size = Vector2(28, 34)
+size = Vector2(23, 34)
 
 [sub_resource type="Animation" id="Animation_44cfe"]
 length = 1.0526316
@@ -119,7 +119,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(15, 1)]
+"values": [Vector2(-2, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_k85er"]
@@ -394,7 +394,7 @@ hframes = 8
 script = ExtResource("3_dd465")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1124893051]
-position = Vector2(-5, 4.5)
+position = Vector2(-3, 4.5)
 shape = SubResource("RectangleShape2D_f1aav")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=441002488]
@@ -429,6 +429,20 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D - Terreno" unique_id=1727600654]
 position = Vector2(606.75, -2)
 shape = SubResource("RectangleShape2D_c543n")
+
+[node name="StaticBody2D - Parede2" type="StaticBody2D" parent="." unique_id=2045663793]
+position = Vector2(401, 1602)
+physics_material_override = SubResource("PhysicsMaterial_f1aav")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D - Parede2" unique_id=698236243]
+offset_left = 804.0
+offset_top = -1285.0
+offset_right = 944.0
+offset_bottom = -1239.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D - Parede2" unique_id=968313157]
+position = Vector2(874, -1261.75)
+shape = SubResource("RectangleShape2D_ebjds")
 
 [node name="StaticBody2D - Parede" type="StaticBody2D" parent="." unique_id=127532551]
 position = Vector2(200.5, 801)
