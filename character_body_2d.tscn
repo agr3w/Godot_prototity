@@ -584,6 +584,7 @@ process_material = SubResource("ParticleProcessMaterial_c543n")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1042236764]
 offset = Vector2(0, -85)
 zoom = Vector2(2, 2)
+position_smoothing_enabled = true
 
 [node name="SwordHitbox" type="Area2D" parent="CharacterBody2D" unique_id=449197520]
 collision_layer = 0

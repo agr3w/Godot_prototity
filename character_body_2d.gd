@@ -14,10 +14,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var camera = $Camera2D
 @onready var dust = $GPUParticles2D 
 @onready var sword_hitbox = get_node_or_null("SwordHitbox/CollisionShape2D")
 @onready var ground_hitbox = get_node_or_null("SwordHitbox/GroundCollision")
 @onready var air_hitbox = get_node_or_null("SwordHitbox/AirCollision")
+
+const LOOK_AHEAD_AMOUNT = 120.0
+const CAMERA_SMOOTH_SPEED = 4.0
 
 # --- SISTEMA DE VIDA ---
 var max_health = 100
@@ -123,6 +127,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		start_attack()
 		return
+
+	# --- EFEITO DA CÂMERA (LOOK AHEAD) ---
+	# Calcula para onde a câmera deve ir baseada no lado que o Striker está olhando
+	var target_offset_x = facing_direction * LOOK_AHEAD_AMOUNT
+
+	# O comando 'lerp' faz uma transição elástica do valor atual até o alvo!
+	camera.offset.x = lerp(camera.offset.x, target_offset_x, CAMERA_SMOOTH_SPEED * delta)
 
 	move_and_slide()
 

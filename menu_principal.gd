@@ -12,7 +12,7 @@ func _ready():
     _sync_window_mode_buttons()
 
 func _on_btn_novo_jogo_pressed():
-    get_tree().change_scene_to_file("res://mundo.tscn")
+    get_tree().change_scene_to_file("res://character_body_2d.tscn")
 
 func _on_btn_configs_pressed():
     painel_configs.show()
@@ -34,16 +34,19 @@ func _on_h_slider_value_changed(value):
         AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume_linear))
 
 func _on_btn_tela_cheia_pressed():
+    btn_tela_cheia.button_pressed = true
+    btn_janela.button_pressed = false
+
     if OS.is_debug_build() and not OS.has_feature("template"):
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
     else:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
-    _sync_window_mode_buttons()
-
 func _on_btn_janela_pressed():
+    btn_janela.button_pressed = true
+    btn_tela_cheia.button_pressed = false
+
     DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-    _sync_window_mode_buttons()
 
 func _sync_window_mode_buttons():
     var modo_atual = DisplayServer.window_get_mode()

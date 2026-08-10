@@ -1,2 +1,4 @@
 res://menu_principal.gd
 res://menu_principal.tscn
+res://character_body_2d.gd
+res://character_body_2d.tscn
