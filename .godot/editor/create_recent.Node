@@ -1,3 +1,4 @@
+TileMapLayer
 AudioStreamPlayer
 Label
 CheckBox
@@ -12,4 +13,3 @@ Parallax2D
 CollisionShape2D
 Node2D
 Area2D
-ProgressBar
