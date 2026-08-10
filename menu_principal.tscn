@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dl18owl7mqcrv" path="res://menu_principal.gd" id="1_gmcsc"]
 [ext_resource type="Texture2D" uid="uid://c6x700q8iuxvc" path="res://background_mainMenu.jpg" id="2_ul6ys"]
+[ext_resource type="AudioStream" uid="uid://blohj08ot7rsv" path="res://guilhermebernardes-never-again-108445.mp3" id="3_ul6ys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1aav"]
 bg_color = Color(0.10980392, 0.12941177, 0.16862746, 1)
@@ -21,6 +22,8 @@ bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhq4y"]
 bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_gmcsc"]
 
 [node name="MenuPrincipal" type="Control" unique_id=686835528]
 layout_mode = 3
@@ -49,7 +52,6 @@ centered = false
 flip_h = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1606446080]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,11 +166,14 @@ offset_bottom = 42.0
 [node name="BtnJanela" type="CheckBox" parent="PainelConfigs/MarginContainer/VBoxContainer/Tela/HBoxContainer2" unique_id=1809095460]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+button_pressed = true
+button_group = SubResource("ButtonGroup_gmcsc")
 text = "Modo Janela"
 
 [node name="BtnTelaCheia" type="CheckBox" parent="PainelConfigs/MarginContainer/VBoxContainer/Tela/HBoxContainer2" unique_id=143509548]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+button_group = SubResource("ButtonGroup_gmcsc")
 text = "Tela Cheia"
 
 [node name="Label" type="Label" parent="PainelConfigs/MarginContainer/VBoxContainer" unique_id=620732356]
@@ -177,6 +182,15 @@ size_flags_vertical = 6
 text = "Controles"
 horizontal_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2013074092]
+stream = ExtResource("3_ul6ys")
+autoplay = true
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnNovoJogo" to="." method="_on_btn_novo_jogo_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnConfigs" to="." method="_on_btn_configs_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]
+[connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/HBoxContainer/X" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/HBoxContainer/X" to="." method="_on_btn_fechar_pressed"]
+[connection signal="value_changed" from="PainelConfigs/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/Tela/HBoxContainer2/BtnJanela" to="." method="_on_btn_janela_pressed"]
+[connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/Tela/HBoxContainer2/BtnTelaCheia" to="." method="_on_btn_tela_cheia_pressed"]
