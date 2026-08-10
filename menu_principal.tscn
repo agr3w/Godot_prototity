@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://i3gmuluhtukx"]
+
+[ext_resource type="Script" uid="uid://dl18owl7mqcrv" path="res://menu_principal.gd" id="1_gmcsc"]
+[ext_resource type="Texture2D" uid="uid://c6x700q8iuxvc" path="res://background_mainMenu.jpg" id="2_ul6ys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1aav"]
+bg_color = Color(0.10980392, 0.12941177, 0.16862746, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.18039216, 0.21176471, 0.2627451, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c543n"]
+bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dou6j"]
+bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhq4y"]
+bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
+
+[node name="MenuPrincipal" type="Control" unique_id=686835528]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmcsc")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=612630888]
+repeat_size = Vector2(2320, 0)
+autoscroll = Vector2(50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=15690667]
+position = Vector2(0, 2.0000002)
+scale = Vector2(0.80625004, 0.6281801)
+texture = ExtResource("2_ul6ys")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=910699163]
+position = Vector2(1160, 2)
+scale = Vector2(0.80625004, 0.6281801)
+texture = ExtResource("2_ul6ys")
+centered = false
+flip_h = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1606446080]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -140.0
+offset_right = -2.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_f1aav")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2089162107]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1508395553]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=228834006]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
+theme_override_constants/line_spacing = 3
+text = "ECOS DO ABISMO"
+horizontal_alignment = 1
+
+[node name="BtnNovoJogo" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=352457872]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_c543n")
+text = "NOVO JOGO"
+
+[node name="BtnConfigs" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=673307314]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_dou6j")
+text = "CONFIGURAÇÔES"
+
+[node name="BtnSair" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=816830869]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_qhq4y")
+text = "SAIR"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnNovoJogo" to="." method="_on_btn_novo_jogo_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnConfigs" to="." method="_on_btn_configs_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]
