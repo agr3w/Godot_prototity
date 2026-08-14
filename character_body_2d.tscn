@@ -1,14 +1,20 @@
-[gd_scene format=4 uid="uid://dcd11egb8vj4n"]
+[gd_scene format=3 uid="uid://dcd11egb8vj4n"]
 
 [ext_resource type="Texture2D" uid="uid://l668hlub3w7q" path="res://Ephemeral/Ephemeral_0.png" id="2_qnedo"]
 [ext_resource type="Texture2D" uid="uid://di2eit1f7y15o" path="res://Ephemeral/Ephemeral_1.png" id="3_wyqjk"]
 [ext_resource type="Texture2D" uid="uid://c1crbjuujaryw" path="res://Ephemeral/Ephemeral_2.png" id="4_k85er"]
 [ext_resource type="Texture2D" uid="uid://c33bt5f8e34ii" path="res://Ephemeral/Ephemeral_3.png" id="5_ebjds"]
 [ext_resource type="Texture2D" uid="uid://bwf1ggxo6jmnv" path="res://Ephemeral/Ephemeral_4.png" id="6_y1dt5"]
+[ext_resource type="PackedScene" uid="uid://un1ymck64olx" path="res://passarela.tscn" id="7_1kp85"]
 [ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://Boneco_Principal.tscn" id="7_6ct3r"]
 [ext_resource type="Texture2D" uid="uid://fdvr1u3ehy55" path="res://Ephemeral/Ephemeral_5.png" id="7_au0nh"]
-[ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://boneco_treino.tscn" id="13_k85er"]
+[ext_resource type="Texture2D" uid="uid://cba7fei7cybjb" path="res://TerrainAssets/Crane_Suport.png" id="7_qnedo"]
+[ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://Game_UI/hud_vida.png" id="11_wyqjk"]
+[ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://TerrainEnemy_1.tscn" id="13_k85er"]
 [ext_resource type="Texture2D" uid="uid://dy6xbdhcv2i4m" path="res://Buildings 1.png" id="18_sxias"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_486m6"]
+size = Vector2(121.984055, 211.65851)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ucfvk"]
 texture = ExtResource("18_sxias")
@@ -116,8 +122,8 @@ repeat_size = Vector2(640, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D_Fundo" unique_id=1535876375]
-position = Vector2(509, -178)
-scale = Vector2(1, 1.2472222)
+position = Vector2(510, -178)
+scale = Vector2(0.9984375, 0.99444443)
 texture = ExtResource("2_qnedo")
 centered = false
 
@@ -176,26 +182,166 @@ position = Vector2(509, -169)
 texture = ExtResource("7_au0nh")
 centered = false
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=483101379]
+position = Vector2(-285, 344)
+scale = Vector2(0.7222222, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1871764785]
+position = Vector2(-222, 253)
+scale = Vector2(0.7222222, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=555397131]
+position = Vector2(-222, 328)
+scale = Vector2(0.7222222, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=597948969]
+position = Vector2(-222, 373.5)
+scale = Vector2(0.7222222, 0.17213148)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1674698563]
+position = Vector2(-297.5, 251)
+scale = Vector2(0.7222222, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1362617861]
+position = Vector2(-297.5, 326)
+scale = Vector2(0.7222222, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=185253476]
+position = Vector2(-297.5, 371.5)
+scale = Vector2(0.7222222, 0.17213148)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1582505094]
+position = Vector2(-359, 344)
+scale = Vector2(0.7222222, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Passarela" parent="." unique_id=1978156886 instance=ExtResource("7_1kp85")]
+position = Vector2(-517, 372)
+
+[node name="Passarela2" parent="." unique_id=299282383 instance=ExtResource("7_1kp85")]
+position = Vector2(-412, 372)
+
+[node name="Passarela23" parent="." unique_id=1801086814 instance=ExtResource("7_1kp85")]
+position = Vector2(-320, 297)
+
+[node name="Passarela24" parent="." unique_id=2127654144 instance=ExtResource("7_1kp85")]
+position = Vector2(-259, 207)
+
+[node name="Passarela3" parent="." unique_id=1728860908 instance=ExtResource("7_1kp85")]
+position = Vector2(-304, 372)
+
+[node name="Passarela4" parent="." unique_id=288310860 instance=ExtResource("7_1kp85")]
+position = Vector2(-199, 372)
+
+[node name="Passarela5" parent="." unique_id=203572517 instance=ExtResource("7_1kp85")]
+position = Vector2(-93, 372)
+
+[node name="Passarela6" parent="." unique_id=567451965 instance=ExtResource("7_1kp85")]
+position = Vector2(12, 372)
+
+[node name="Passarela19" parent="." unique_id=1249394928 instance=ExtResource("7_1kp85")]
+position = Vector2(-916.00006, 403.99997)
+rotation = -0.86742866
+
+[node name="Passarela20" parent="." unique_id=583488931 instance=ExtResource("7_1kp85")]
+position = Vector2(-831, 372)
+
+[node name="Passarela21" parent="." unique_id=336208772 instance=ExtResource("7_1kp85")]
+position = Vector2(-725, 372)
+
+[node name="Passarela22" parent="." unique_id=777238388 instance=ExtResource("7_1kp85")]
+position = Vector2(-620, 372)
+
+[node name="Passarela7" parent="." unique_id=1576075100 instance=ExtResource("7_1kp85")]
+position = Vector2(120, 372)
+
+[node name="Passarela8" parent="." unique_id=1276648680 instance=ExtResource("7_1kp85")]
+position = Vector2(225, 372)
+
+[node name="Passarela9" parent="." unique_id=649727085 instance=ExtResource("7_1kp85")]
+position = Vector2(331, 372)
+
+[node name="Passarela10" parent="." unique_id=1946490717 instance=ExtResource("7_1kp85")]
+position = Vector2(436, 372)
+
+[node name="Passarela11" parent="." unique_id=1827710109 instance=ExtResource("7_1kp85")]
+position = Vector2(544, 372)
+
+[node name="Passarela12" parent="." unique_id=1805363280 instance=ExtResource("7_1kp85")]
+position = Vector2(649, 372)
+
+[node name="Passarela13" parent="." unique_id=353509978 instance=ExtResource("7_1kp85")]
+position = Vector2(755, 372)
+
+[node name="Passarela14" parent="." unique_id=959626779 instance=ExtResource("7_1kp85")]
+position = Vector2(860, 372)
+
+[node name="Passarela15" parent="." unique_id=1699595397 instance=ExtResource("7_1kp85")]
+position = Vector2(968, 372)
+
+[node name="Passarela16" parent="." unique_id=932480162 instance=ExtResource("7_1kp85")]
+position = Vector2(1073, 372)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=562518013]
+position = Vector2(-783, 366.00003)
+rotation = 1.9844391
+scale = Vector2(0.63889456, 0.6229508)
+
+[node name="Sprite2D10" type="Sprite2D" parent="StaticBody2D" unique_id=710269770]
+texture = ExtResource("7_qnedo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1664645653]
+position = Vector2(-78.35626, 34.997375)
+rotation = -1.9844394
+scale = Vector2(1.021728, 0.9788956)
+skew = -0.018179178
+shape = SubResource("RectangleShape2D_486m6")
+
+[node name="Sprite2D13" type="Sprite2D" parent="." unique_id=1592804059]
+position = Vector2(-786.99994, 346.00006)
+rotation = -4.2167153
+scale = Vector2(0.63889456, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=1090353428]
+position = Vector2(-780, 354)
+rotation = -1.9006636
+scale = Vector2(0.63889456, 0.6229508)
+texture = ExtResource("7_qnedo")
+
+[node name="Sprite2D12" type="Sprite2D" parent="." unique_id=89219503]
+position = Vector2(-783, 366.00003)
+rotation = -1.6528268
+scale = Vector2(0.63889456, 0.6229508)
+texture = ExtResource("7_qnedo")
+
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("7_6ct3r")]
 position = Vector2(-517, 353)
 
-[node name="BonecoTreino" parent="." unique_id=2071876100 instance=ExtResource("13_k85er")]
-position = Vector2(222, 338)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894754065]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=614319197]
+[node name="BarraVida" type="TextureProgressBar" parent="CanvasLayer" unique_id=1621247915]
 anchors_preset = -1
-anchor_left = 0.059000004
-anchor_top = 0.13800001
-anchor_right = 0.059000004
-anchor_bottom = 0.13800001
-offset_left = -44.968002
-offset_top = -15.424011
-offset_right = 41.031998
-offset_bottom = 11.575989
+anchor_left = -0.49
+anchor_top = 0.5
+anchor_right = -0.49
+anchor_bottom = 0.5
+offset_left = 456.47998
+offset_top = -348.0
+offset_right = 719.48
+offset_bottom = -287.0
 value = 100.0
+texture_progress = ExtResource("11_wyqjk")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1261539250]
-tile_map_data = PackedByteArray("AADt/wwAAAAAAAAAAADu/wwAAAABAAAAAADv/wwAAAABAAAAABDw/wwAAAABAAAAAADx/wwAAAABAAAAABDy/wwAAAABAAAAAADz/wwAAAABAAAAABD0/wwAAAABAAAAAAD1/wwAAAABAAAAABD2/wwAAAABAAAAAAD3/wwAAAABAAAAABD4/wwAAAABAAAAAAD5/wwAAAAAAAAAAAD6/wwAAAABAAAAAAD7/wwAAAABAAAAABD8/wwAAAABAAAAAAD9/wwAAAABAAAAABD+/wwAAAABAAAAAAD//wwAAAABAAAAABAAAAwAAAABAAAAAAABAAwAAAABAAAAABACAAwAAAABAAAAAAADAAwAAAABAAAAABAEAAwAAAABAAAAAAAFAAwAAAABAAAAABAGAAwAAAABAAAAAAAHAAwAAAABAAAAABAIAAwAAAABAAAAAAAJAAwAAAABAAAAABAKAAwAAAABAAAAAAALAAwAAAABAAAAABAMAAwAAAABAAAAAAANAAwAAAABAAAAABAOAAwAAAABAAAAAAAPAAwAAAABAAAAABAQAAwAAAABAAAAAAARAAwAAAABAAAAABASAAwAAAABAAAAAAATAAwAAAABAAAAABAUAAwAAAABAAAAAAAVAAwAAAABAAAAABAWAAwAAAABAAAAAAAXAAwAAAABAAAAABAYAAwAAAABAAAAAAAZAAwAAAABAAAAABAaAAwAAAABAAAAAAAbAAwAAAABAAAAABAcAAwAAAABAAAAAAAdAAwAAAABAAAAABDt/wsAAAALAAUAAADt/woAAAALAAUAAADt/wkAAAALAAUAAADt/wgAAAALAAUAAADt/wcAAAALAAQAAAA=")
 tile_set = SubResource("TileSet_486m6")
+
+[node name="TerrainEnemy_1" parent="." unique_id=129693592 instance=ExtResource("13_k85er")]
+position = Vector2(-15, 339)

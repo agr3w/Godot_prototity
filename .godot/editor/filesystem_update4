@@ -1,4 +1,5 @@
-res://menu_principal.gd
-res://menu_principal.tscn
-res://character_body_2d.gd
+res://passarela.tscn
 res://character_body_2d.tscn
+res://character_body_2d.gd
+res://TerrainEnemy_1.tscn
+res://TerrainEnemy_1.gd

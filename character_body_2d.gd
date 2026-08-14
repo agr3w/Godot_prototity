@@ -26,7 +26,7 @@ const CAMERA_SMOOTH_SPEED = 4.0
 # --- SISTEMA DE VIDA ---
 var max_health = 100
 var current_health = max_health
-@onready var health_bar = $"../CanvasLayer/ProgressBar"
+@onready var health_bar = $"../CanvasLayer/BarraVida"
 
 # --- ESTADOS DO JOGADOR ---
 var is_dashing = false
