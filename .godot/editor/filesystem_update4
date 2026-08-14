@@ -3,3 +3,5 @@ res://character_body_2d.tscn
 res://character_body_2d.gd
 res://TerrainEnemy_1.tscn
 res://TerrainEnemy_1.gd
+res://Boneco_Principal.tscn
+res://Terrain_Enemy_1.gd

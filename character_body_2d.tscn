@@ -328,15 +328,11 @@ position = Vector2(-517, 353)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894754065]
 
 [node name="BarraVida" type="TextureProgressBar" parent="CanvasLayer" unique_id=1621247915]
-anchors_preset = -1
-anchor_left = -0.49
-anchor_top = 0.5
-anchor_right = -0.49
-anchor_bottom = 0.5
-offset_left = 456.47998
-offset_top = -348.0
-offset_right = 719.48
-offset_bottom = -287.0
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 273.0
+offset_bottom = 81.0
+scale = Vector2(0.7, 0.7)
 value = 100.0
 texture_progress = ExtResource("11_wyqjk")
 
