@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://q003q8wnlfne"]
+
+[ext_resource type="Script" uid="uid://dltoqg77xjrh5" path="res://scenes/characters/enemies/Enemy.gd" id="1_xgnx5"]
+[ext_resource type="Texture2D" uid="uid://crm01cwpx8wmk" path="res://assets/sprites/characters/enemies/Enemy_terrain_1.png" id="2_xgnx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
+size = Vector2(50, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhq4y"]
+size = Vector2(41, 47)
+
+[node name="Node2D" type="Node2D" unique_id=129693592]
+
+[node name="TerrainEnemy_1" type="CharacterBody2D" parent="." unique_id=2071876100]
+collision_layer = 2
+script = ExtResource("1_xgnx5")
+
+[node name="HitboxDano" type="Area2D" parent="TerrainEnemy_1" unique_id=1673978219]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainEnemy_1/HitboxDano" unique_id=1484479545]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_f1aav")
+
+[node name="Sprite2D" type="Sprite2D" parent="TerrainEnemy_1" unique_id=854899552]
+modulate = Color(0.99161345, 0.5857856, 0.67707324, 1)
+position = Vector2(0, 1)
+scale = Vector2(0.5560663, 0.47181386)
+texture = ExtResource("2_xgnx5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainEnemy_1" unique_id=385094488]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_qhq4y")
+
+[connection signal="body_entered" from="TerrainEnemy_1/HitboxDano" to="TerrainEnemy_1" method="_on_hitbox_dano_body_entered"]
