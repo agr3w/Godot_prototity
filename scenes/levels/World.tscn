@@ -110,146 +110,149 @@ sources/0 = SubResource("TileSetAtlasSource_ucfvk")
 
 [node name="Mundo" type="Node2D" unique_id=1196308655]
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("1_para")]
+[node name="ParallaxBackground" parent="." unique_id=1215163660 instance=ExtResource("1_para")]
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=483101379]
+[node name="CranesPlataforma_1" type="Node2D" parent="." unique_id=1514143032]
 position = Vector2(-285, 344)
 scale = Vector2(0.7222222, 0.6229508)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CranesPlataforma_1" unique_id=483101379]
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1871764785]
-position = Vector2(-222, 253)
-scale = Vector2(0.7222222, 0.6229508)
+[node name="Sprite2D4" type="Sprite2D" parent="CranesPlataforma_1" unique_id=1871764785]
+position = Vector2(87.230774, -146.07901)
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=555397131]
-position = Vector2(-222, 328)
-scale = Vector2(0.7222222, 0.6229508)
+[node name="Sprite2D5" type="Sprite2D" parent="CranesPlataforma_1" unique_id=555397131]
+position = Vector2(87.230774, -25.684204)
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=597948969]
-position = Vector2(-222, 373.5)
-scale = Vector2(0.7222222, 0.17213148)
+[node name="Sprite2D6" type="Sprite2D" parent="CranesPlataforma_1" unique_id=597948969]
+position = Vector2(87.230774, 47.355225)
+scale = Vector2(1, 0.27631634)
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1674698563]
-position = Vector2(-297.5, 251)
-scale = Vector2(0.7222222, 0.6229508)
+[node name="Sprite2D7" type="Sprite2D" parent="CranesPlataforma_1" unique_id=1674698563]
+position = Vector2(-17.307709, -149.28949)
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1362617861]
-position = Vector2(-297.5, 326)
-scale = Vector2(0.7222222, 0.6229508)
+[node name="Sprite2D8" type="Sprite2D" parent="CranesPlataforma_1" unique_id=1362617861]
+position = Vector2(-17.307709, -28.894836)
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=185253476]
-position = Vector2(-297.5, 371.5)
-scale = Vector2(0.7222222, 0.17213148)
+[node name="Sprite2D9" type="Sprite2D" parent="CranesPlataforma_1" unique_id=185253476]
+position = Vector2(-17.307709, 44.144714)
+scale = Vector2(1, 0.27631634)
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1582505094]
-position = Vector2(-359, 344)
-scale = Vector2(0.7222222, 0.6229508)
+[node name="Sprite2D3" type="Sprite2D" parent="CranesPlataforma_1" unique_id=1582505094]
+position = Vector2(-102.46155, 0)
 texture = ExtResource("7_qnedo")
 
-[node name="Passarela" parent="." unique_id=1978156886 instance=ExtResource("7_1kp85")]
+[node name="Passarelas" type="Node2D" parent="." unique_id=1357693439]
 position = Vector2(-517, 372)
 
-[node name="Passarela2" parent="." unique_id=299282383 instance=ExtResource("7_1kp85")]
-position = Vector2(-412, 372)
+[node name="Passarela" parent="Passarelas" unique_id=1978156886 instance=ExtResource("7_1kp85")]
 
-[node name="Passarela23" parent="." unique_id=1801086814 instance=ExtResource("7_1kp85")]
-position = Vector2(-320, 297)
+[node name="Passarela2" parent="Passarelas" unique_id=299282383 instance=ExtResource("7_1kp85")]
+position = Vector2(105, 0)
 
-[node name="Passarela24" parent="." unique_id=2127654144 instance=ExtResource("7_1kp85")]
-position = Vector2(-259, 207)
+[node name="Passarela23" parent="Passarelas" unique_id=1801086814 instance=ExtResource("7_1kp85")]
+position = Vector2(197, -75)
 
-[node name="Passarela3" parent="." unique_id=1728860908 instance=ExtResource("7_1kp85")]
-position = Vector2(-304, 372)
+[node name="Passarela24" parent="Passarelas" unique_id=2127654144 instance=ExtResource("7_1kp85")]
+position = Vector2(258, -165)
 
-[node name="Passarela4" parent="." unique_id=288310860 instance=ExtResource("7_1kp85")]
-position = Vector2(-199, 372)
+[node name="Passarela3" parent="Passarelas" unique_id=1728860908 instance=ExtResource("7_1kp85")]
+position = Vector2(213, 0)
 
-[node name="Passarela5" parent="." unique_id=203572517 instance=ExtResource("7_1kp85")]
-position = Vector2(-93, 372)
+[node name="Passarela4" parent="Passarelas" unique_id=288310860 instance=ExtResource("7_1kp85")]
+position = Vector2(318, 0)
 
-[node name="Passarela6" parent="." unique_id=567451965 instance=ExtResource("7_1kp85")]
-position = Vector2(12, 372)
+[node name="Passarela5" parent="Passarelas" unique_id=203572517 instance=ExtResource("7_1kp85")]
+position = Vector2(424, 0)
 
-[node name="Passarela19" parent="." unique_id=1249394928 instance=ExtResource("7_1kp85")]
-position = Vector2(-916.00006, 403.99997)
+[node name="Passarela6" parent="Passarelas" unique_id=567451965 instance=ExtResource("7_1kp85")]
+position = Vector2(529, 0)
+
+[node name="Passarela19" parent="Passarelas" unique_id=1249394928 instance=ExtResource("7_1kp85")]
+position = Vector2(-399.00006, 31.99997)
 rotation = -0.86742866
 
-[node name="Passarela20" parent="." unique_id=583488931 instance=ExtResource("7_1kp85")]
-position = Vector2(-831, 372)
+[node name="Passarela20" parent="Passarelas" unique_id=583488931 instance=ExtResource("7_1kp85")]
+position = Vector2(-314, 0)
 
-[node name="Passarela21" parent="." unique_id=336208772 instance=ExtResource("7_1kp85")]
-position = Vector2(-725, 372)
+[node name="Passarela21" parent="Passarelas" unique_id=336208772 instance=ExtResource("7_1kp85")]
+position = Vector2(-208, 0)
 
-[node name="Passarela22" parent="." unique_id=777238388 instance=ExtResource("7_1kp85")]
-position = Vector2(-620, 372)
+[node name="Passarela22" parent="Passarelas" unique_id=777238388 instance=ExtResource("7_1kp85")]
+position = Vector2(-103, 0)
 
-[node name="Passarela7" parent="." unique_id=1576075100 instance=ExtResource("7_1kp85")]
-position = Vector2(120, 372)
+[node name="Passarela7" parent="Passarelas" unique_id=1576075100 instance=ExtResource("7_1kp85")]
+position = Vector2(637, 0)
 
-[node name="Passarela8" parent="." unique_id=1276648680 instance=ExtResource("7_1kp85")]
-position = Vector2(225, 372)
+[node name="Passarela8" parent="Passarelas" unique_id=1276648680 instance=ExtResource("7_1kp85")]
+position = Vector2(742, 0)
 
-[node name="Passarela9" parent="." unique_id=649727085 instance=ExtResource("7_1kp85")]
-position = Vector2(331, 372)
+[node name="Passarela9" parent="Passarelas" unique_id=649727085 instance=ExtResource("7_1kp85")]
+position = Vector2(848, 0)
 
-[node name="Passarela10" parent="." unique_id=1946490717 instance=ExtResource("7_1kp85")]
-position = Vector2(436, 372)
+[node name="Passarela10" parent="Passarelas" unique_id=1946490717 instance=ExtResource("7_1kp85")]
+position = Vector2(953, 0)
 
-[node name="Passarela11" parent="." unique_id=1827710109 instance=ExtResource("7_1kp85")]
-position = Vector2(544, 372)
+[node name="Passarela11" parent="Passarelas" unique_id=1827710109 instance=ExtResource("7_1kp85")]
+position = Vector2(1061, 0)
 
-[node name="Passarela12" parent="." unique_id=1805363280 instance=ExtResource("7_1kp85")]
-position = Vector2(649, 372)
+[node name="Passarela12" parent="Passarelas" unique_id=1805363280 instance=ExtResource("7_1kp85")]
+position = Vector2(1166, 0)
 
-[node name="Passarela13" parent="." unique_id=353509978 instance=ExtResource("7_1kp85")]
-position = Vector2(755, 372)
+[node name="Passarela13" parent="Passarelas" unique_id=353509978 instance=ExtResource("7_1kp85")]
+position = Vector2(1272, 0)
 
-[node name="Passarela14" parent="." unique_id=959626779 instance=ExtResource("7_1kp85")]
-position = Vector2(860, 372)
+[node name="Passarela14" parent="Passarelas" unique_id=959626779 instance=ExtResource("7_1kp85")]
+position = Vector2(1377, 0)
 
-[node name="Passarela15" parent="." unique_id=1699595397 instance=ExtResource("7_1kp85")]
-position = Vector2(968, 372)
+[node name="Passarela15" parent="Passarelas" unique_id=1699595397 instance=ExtResource("7_1kp85")]
+position = Vector2(1485, 0)
 
-[node name="Passarela16" parent="." unique_id=932480162 instance=ExtResource("7_1kp85")]
-position = Vector2(1073, 372)
+[node name="Passarela16" parent="Passarelas" unique_id=932480162 instance=ExtResource("7_1kp85")]
+position = Vector2(1590, 0)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=562518013]
+[node name="LimiteEsquerdo" type="Node2D" parent="." unique_id=631161522]
 position = Vector2(-783, 366.00003)
 rotation = 1.9844391
 scale = Vector2(0.63889456, 0.6229508)
 
-[node name="Sprite2D10" type="Sprite2D" parent="StaticBody2D" unique_id=710269770]
+[node name="StaticBody2D" type="StaticBody2D" parent="LimiteEsquerdo" unique_id=562518013]
+
+[node name="Sprite2D10" type="Sprite2D" parent="LimiteEsquerdo/StaticBody2D" unique_id=710269770]
 texture = ExtResource("7_qnedo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1664645653]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimiteEsquerdo/StaticBody2D" unique_id=1664645653]
 position = Vector2(-78.35626, 34.997375)
 rotation = -1.9844394
 scale = Vector2(1.021728, 0.9788956)
 skew = -0.018179178
 shape = SubResource("RectangleShape2D_486m6")
 
-[node name="Sprite2D13" type="Sprite2D" parent="." unique_id=1592804059]
-position = Vector2(-786.99994, 346.00006)
-rotation = -4.2167153
-scale = Vector2(0.63889456, 0.6229508)
+[node name="Sprite2D13" type="Sprite2D" parent="LimiteEsquerdo" unique_id=1592804059]
+position = Vector2(-26.14746, 18.783997)
+rotation = 0.084120505
+scale = Vector2(1.0001742, 0.9998346)
+skew = -0.0041279793
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=1090353428]
-position = Vector2(-780, 354)
-rotation = -1.9006636
-scale = Vector2(0.63889456, 0.6229508)
+[node name="Sprite2D11" type="Sprite2D" parent="LimiteEsquerdo" unique_id=1090353428]
+position = Vector2(-19.085815, 3.33313)
+rotation = 2.385479
+scale = Vector2(1.0118066, 0.9886446)
+skew = 0.025180459
 texture = ExtResource("7_qnedo")
 
-[node name="Sprite2D12" type="Sprite2D" parent="." unique_id=89219503]
-position = Vector2(-783, 366.00003)
-rotation = -1.6528268
-scale = Vector2(0.63889456, 0.6229508)
+[node name="Sprite2D12" type="Sprite2D" parent="LimiteEsquerdo" unique_id=89219503]
+rotation = 2.6352735
+scale = Vector2(1.005847, 0.9944095)
+skew = 0.021145701
 texture = ExtResource("7_qnedo")
 
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("7_6ct3r")]

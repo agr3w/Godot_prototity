@@ -1,7 +1,6 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1786987773
+::res://::1787050514
 icon.svg::CompressedTexture2D::6666677631029415611::1785256654::1786987774::1::::<><><>0<>0<>883109cfb6a393dd7f50c325d1d6f7ee<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-menu_principal.tscn::PackedScene::6651789080220718569::1786987659::0::1::::<><><>0<>0<><>::res://menu_principal.gd<>res://background_mainMenu.jpg<>res://guilhermebernardes-never-again-108445.mp3
 README.md::TextFile::-1::1785432547::0::1::::<><><>0<>0<><>::
 ::res://assets/::1786986949
 ::res://assets/audio/::1786987131
@@ -48,8 +47,8 @@ sprite_2d.gd::GDScript::8232916473954355156::1786986972::0::1::::<>Sprite2D<><>0
 ::res://scenes/environment/::1786987007
 ParallaxBackground.tscn::PackedScene::7576925301287770861::1786987007::0::1::::<><><>0<>0<><>::uid://l668hlub3w7q::::res://assets/sprites/background/Ephemeral_0.png<>uid://di2eit1f7y15o::::res://assets/sprites/background/Ephemeral_1.png<>uid://c1crbjuujaryw::::res://assets/sprites/background/Ephemeral_2.png<>uid://c33bt5f8e34ii::::res://assets/sprites/background/Ephemeral_3.png<>uid://bwf1ggxo6jmnv::::res://assets/sprites/background/Ephemeral_4.png<>uid://fdvr1u3ehy55::::res://assets/sprites/background/Ephemeral_5.png
 Passarela.tscn::PackedScene::1432235918295817949::1786987002::0::1::::<><><>0<>0<><>::uid://bathjyhqafwv6::::res://assets/sprites/environment/crane_terrain.png
-::res://scenes/levels/::1786987017
-World.tscn::PackedScene::7307458163523600995::1786987017::0::1::::<><><>0<>0<><>::uid://df7k38y5q2v1n::::res://scenes/environment/ParallaxBackground.tscn<>uid://un1ymck64olx::::res://scenes/environment/Passarela.tscn<>uid://cq7ba184ejgt7::::res://scenes/characters/player/Player.tscn<>uid://cba7fei7cybjb::::res://assets/sprites/environment/Crane_Suport.png<>uid://dx6w2tor4ohsm::::res://assets/sprites/ui/hud_vida.png<>uid://q003q8wnlfne::::res://scenes/characters/enemies/Enemy.tscn<>uid://dy6xbdhcv2i4m::::res://assets/sprites/background/Buildings 1.png
+::res://scenes/levels/::1786995076
+World.tscn::PackedScene::7307458163523600995::1786995076::0::1::::<><><>0<>0<><>::uid://df7k38y5q2v1n::::res://scenes/environment/ParallaxBackground.tscn<>uid://un1ymck64olx::::res://scenes/environment/Passarela.tscn<>uid://cq7ba184ejgt7::::res://scenes/characters/player/Player.tscn<>uid://cba7fei7cybjb::::res://assets/sprites/environment/Crane_Suport.png<>uid://dx6w2tor4ohsm::::res://assets/sprites/ui/hud_vida.png<>uid://q003q8wnlfne::::res://scenes/characters/enemies/Enemy.tscn<>uid://dy6xbdhcv2i4m::::res://assets/sprites/background/Buildings 1.png
 ::res://ui/::1786987031
 MainMenu.gd::GDScript::7987042988556328543::1786987021::0::1::::<>Control<><>0<>0<><>::
 MainMenu.tscn::PackedScene::619700126080074883::1786987031::0::1::::<><><>0<>0<><>::uid://dl18owl7mqcrv::::res://ui/MainMenu.gd<>uid://c6x700q8iuxvc::::res://assets/sprites/background/background_mainMenu.jpg<>uid://blohj08ot7rsv::::res://assets/audio/guilhermebernardes-never-again-108445.mp3
