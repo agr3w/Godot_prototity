@@ -66,7 +66,12 @@ collision_mask = 1
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_hitbox")
 
-[node name="FloorDetector" type="RayCast2D" parent="." unique_id=470000008]
+[node name="LedgeDetector" type="RayCast2D" parent="." unique_id=470000008]
 position = Vector2(-18, 10)
 target_position = Vector2(0, 22)
+collision_mask = 1
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=470000009]
+position = Vector2(0, 2)
+target_position = Vector2(-18, 0)
 collision_mask = 1

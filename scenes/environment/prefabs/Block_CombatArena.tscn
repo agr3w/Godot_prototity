@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dm7y2q8x1nx5w"]
+
+[ext_resource type="PackedScene" uid="uid://cx82m7vq1l9pw" path="res://scenes/environment/SewerPlatform.tscn" id="1_plat"]
+[ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="2_mutant"]
+[ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="3_cultist"]
+
+[node name="Block_CombatArena" type="Node2D" unique_id=610000001]
+
+[node name="Plataforma1" parent="." unique_id=610000002 instance=ExtResource("1_plat")]
+position = Vector2(-107, 0)
+
+[node name="Plataforma2" parent="." unique_id=610000003 instance=ExtResource("1_plat")]
+position = Vector2(0, 0)
+
+[node name="Plataforma3" parent="." unique_id=610000004 instance=ExtResource("1_plat")]
+position = Vector2(107, 0)
+
+[node name="TorchCultist" parent="." unique_id=610000005 instance=ExtResource("3_cultist")]
+position = Vector2(70, -25)
+
+[node name="SewerMutant" parent="." unique_id=610000006 instance=ExtResource("2_mutant")]
+position = Vector2(-70, -25)

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cb8q2y7m1nx5w"]
+
+[ext_resource type="Script" path="res://scenes/environment/prefabs/Block_DashGate.gd" id="1_gate_script"]
+[ext_resource type="PackedScene" uid="uid://cx82m7vq1l9pw" path="res://scenes/environment/SewerPlatform.tscn" id="2_plat"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_steam"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, -20, 0)
+scale_min = 2.5
+scale_max = 5.0
+color = Color(0.3, 0.95, 0.4, 0.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hazard"]
+size = Vector2(40, 90)
+
+[sub_resource type="Gradient" id="Gradient_gate"]
+colors = PackedColorArray(0.2, 1, 0.3, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gate"]
+gradient = SubResource("Gradient_gate")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Block_DashGate" type="Node2D" unique_id=600000001]
+script = ExtResource("1_gate_script")
+
+[node name="PlataformaEsq" parent="." unique_id=600000002 instance=ExtResource("2_plat")]
+position = Vector2(-75, 0)
+
+[node name="PlataformaDir" parent="." unique_id=600000003 instance=ExtResource("2_plat")]
+position = Vector2(75, 0)
+
+[node name="VaporToxico" type="GPUParticles2D" parent="." unique_id=600000004]
+position = Vector2(0, -5)
+amount = 18
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_steam")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=600000005]
+position = Vector2(0, -35)
+color = Color(0.25, 0.9, 0.35, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_gate")
+texture_scale = 2.0
+
+[node name="HazardArea" type="Area2D" parent="." unique_id=600000006]
+position = Vector2(0, -35)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea" unique_id=600000007]
+shape = SubResource("RectangleShape2D_hazard")
+debug_color = Color(0.85, 0.1, 0.1, 0.4)

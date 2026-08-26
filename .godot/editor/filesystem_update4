@@ -3,3 +3,6 @@ res://scenes/levels/Sewers_Level.tscn
 res://scenes/environment/SewerPlatform.tscn
 res://scenes/environment/SewerParallaxBackground.tscn
 res://scenes/levels/Sewers_Level.gd
+res://scenes/characters/enemies/Enemy.gd
+res://scenes/characters/enemies/SewerMutant.gd
+res://scenes/characters/enemies/TorchCultist.gd

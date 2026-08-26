@@ -1,65 +1,97 @@
 extends CharacterBody2D
 
-const SPEED = 350.0
-const JUMP_VELOCITY = -500.0
-const FALL_GRAVITY_MULTIPLIER = 1.6
-const DASH_SPEED = 1000.0
-const DASH_DURATION = 0.15
-const ATTACK_DURATION = 0.3
-const AIR_ATTACK_DURATION = 0.25
-const HIT_DURATION = 0.4 # Tempo que ele fica atordoado ao tomar dano
-const LANDING_DELAY = 0.08
+# --- CONFIGURAÇÕES DE FÍSICA ---
+@export_group("Física de Movimento")
+@export var speed: float = 240.0
+@export var acceleration: float = 1200.0
+@export var friction: float = 1600.0
+@export var air_friction: float = 400.0
+@export var jump_velocity: float = -460.0
+@export var gravity: float = 980.0
+@export var fall_gravity_multiplier: float = 1.5
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+# --- DASH ---
+@export_group("Dash & I-Frames")
+@export var dash_speed: float = 650.0
+@export var dash_duration: float = 0.18
+var is_dashing: bool = false
+var can_dash: bool = true
 
-@onready var anim = $AnimationPlayer
-@onready var sprite = $Sprite2D
-@onready var camera = $Camera2D
-@onready var dust = $GPUParticles2D 
-@onready var sword_hitbox = get_node_or_null("SwordHitbox/CollisionShape2D")
-@onready var ground_hitbox = get_node_or_null("SwordHitbox/GroundCollision")
-@onready var air_hitbox = get_node_or_null("SwordHitbox/AirCollision")
+# --- COMBATE ---
+@export_group("Combate")
+@export var attack_duration: float = 0.22
+@export var air_attack_duration: float = 0.20
+@export var forward_step_speed: float = 130.0
+@export var hit_duration: float = 0.35
+@export var hitstop_duration: float = 0.06
 
-const LOOK_AHEAD_AMOUNT = 120.0
-const CAMERA_SMOOTH_SPEED = 4.0
+# --- ASSISTENTES DE PULO ---
+var coyote_timer: float = 0.0
+var jump_buffer_timer: float = 0.0
+const COYOTE_TIME_MAX: float = 0.12
+const JUMP_BUFFER_MAX: float = 0.10
+
+# --- NÓS ---
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var camera: Camera2D = $Camera2D
+@onready var dust: GPUParticles2D = $GPUParticles2D 
+@onready var sword_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/CollisionShape2D")
+@onready var ground_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/GroundCollision")
+@onready var air_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/AirCollision")
+
+const LOOK_AHEAD_AMOUNT: float = 120.0
+const CAMERA_SMOOTH_SPEED: float = 4.0
 
 # --- SISTEMA DE VIDA ---
-var max_health = 100
-var current_health = max_health
-@onready var health_bar = $"../CanvasLayer/BarraVida"
+@export_group("Vida")
+@export var max_health: int = 100
+var current_health: int = 100
+@onready var health_bar: TextureProgressBar = get_node_or_null("../CanvasLayer/BarraVida")
 
-# --- ESTADOS DO JOGADOR ---
-var is_dashing = false
-var is_attacking = false
-var is_hurt = false
-var is_dead = false
-var landing_timer = 0.0
-var was_on_floor_last_frame = false
-var facing_direction = 1 
+# --- ESTADOS ---
+var is_attacking: bool = false
+var is_hurt: bool = false
+var is_dead: bool = false
+var landing_timer: float = 0.0
+var was_on_floor_last_frame: bool = false
+var facing_direction: float = 1.0 
 
-# --- SISTEMA DE SCREEN SHAKE ---
+# --- SCREEN SHAKE ---
 var shake_intensity: float = 0.0
 var shake_decay: float = 10.0 
 
-func _ready():
+func _ready() -> void:
+	current_health = max_health
 	if is_instance_valid(sword_hitbox):
 		sword_hitbox.disabled = true
 	if is_instance_valid(ground_hitbox):
 		ground_hitbox.disabled = true
 	if is_instance_valid(air_hitbox):
 		air_hitbox.disabled = true
+	
+	if not health_bar:
+		health_bar = get_node_or_null("../CanvasLayer/BarraVida")
+		if not health_bar:
+			health_bar = get_node_or_null("../../CanvasLayer/BarraVida")
+	
 	if health_bar:
 		health_bar.max_value = max_health
 		health_bar.value = current_health
-	if not $SwordHitbox.body_entered.is_connected(_on_sword_hitbox_body_entered):
-		$SwordHitbox.body_entered.connect(_on_sword_hitbox_body_entered)
+
+	var sword_area = get_node_or_null("SwordHitbox")
+	if sword_area and not sword_area.body_entered.is_connected(_on_sword_hitbox_body_entered):
+		sword_area.body_entered.connect(_on_sword_hitbox_body_entered)
+	if sword_area and not sword_area.area_entered.is_connected(_on_sword_hitbox_area_entered):
+		sword_area.area_entered.connect(_on_sword_hitbox_area_entered)
+	
 	was_on_floor_last_frame = is_on_floor()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if is_dead:
 		if not is_on_floor():
 			velocity.y += gravity * delta
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 		move_and_slide()
 		was_on_floor_last_frame = is_on_floor()
 		return
@@ -67,76 +99,74 @@ func _physics_process(delta):
 	if is_hurt:
 		if not is_on_floor():
 			velocity.y += gravity * delta
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 		move_and_slide()
 		was_on_floor_last_frame = is_on_floor()
+		return
+
+	# 1. GRAVIDADE E COYOTE TIME
+	if not is_on_floor():
+		coyote_timer -= delta
+		if velocity.y > 0.0:
+			velocity.y += (gravity * fall_gravity_multiplier) * delta
+		else:
+			if Input.is_action_just_released("ui_accept"):
+				velocity.y *= 0.55
+			velocity.y += gravity * delta
+	else:
+		coyote_timer = COYOTE_TIME_MAX
+		can_dash = true
+
+	# 2. INPUT DE PULO COM BUFFER
+	if Input.is_action_just_pressed("ui_accept"):
+		jump_buffer_timer = JUMP_BUFFER_MAX
+	else:
+		jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
+
+	if jump_buffer_timer > 0.0 and coyote_timer > 0.0 and not is_dashing:
+		velocity.y = jump_velocity
+		coyote_timer = 0.0
+		jump_buffer_timer = 0.0
+		if is_instance_valid(dust):
+			dust.emitting = true
+
+	# 3. DASH (Burst reto com I-Frames)
+	if Input.is_action_just_pressed("dash") and can_dash and not is_dashing and not is_attacking:
+		start_dash()
 		return
 
 	if is_dashing:
-		velocity.y = 0 
-		velocity.x = facing_direction * DASH_SPEED
-		move_and_slide()
-		was_on_floor_last_frame = is_on_floor()
-		return 
-
-	if is_attacking and is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y += gravity * delta
+		velocity.y = 0.0
+		velocity.x = facing_direction * dash_speed
 		move_and_slide()
 		was_on_floor_last_frame = is_on_floor()
 		return
 
-	if not is_on_floor():
-		if velocity.y > 0:
-			velocity.y += (gravity * FALL_GRAVITY_MULTIPLIER) * delta
-		else:
-			if Input.is_action_just_released("ui_accept"):
-				velocity.y *= 0.5
-			velocity.y += gravity * delta
-
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		dust.emitting = true
-
-	var direction = Input.get_axis("ui_left", "ui_right")
-	
-	if direction != 0:
-		facing_direction = sign(direction) 
-		var current_speed = SPEED if is_on_floor() else SPEED * 0.8
-		velocity.x = direction * current_speed
-		
-		if direction > 0:
-			sprite.scale.x = 1
-			if is_instance_valid(sword_hitbox):
-				sword_hitbox.position.x = abs(sword_hitbox.position.x)
-			if ground_hitbox:
-				ground_hitbox.position.x = abs(ground_hitbox.position.x)
-			if air_hitbox:
-				air_hitbox.position.x = abs(air_hitbox.position.x)
-		elif direction < 0:
-			sprite.scale.x = -1
-			if is_instance_valid(sword_hitbox):
-				sword_hitbox.position.x = -abs(sword_hitbox.position.x)
-			if ground_hitbox:
-				ground_hitbox.position.x = -abs(ground_hitbox.position.x)
-			if air_hitbox:
-				air_hitbox.position.x = -abs(air_hitbox.position.x)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	if Input.is_action_just_pressed("dash") and not is_dashing and not is_attacking:
-		start_dash()
-		return 
-		
+	# 4. ATAQUE COM FORWARD STEP
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		start_attack()
 		return
 
-	# --- EFEITO DA CÂMERA (LOOK AHEAD & SHAKE) ---
-	# Calcula para onde a câmera deve ir baseada no lado que o Striker está olhando
-	var target_offset_x = facing_direction * LOOK_AHEAD_AMOUNT
+	# 5. MOVIMENTAÇÃO HORIZONTAL PRECISA (SEM PISTA DE GELO)
+	var direction = Input.get_axis("ui_left", "ui_right")
+	var current_friction = friction if is_on_floor() else air_friction
 
-	# O comando 'lerp' faz uma transição elástica do valor atual até o alvo!
+	if direction != 0.0:
+		facing_direction = signf(direction)
+		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
+		
+		# Atualiza orientação dos sprites e hitboxes
+		if direction > 0.0:
+			sprite.scale.x = 1.0
+			update_hitbox_facing(1.0)
+		elif direction < 0.0:
+			sprite.scale.x = -1.0
+			update_hitbox_facing(-1.0)
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, current_friction * delta)
+
+	# 6. EFEITO DA CÂMERA (LOOK AHEAD & SHAKE)
+	var target_offset_x = facing_direction * LOOK_AHEAD_AMOUNT
 	camera.offset.x = lerp(camera.offset.x, target_offset_x, CAMERA_SMOOTH_SPEED * delta)
 	camera.offset.y = lerp(camera.offset.y, -85.0, CAMERA_SMOOTH_SPEED * delta)
 
@@ -147,8 +177,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	# 7. CONTROLE DE ANIMAÇÕES
 	if is_on_floor() and not was_on_floor_last_frame:
-		landing_timer = LANDING_DELAY
+		landing_timer = 0.08
 
 	if landing_timer > 0.0:
 		landing_timer = maxf(landing_timer - delta, 0.0)
@@ -159,7 +190,7 @@ func _physics_process(delta):
 				dust.emitting = false
 				if anim.has_animation("jump"):
 					anim.play_backwards("jump")
-			elif direction != 0:
+			elif direction != 0.0:
 				anim.play("run")
 				dust.emitting = true
 			else:
@@ -167,45 +198,57 @@ func _physics_process(delta):
 				dust.emitting = false
 		else:
 			dust.emitting = false
-			
-			# NOVO: Divide o ar em Subindo e Caindo
-			if velocity.y < 0:
-				# Está subindo
-				anim.play("jump") 
+			if velocity.y < 0.0:
+				anim.play("jump")
 			else:
-				# Está caindo (toca o pulo invertido para preparar a aterrissagem)
 				anim.play_backwards("jump")
 
 	was_on_floor_last_frame = is_on_floor()
 
-func start_dash():
+func update_hitbox_facing(dir_sign: float) -> void:
+	if is_instance_valid(sword_hitbox):
+		sword_hitbox.position.x = abs(sword_hitbox.position.x) * dir_sign
+	if ground_hitbox:
+		ground_hitbox.position.x = abs(ground_hitbox.position.x) * dir_sign
+	if air_hitbox:
+		air_hitbox.position.x = abs(air_hitbox.position.x) * dir_sign
+
+func start_dash() -> void:
 	is_dashing = true
+	can_dash = false
 	anim.play("dash")
-	dust.emitting = true 
-	await get_tree().create_timer(DASH_DURATION).timeout
+	if is_instance_valid(dust):
+		dust.emitting = true
+	
+	# I-Frames: Desativa colisão com inimigos (Layer 2)
+	set_collision_mask_value(2, false)
+	
+	await get_tree().create_timer(dash_duration).timeout
+	
+	set_collision_mask_value(2, true)
 	is_dashing = false
 
-func start_attack():
+func start_attack() -> void:
 	is_attacking = true
-	var active_hitbox = get_attack_hitbox(is_on_floor())
-	if not is_instance_valid(active_hitbox):
-		is_attacking = false
-		return
+	var is_air = not is_on_floor()
+	var active_hitbox = get_attack_hitbox(is_air)
+	
+	# Forward Step: Pequeno avanço para frente ao golpear
+	if not is_air:
+		velocity.x = facing_direction * forward_step_speed
+	
+	var anim_name = "air_attack" if is_air else "attack"
+	var duration = air_attack_duration if is_air else attack_duration
 
-	var anim_name = "attack"
-	var duration = ATTACK_DURATION
-
-	if not is_on_floor():
-		anim_name = "air_attack"
-		duration = AIR_ATTACK_DURATION
+	if is_air:
+		velocity.y = 0.0
 		if anim.current_animation == "jump":
 			anim.stop()
 
 	anim.play(anim_name if anim.has_animation(anim_name) else "attack")
-	active_hitbox.disabled = false
-
-	if anim_name == "air_attack":
-		velocity.y = 0
+	
+	if is_instance_valid(active_hitbox):
+		active_hitbox.disabled = false
 
 	await get_tree().create_timer(duration).timeout
 
@@ -225,19 +268,31 @@ func get_attack_hitbox(is_air_attack: bool) -> CollisionShape2D:
 		return ground_hitbox
 	return sword_hitbox
 
-func _on_sword_hitbox_body_entered(body: Node):
+func _on_sword_hitbox_body_entered(body: Node) -> void:
 	if body == self:
 		return
-
 	if body.is_in_group("enemy") and body.has_method("take_damage"):
-		body.take_damage(1)
+		body.take_damage(1, global_position)
+		apply_hitstop(hitstop_duration)
+		add_camera_shake(4.0, 12.0)
 
-func take_damage(amount: int = 10):
-	if is_dead or is_hurt:
+func _on_sword_hitbox_area_entered(area: Area2D) -> void:
+	var enemy = area.get_parent()
+	if enemy and enemy != self and enemy.is_in_group("enemy") and enemy.has_method("take_damage"):
+		enemy.take_damage(1, global_position)
+		apply_hitstop(hitstop_duration)
+		add_camera_shake(4.0, 12.0)
+
+func apply_hitstop(duration: float = 0.06) -> void:
+	Engine.time_scale = 0.05
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+func take_damage(amount: int = 10) -> void:
+	if is_dead or is_hurt or is_dashing:
 		return
 
 	is_attacking = false
-	is_dashing = false
 	if is_instance_valid(sword_hitbox):
 		sword_hitbox.set_deferred("disabled", true)
 	if is_instance_valid(ground_hitbox):
@@ -249,6 +304,8 @@ func take_damage(amount: int = 10):
 	if health_bar:
 		health_bar.value = current_health
 	
+	add_camera_shake(8.0, 8.0)
+
 	if current_health <= 0:
 		die()
 	else:
@@ -259,12 +316,13 @@ func take_damage(amount: int = 10):
 		await get_tree().create_timer(0.1).timeout
 		sprite.modulate = Color.WHITE
 
-		await get_tree().create_timer(HIT_DURATION - 0.1).timeout
+		await get_tree().create_timer(hit_duration - 0.1).timeout
 		is_hurt = false
 
-func die():
+func die() -> void:
 	is_dead = true
-	dust.emitting = false
+	if is_instance_valid(dust):
+		dust.emitting = false
 	anim.play("death")
 	await anim.animation_finished
 	get_tree().reload_current_scene()
