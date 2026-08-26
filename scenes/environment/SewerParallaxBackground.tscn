@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dm0y27k8x1n6q"]
+
+[ext_resource type="Texture2D" uid="uid://cx5w7y2q8nm01" path="res://assets/sprites/background/sewer_bg_buildings.png" id="1_sewer_bg"]
+
+[node name="SewerParallaxBackground" type="Node2D" unique_id=440000001]
+
+[node name="Parallax2D_FundoLonge" type="Parallax2D" parent="." unique_id=440000002]
+modulate = Color(0.18, 0.19, 0.26, 1)
+scroll_scale = Vector2(0.1, 0.15)
+repeat_size = Vector2(950, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_FundoLonge" unique_id=440000003]
+position = Vector2(0, -220)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_sewer_bg")
+centered = false
+
+[node name="Parallax2D_CamadaMedia" type="Parallax2D" parent="." unique_id=440000004]
+modulate = Color(0.35, 0.37, 0.46, 1)
+scroll_scale = Vector2(0.28, 0.35)
+repeat_size = Vector2(950, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_CamadaMedia" unique_id=440000005]
+position = Vector2(240, -180)
+texture = ExtResource("1_sewer_bg")
+centered = false
+
+[node name="Parallax2D_CamadaProxima" type="Parallax2D" parent="." unique_id=440000006]
+modulate = Color(0.5, 0.52, 0.62, 1)
+scroll_scale = Vector2(0.55, 0.65)
+repeat_size = Vector2(950, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_CamadaProxima" unique_id=440000007]
+position = Vector2(480, -140)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("1_sewer_bg")
+centered = false

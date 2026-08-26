@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://bvq7k4ym3n7tp"]
+
+[ext_resource type="Script" uid="uid://bpt54h1jo3ak7" path="res://scenes/levels/Sewers_Level.gd" id="1_sewer_script"]
+[ext_resource type="PackedScene" uid="uid://dm0y27k8x1n6q" path="res://scenes/environment/SewerParallaxBackground.tscn" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://dg03k7yn2x8ra" path="res://scenes/environment/SewerWallStructure.tscn" id="3_wall"]
+[ext_resource type="PackedScene" uid="uid://c5f4y8x3m1n8q" path="res://scenes/environment/SewerLampPost.tscn" id="4_lamp_post"]
+[ext_resource type="PackedScene" uid="uid://cx82m7vq1mapw" path="res://scenes/environment/SewerPlatform.tscn" id="5_plat"]
+[ext_resource type="PackedScene" uid="uid://cb5y3k1v8qwoa" path="res://scenes/environment/SewerWaterDrips.tscn" id="6_drips"]
+[ext_resource type="PackedScene" uid="uid://cx41k8yqm3qav" path="res://scenes/environment/SewerGroundFog.tscn" id="7_fog"]
+[ext_resource type="PackedScene" uid="uid://c7m2y8x5n1p0q" path="res://scenes/environment/PhotonBeacon.tscn" id="8_beacon"]
+[ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://scenes/characters/player/Player.tscn" id="9_player"]
+[ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="10_mutant"]
+[ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="11_cultist"]
+[ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://assets/sprites/ui/hud_vida.png" id="12_hud"]
+
+[sub_resource type="Gradient" id="Gradient_photon"]
+colors = PackedColorArray(0.2, 0.85, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_photon"]
+gradient = SubResource("Gradient_photon")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="SewersLevel" type="Node2D" unique_id=500000001]
+script = ExtResource("1_sewer_script")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=500000002]
+color = Color(0.04, 0.05, 0.07, 1)
+energy = 1.3
+blend_mode = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=500000003]
+color = Color(0.2, 0.22, 0.3, 1)
+
+[node name="SewerParallaxBackground" parent="." unique_id=500000004 instance=ExtResource("2_bg")]
+
+[node name="SewerWallStructure" parent="." unique_id=500000010 instance=ExtResource("3_wall")]
+position = Vector2(-75, 235)
+
+[node name="PosteIluminacao1" parent="." unique_id=500000015 instance=ExtResource("4_lamp_post")]
+position = Vector2(90, 345)
+
+[node name="PosteIluminacao2" parent="." unique_id=500000016 instance=ExtResource("4_lamp_post")]
+position = Vector2(740, 65)
+
+[node name="Tier1_FundoDoPoco" type="Node2D" parent="." unique_id=500000020]
+position = Vector2(0, 360)
+
+[node name="ChaoEsq1" parent="Tier1_FundoDoPoco" unique_id=500000021 instance=ExtResource("5_plat")]
+position = Vector2(-200, 0)
+
+[node name="ChaoEsq2" parent="Tier1_FundoDoPoco" unique_id=500000022 instance=ExtResource("5_plat")]
+position = Vector2(-93, 0)
+
+[node name="ChaoEsq3" parent="Tier1_FundoDoPoco" unique_id=500000023 instance=ExtResource("5_plat")]
+position = Vector2(14, 0)
+
+[node name="ChaoMeio1" parent="Tier1_FundoDoPoco" unique_id=500000024 instance=ExtResource("5_plat")]
+position = Vector2(150, 0)
+
+[node name="ChaoMeio2" parent="Tier1_FundoDoPoco" unique_id=500000025 instance=ExtResource("5_plat")]
+position = Vector2(257, 0)
+
+[node name="ChaoMeio3" parent="Tier1_FundoDoPoco" unique_id=500000026 instance=ExtResource("5_plat")]
+position = Vector2(364, 0)
+
+[node name="ChaoDir1" parent="Tier1_FundoDoPoco" unique_id=500000027 instance=ExtResource("5_plat")]
+position = Vector2(500, 0)
+
+[node name="ChaoDir2" parent="Tier1_FundoDoPoco" unique_id=500000028 instance=ExtResource("5_plat")]
+position = Vector2(607, 0)
+
+[node name="ChaoDir3" parent="Tier1_FundoDoPoco" unique_id=500000029 instance=ExtResource("5_plat")]
+position = Vector2(714, 0)
+
+[node name="Tier2_Ascensao" type="Node2D" parent="." unique_id=500000030]
+
+[node name="PlatInter1" parent="Tier2_Ascensao" unique_id=500000031 instance=ExtResource("5_plat")]
+position = Vector2(200, 250)
+
+[node name="PlatInter2" parent="Tier2_Ascensao" unique_id=500000032 instance=ExtResource("5_plat")]
+position = Vector2(380, 250)
+
+[node name="PlatInter3" parent="Tier2_Ascensao" unique_id=500000033 instance=ExtResource("5_plat")]
+position = Vector2(560, 250)
+
+[node name="PlatSusp1" parent="Tier2_Ascensao" unique_id=500000034 instance=ExtResource("5_plat")]
+position = Vector2(80, 165)
+
+[node name="PlatSusp2" parent="Tier2_Ascensao" unique_id=500000035 instance=ExtResource("5_plat")]
+position = Vector2(480, 165)
+
+[node name="Tier3_PonteDasTochas" type="Node2D" parent="." unique_id=500000040]
+position = Vector2(0, 80)
+
+[node name="Ponte1" parent="Tier3_PonteDasTochas" unique_id=500000041 instance=ExtResource("5_plat")]
+position = Vector2(180, 0)
+
+[node name="Ponte2" parent="Tier3_PonteDasTochas" unique_id=500000042 instance=ExtResource("5_plat")]
+position = Vector2(287, 0)
+
+[node name="Ponte3" parent="Tier3_PonteDasTochas" unique_id=500000043 instance=ExtResource("5_plat")]
+position = Vector2(394, 0)
+
+[node name="Ponte4" parent="Tier3_PonteDasTochas" unique_id=500000044 instance=ExtResource("5_plat")]
+position = Vector2(501, 0)
+
+[node name="Ponte5" parent="Tier3_PonteDasTochas" unique_id=500000045 instance=ExtResource("5_plat")]
+position = Vector2(608, 0)
+
+[node name="Ponte6" parent="Tier3_PonteDasTochas" unique_id=500000046 instance=ExtResource("5_plat")]
+position = Vector2(715, 0)
+
+[node name="Tier4_EscadariaVertical" type="Node2D" parent="." unique_id=500000050]
+
+[node name="Degrau1" parent="Tier4_EscadariaVertical" unique_id=500000051 instance=ExtResource("5_plat")]
+position = Vector2(780, 0)
+
+[node name="Degrau2" parent="Tier4_EscadariaVertical" unique_id=500000052 instance=ExtResource("5_plat")]
+position = Vector2(620, -75)
+
+[node name="Degrau3" parent="Tier4_EscadariaVertical" unique_id=500000053 instance=ExtResource("5_plat")]
+position = Vector2(460, -150)
+
+[node name="Degrau4" parent="Tier4_EscadariaVertical" unique_id=500000054 instance=ExtResource("5_plat")]
+position = Vector2(300, -225)
+
+[node name="Tier5_SantuarioDoReator" type="Node2D" parent="." unique_id=500000060]
+position = Vector2(100, -300)
+
+[node name="PlatReator1" parent="Tier5_SantuarioDoReator" unique_id=500000061 instance=ExtResource("5_plat")]
+position = Vector2(-107, 0)
+
+[node name="PlatReator2" parent="Tier5_SantuarioDoReator" unique_id=500000062 instance=ExtResource("5_plat")]
+
+[node name="PlatReator3" parent="Tier5_SantuarioDoReator" unique_id=500000063 instance=ExtResource("5_plat")]
+position = Vector2(107, 0)
+
+[node name="PhotonBeacon" parent="Tier5_SantuarioDoReator" unique_id=500000064 instance=ExtResource("8_beacon")]
+position = Vector2(0, -25)
+
+[node name="EfeitosParticulas" type="Node2D" parent="." unique_id=500000070]
+
+[node name="GotasPoco" parent="EfeitosParticulas" unique_id=500000071 instance=ExtResource("6_drips")]
+position = Vector2(120, 140)
+
+[node name="GotasPonte" parent="EfeitosParticulas" unique_id=500000072 instance=ExtResource("6_drips")]
+position = Vector2(520, -10)
+
+[node name="GotasEscadaria" parent="EfeitosParticulas" unique_id=500000073 instance=ExtResource("6_drips")]
+position = Vector2(460, -240)
+
+[node name="NevoaPoco" parent="EfeitosParticulas" unique_id=500000074 instance=ExtResource("7_fog")]
+position = Vector2(350, 335)
+
+[node name="CharacterBody2D" parent="." unique_id=500000080 instance=ExtResource("9_player")]
+position = Vector2(-35, 306)
+
+[node name="PhotonLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=500000081]
+position = Vector2(0, -5)
+color = Color(0.2, 0.85, 1, 1)
+texture = SubResource("GradientTexture2D_photon")
+texture_scale = 3.2
+
+[node name="Inimigos" type="Node2D" parent="." unique_id=500000090]
+
+[node name="MutantPoco1" parent="Inimigos" unique_id=500000091 instance=ExtResource("10_mutant")]
+position = Vector2(260, 335)
+
+[node name="MutantPoco2" parent="Inimigos" unique_id=500000092 instance=ExtResource("10_mutant")]
+position = Vector2(610, 335)
+
+[node name="CultistPonte" parent="Inimigos" unique_id=500000093 instance=ExtResource("11_cultist")]
+position = Vector2(450, 55)
+
+[node name="CultistDegrau" parent="Inimigos" unique_id=500000094 instance=ExtResource("11_cultist")]
+position = Vector2(620, -100)
+
+[node name="MutantEscada" parent="Inimigos" unique_id=500000095 instance=ExtResource("10_mutant")]
+position = Vector2(460, -175)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=500000100]
+
+[node name="BarraVida" type="TextureProgressBar" parent="CanvasLayer" unique_id=500000101]
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 273.0
+offset_bottom = 81.0
+scale = Vector2(0.7, 0.7)
+value = 100.0
+texture_progress = ExtResource("12_hud")
+
+[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer" unique_id=500000102]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

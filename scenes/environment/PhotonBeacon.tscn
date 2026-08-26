@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c7m2y8x5n1p0q"]
+
+[ext_resource type="Texture2D" uid="uid://cba7fei7cybjb" path="res://assets/sprites/environment/Crane_Suport.png" id="1_pillar_tex"]
+
+[sub_resource type="Gradient" id="Gradient_beacon"]
+colors = PackedColorArray(0.1, 0.92, 1, 1, 0, 0.3, 0.8, 0.3, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_beacon"]
+gradient = SubResource("Gradient_beacon")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_energy"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 45.0
+gravity = Vector3(0, -25, 0)
+scale_min = 2.0
+scale_max = 3.5
+color = Color(0.3, 0.95, 1, 0.85)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_beacon"]
+radius = 45.0
+
+[node name="PhotonBeacon" type="Node2D" unique_id=480000001]
+
+[node name="PilarEstrutura" type="Sprite2D" parent="." unique_id=480000002]
+position = Vector2(0, 15)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_pillar_tex")
+
+[node name="BeaconLight" type="PointLight2D" parent="." unique_id=480000003]
+position = Vector2(0, -15)
+color = Color(0.1, 0.92, 1, 1)
+energy = 2.2
+texture = SubResource("GradientTexture2D_beacon")
+texture_scale = 4.8
+
+[node name="EnergyParticles" type="GPUParticles2D" parent="." unique_id=480000004]
+position = Vector2(0, -15)
+amount = 16
+lifetime = 1.8
+process_material = SubResource("ParticleProcessMaterial_energy")
+
+[node name="AreaCheckpoint" type="Area2D" parent="." unique_id=480000005]
+position = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCheckpoint" unique_id=480000006]
+shape = SubResource("CircleShape2D_beacon")

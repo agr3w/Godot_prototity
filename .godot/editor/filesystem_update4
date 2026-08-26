@@ -1,1 +1,5 @@
-res://scenes/levels/World.tscn
+res://scenes/characters/player/Player.gd
+res://scenes/levels/Sewers_Level.tscn
+res://scenes/environment/SewerPlatform.tscn
+res://scenes/environment/SewerParallaxBackground.tscn
+res://scenes/levels/Sewers_Level.gd

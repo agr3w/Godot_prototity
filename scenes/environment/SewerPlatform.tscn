@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cx82m7vq1mapw"]
+
+[ext_resource type="Texture2D" uid="uid://dbcd3boclpmfp" path="res://assets/sprites/environment/sewer_platform.png" id="1_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sewer"]
+size = Vector2(107, 16)
+
+[node name="SewerPlatform" type="StaticBody2D" unique_id=400000001]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400000003]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_sewer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=400000002]
+position = Vector2(-44.775, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1761878077]
+position = Vector2(-28.775002, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1222797905]
+position = Vector2(-11.775002, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=322921638]
+position = Vector2(4.2249985, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1275030533]
+position = Vector2(20.224998, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=836606961]
+position = Vector2(36.225, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=264668765]
+position = Vector2(45.225002, -22.324999)
+scale = Vector2(0.11470588, 0.13481013)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 153, 79)

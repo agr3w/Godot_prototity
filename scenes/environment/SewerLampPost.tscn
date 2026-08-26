@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c5f4y8x3m1n8q"]
+
+[ext_resource type="Texture2D" uid="uid://b00g7q2l4mx1q" path="res://assets/sprites/environment/sewer_lamp_post.png" id="1_post_tex"]
+
+[sub_resource type="Gradient" id="Gradient_lamp_post"]
+colors = PackedColorArray(1, 0.82, 0.45, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lamp_post"]
+gradient = SubResource("Gradient_lamp_post")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="SewerLampPost" type="Node2D" unique_id=450000001]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=450000002]
+position = Vector2(-28, -62)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("1_post_tex")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=450000003]
+position = Vector2(-54, -112)
+color = Color(1, 0.78, 0.38, 1)
+energy = 1.4
+texture = SubResource("GradientTexture2D_lamp_post")
+texture_scale = 2.6

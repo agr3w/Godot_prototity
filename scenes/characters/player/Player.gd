@@ -37,6 +37,10 @@ var landing_timer = 0.0
 var was_on_floor_last_frame = false
 var facing_direction = 1 
 
+# --- SISTEMA DE SCREEN SHAKE ---
+var shake_intensity: float = 0.0
+var shake_decay: float = 10.0 
+
 func _ready():
 	if is_instance_valid(sword_hitbox):
 		sword_hitbox.disabled = true
@@ -128,12 +132,18 @@ func _physics_process(delta):
 		start_attack()
 		return
 
-	# --- EFEITO DA CÂMERA (LOOK AHEAD) ---
+	# --- EFEITO DA CÂMERA (LOOK AHEAD & SHAKE) ---
 	# Calcula para onde a câmera deve ir baseada no lado que o Striker está olhando
 	var target_offset_x = facing_direction * LOOK_AHEAD_AMOUNT
 
 	# O comando 'lerp' faz uma transição elástica do valor atual até o alvo!
 	camera.offset.x = lerp(camera.offset.x, target_offset_x, CAMERA_SMOOTH_SPEED * delta)
+	camera.offset.y = lerp(camera.offset.y, -85.0, CAMERA_SMOOTH_SPEED * delta)
+
+	if shake_intensity > 0.0:
+		shake_intensity = move_toward(shake_intensity, 0.0, shake_decay * delta)
+		camera.offset.x += randf_range(-shake_intensity, shake_intensity)
+		camera.offset.y += randf_range(-shake_intensity, shake_intensity)
 
 	move_and_slide()
 
@@ -258,3 +268,13 @@ func die():
 	anim.play("death")
 	await anim.animation_finished
 	get_tree().reload_current_scene()
+
+func add_camera_shake(intensity: float = 6.0, decay: float = 10.0) -> void:
+	shake_intensity = max(shake_intensity, intensity)
+	shake_decay = decay
+
+func play_fall_animation() -> void:
+	if is_instance_valid(dust):
+		dust.emitting = false
+	if anim.has_animation("jump"):
+		anim.play("jump")

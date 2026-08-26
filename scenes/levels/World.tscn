@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://assets/sprites/ui/hud_vida.png" id="11_wyqjk"]
 [ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://scenes/characters/enemies/Enemy.tscn" id="13_k85er"]
 [ext_resource type="Texture2D" uid="uid://dy6xbdhcv2i4m" path="res://assets/sprites/background/Buildings 1.png" id="18_sxias"]
+[ext_resource type="Script" path="res://scenes/levels/ChaseZoneTrigger.gd" id="20_chase"]
+[ext_resource type="PackedScene" uid="uid://cx6y8v2q9k5ml" path="res://scenes/environment/CrumblingBridge.tscn" id="21_cbridge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger_chase"]
+size = Vector2(700, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_486m6"]
 size = Vector2(121.984055, 211.65851)
@@ -215,7 +220,7 @@ position = Vector2(1377, 0)
 [node name="Passarela15" parent="Passarelas" unique_id=1699595397 instance=ExtResource("7_1kp85")]
 position = Vector2(1485, 0)
 
-[node name="Passarela16" parent="Passarelas" unique_id=932480162 instance=ExtResource("7_1kp85")]
+[node name="CrumblingBridge" parent="Passarelas" unique_id=932480162 instance=ExtResource("21_cbridge")]
 position = Vector2(1590, 0)
 
 [node name="LimiteEsquerdo" type="Node2D" parent="." unique_id=631161522]
@@ -269,8 +274,30 @@ scale = Vector2(0.7, 0.7)
 value = 100.0
 texture_progress = ExtResource("11_wyqjk")
 
+[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer" unique_id=9812401]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1261539250]
 tile_set = SubResource("TileSet_486m6")
 
 [node name="TerrainEnemy_1" parent="." unique_id=129693592 instance=ExtResource("13_k85er")]
 position = Vector2(-15, 339)
+
+[node name="ChaseZoneTrigger" type="Area2D" parent="." unique_id=74819201]
+position = Vector2(700, 340)
+collision_layer = 0
+script = ExtResource("20_chase")
+shake_interval = 0.6
+shake_intensity = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseZoneTrigger" unique_id=74819202]
+shape = SubResource("RectangleShape2D_trigger_chase")
+
+

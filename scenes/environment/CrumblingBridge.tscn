@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cx6y8v2rak5ml"]
+
+[ext_resource type="Script" path="res://scenes/environment/CrumblingBridge.gd" id="1_bridge_script"]
+[ext_resource type="PackedScene" uid="uid://un1ymck64olx" path="res://scenes/environment/Passarela.tscn" id="2_passarela"]
+[ext_resource type="Texture2D" uid="uid://bathjyhqafwv6" path="res://assets/sprites/environment/crane_terrain.png" id="3_crane_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_breaking"]
+size = Vector2(109, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(110, 100)
+
+[node name="CrumblingBridge" type="Node2D" unique_id=300000001]
+script = ExtResource("1_bridge_script")
+
+[node name="PlataformaElevada" type="Node2D" parent="." unique_id=300000002]
+position = Vector2(-55, -75)
+
+[node name="PassarelaSup1" parent="PlataformaElevada" unique_id=300000003 instance=ExtResource("2_passarela")]
+position = Vector2(-52, 0)
+
+[node name="PassarelaSup2" parent="PlataformaElevada" unique_id=300000004 instance=ExtResource("2_passarela")]
+position = Vector2(53, 0)
+
+[node name="PassarelaEsquerda" parent="." unique_id=300000005 instance=ExtResource("2_passarela")]
+position = Vector2(0, 0)
+
+[node name="BreakingPivot" type="Node2D" parent="." unique_id=300000010]
+position = Vector2(54.5, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BreakingPivot" unique_id=300000011]
+
+[node name="Sprite2D" type="Sprite2D" parent="BreakingPivot/StaticBody2D" unique_id=300000012]
+position = Vector2(54.5, 7.6293945e-06)
+scale = Vector2(0.50114673, 0.40735304)
+texture = ExtResource("3_crane_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakingPivot/StaticBody2D" unique_id=300000013]
+position = Vector2(55, 11.5)
+shape = SubResource("RectangleShape2D_breaking")
+
+[node name="PassarelaPendenteDireita" type="Node2D" parent="." unique_id=300000020]
+position = Vector2(320, 0)
+rotation = 1.48353
+
+[node name="Sprite2D" type="Sprite2D" parent="PassarelaPendenteDireita" unique_id=300000021]
+position = Vector2(54.5, 7.6293945e-06)
+scale = Vector2(0.50114673, 0.40735304)
+texture = ExtResource("3_crane_tex")
+
+[node name="PassarelasDireita" type="Node2D" parent="." unique_id=300000030]
+position = Vector2(375, 0)
+
+[node name="PassarelaDir1" parent="PassarelasDireita" unique_id=300000031 instance=ExtResource("2_passarela")]
+position = Vector2(0, 0)
+
+[node name="PassarelaDir2" parent="PassarelasDireita" unique_id=300000032 instance=ExtResource("2_passarela")]
+position = Vector2(105, 0)
+
+[node name="TriggerArea" type="Area2D" parent="." unique_id=300000040]
+position = Vector2(100, -10)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=300000041]
+shape = SubResource("RectangleShape2D_trigger")
