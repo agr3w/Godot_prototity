@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://un1ymck64olx"]
 
-[ext_resource type="Texture2D" uid="uid://bathjyhqafwv6" path="res://assets/sprites/environment/crane_terrain.png" id="1_5o4yj"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4mfm2"]
+load_path = "res://.godot/imported/crane_terrain.png-9b99df1c25c5012727c89321a2650a9a.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_486m6"]
 size = Vector2(109, 11)
@@ -10,7 +11,7 @@ size = Vector2(109, 11)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1512793512]
 position = Vector2(0, 7.6293945e-06)
 scale = Vector2(0.50114673, 0.40735304)
-texture = ExtResource("1_5o4yj")
+texture = SubResource("CompressedTexture2D_4mfm2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636217933]
 position = Vector2(0.5, 11.5)

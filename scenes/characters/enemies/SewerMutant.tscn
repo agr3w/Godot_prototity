@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cb3q4m8y1lx7v"]
 
-[ext_resource type="Script" path="res://scenes/characters/enemies/SewerMutant.gd" id="1_mutant_script"]
-[ext_resource type="Texture2D" uid="uid://du83w2mx7q10p" path="res://assets/sprites/characters/enemies/sewer_mutant.png" id="2_mutant_tex"]
+[ext_resource type="Script" uid="uid://vyee254dcwpq" path="res://scenes/characters/enemies/SewerMutant.gd" id="1_mutant_script"]
+[ext_resource type="Texture2D" uid="uid://4skdai3kja11" path="res://assets/sprites/characters/enemies/sewer_mutant.png" id="2_mutant_tex"]
+[ext_resource type="AudioStream" uid="uid://bbimf0o44x6xh" path="res://assets/audio/creatureSond.wav" id="3_yjto2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mutant_body"]
 size = Vector2(46, 30)
@@ -11,7 +12,6 @@ size = Vector2(50, 32)
 
 [node name="SewerMutant" type="CharacterBody2D" unique_id=460000001 groups=["enemy"]]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1_mutant_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=460000002]
@@ -25,7 +25,6 @@ shape = SubResource("RectangleShape2D_mutant_body")
 
 [node name="HitboxDano" type="Area2D" parent="." unique_id=460000004]
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxDano" unique_id=460000005]
 position = Vector2(0, 5)
@@ -34,9 +33,10 @@ shape = SubResource("RectangleShape2D_mutant_hitbox")
 [node name="LedgeDetector" type="RayCast2D" parent="." unique_id=460000006]
 position = Vector2(-22, 10)
 target_position = Vector2(0, 24)
-collision_mask = 1
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=460000007]
 position = Vector2(0, 5)
 target_position = Vector2(-22, 0)
-collision_mask = 1
+
+[node name="mutant001" type="AudioStreamPlayer" parent="." unique_id=1417576432]
+stream = ExtResource("3_yjto2")

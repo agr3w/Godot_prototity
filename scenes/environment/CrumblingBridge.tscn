@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cx6y8v2rak5ml"]
 
-[ext_resource type="Script" path="res://scenes/environment/CrumblingBridge.gd" id="1_bridge_script"]
+[ext_resource type="Script" uid="uid://cxxhx0lvmrq74" path="res://scenes/environment/CrumblingBridge.gd" id="1_bridge_script"]
 [ext_resource type="PackedScene" uid="uid://un1ymck64olx" path="res://scenes/environment/Passarela.tscn" id="2_passarela"]
 [ext_resource type="Texture2D" uid="uid://bathjyhqafwv6" path="res://assets/sprites/environment/crane_terrain.png" id="3_crane_tex"]
+[ext_resource type="AudioStream" uid="uid://5uxoabp8ohmg" path="res://assets/audio/Metal Breaking.mp3" id="4_wbqeo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_breaking"]
 size = Vector2(109, 11)
@@ -23,7 +24,6 @@ position = Vector2(-52, 0)
 position = Vector2(53, 0)
 
 [node name="PassarelaEsquerda" parent="." unique_id=300000005 instance=ExtResource("2_passarela")]
-position = Vector2(0, 0)
 
 [node name="BreakingPivot" type="Node2D" parent="." unique_id=300000010]
 position = Vector2(54.5, 0)
@@ -52,7 +52,6 @@ texture = ExtResource("3_crane_tex")
 position = Vector2(375, 0)
 
 [node name="PassarelaDir1" parent="PassarelasDireita" unique_id=300000031 instance=ExtResource("2_passarela")]
-position = Vector2(0, 0)
 
 [node name="PassarelaDir2" parent="PassarelasDireita" unique_id=300000032 instance=ExtResource("2_passarela")]
 position = Vector2(105, 0)
@@ -60,7 +59,9 @@ position = Vector2(105, 0)
 [node name="TriggerArea" type="Area2D" parent="." unique_id=300000040]
 position = Vector2(100, -10)
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=300000041]
 shape = SubResource("RectangleShape2D_trigger")
+
+[node name="BreakBridge" type="AudioStreamPlayer" parent="." unique_id=68862569]
+stream = ExtResource("4_wbqeo")

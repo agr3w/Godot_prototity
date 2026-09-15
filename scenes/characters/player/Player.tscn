@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bf50cbxn00y8s" path="res://assets/sprites/characters/player/spr_StrikerGetHit_strip.png" id="8_lfpmj"]
 [ext_resource type="Texture2D" uid="uid://cjmv1joa1n22e" path="res://assets/sprites/characters/player/spr_StrikerJump_strip.png" id="9_vaa6r"]
 [ext_resource type="Texture2D" uid="uid://ctgjlk35wees6" path="res://assets/sprites/characters/player/spr_StrikerRun_strip.png" id="10_dyvev"]
+[ext_resource type="AudioStream" uid="uid://b8vhw0g7oobat" path="res://assets/audio/runing.mp3" id="11_wwjds"]
+[ext_resource type="AudioStream" uid="uid://r671va64gs83" path="res://assets/audio/jump.wav" id="12_jevs6"]
+[ext_resource type="AudioStream" uid="uid://cniynui64l2bo" path="res://assets/audio/sword.wav" id="13_iugeb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
 size = Vector2(23, 34)
@@ -515,5 +518,14 @@ position = Vector2(23, 4.5)
 shape = SubResource("RectangleShape2D_qhq4y")
 disabled = true
 debug_color = Color(0, 0.9411765, 0.7921569, 0.49019608)
+
+[node name="Run" type="AudioStreamPlayer" parent="." unique_id=1778980956]
+stream = ExtResource("11_wwjds")
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=81944706]
+stream = ExtResource("12_jevs6")
+
+[node name="Atack" type="AudioStreamPlayer" parent="." unique_id=805528802]
+stream = ExtResource("13_iugeb")
 
 [connection signal="body_entered" from="SwordHitbox" to="." method="_on_sword_hitbox_body_entered"]

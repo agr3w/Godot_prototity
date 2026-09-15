@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D  #player
 
 # --- CONFIGURAÇÕES DE FÍSICA ---
 @export_group("Física de Movimento")
@@ -35,7 +35,10 @@ const JUMP_BUFFER_MAX: float = 0.10
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
-@onready var dust: GPUParticles2D = $GPUParticles2D 
+@onready var dust: GPUParticles2D = $GPUParticles2D
+@onready var run_sound: AudioStreamPlayer = $Run
+@onready var jump_sound: AudioStreamPlayer = $Jump
+@onready var sword_sound: AudioStreamPlayer = $Atack
 @onready var sword_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/CollisionShape2D")
 @onready var ground_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/GroundCollision")
 @onready var air_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/AirCollision")
@@ -55,11 +58,11 @@ var is_hurt: bool = false
 var is_dead: bool = false
 var landing_timer: float = 0.0
 var was_on_floor_last_frame: bool = false
-var facing_direction: float = 1.0 
+var facing_direction: float = 1.0
 
 # --- SCREEN SHAKE ---
 var shake_intensity: float = 0.0
-var shake_decay: float = 10.0 
+var shake_decay: float = 10.0
 
 func _ready() -> void:
 	current_health = max_health
@@ -120,6 +123,7 @@ func _physics_process(delta: float) -> void:
 	# 2. INPUT DE PULO COM BUFFER
 	if Input.is_action_just_pressed("ui_accept"):
 		jump_buffer_timer = JUMP_BUFFER_MAX
+		jump_sound.play()
 	else:
 		jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
 
@@ -144,7 +148,10 @@ func _physics_process(delta: float) -> void:
 
 	# 4. ATAQUE COM FORWARD STEP
 	if Input.is_action_just_pressed("attack") and not is_attacking:
+		sword_sound.play()
+		
 		start_attack()
+	
 		return
 
 	# 5. MOVIMENTAÇÃO HORIZONTAL PRECISA (SEM PISTA DE GELO)
@@ -152,6 +159,7 @@ func _physics_process(delta: float) -> void:
 	var current_friction = friction if is_on_floor() else air_friction
 
 	if direction != 0.0:
+		
 		facing_direction = signf(direction)
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
 		
@@ -164,6 +172,7 @@ func _physics_process(delta: float) -> void:
 			update_hitbox_facing(-1.0)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, current_friction * delta)
+
 
 	# 6. EFEITO DA CÂMERA (LOOK AHEAD & SHAKE)
 	var target_offset_x = facing_direction * LOOK_AHEAD_AMOUNT
@@ -190,18 +199,31 @@ func _physics_process(delta: float) -> void:
 				dust.emitting = false
 				if anim.has_animation("jump"):
 					anim.play_backwards("jump")
+				if is_instance_valid(run_sound) and run_sound.playing:
+					run_sound.stop()
 			elif direction != 0.0:
 				anim.play("run")
 				dust.emitting = true
+				print("DEBUG: direction=", direction, " run_sound=", run_sound, " playing=", run_sound.playing if is_instance_valid(run_sound) else "N/A")
+				if is_instance_valid(run_sound) and not run_sound.playing:
+					run_sound.play()
+					print("DEBUG: run_sound.play() chamado")
 			else:
 				anim.play("idle")
 				dust.emitting = false
+				if is_instance_valid(run_sound) and run_sound.playing:
+					run_sound.stop()
 		else:
 			dust.emitting = false
+			if is_instance_valid(run_sound) and run_sound.playing:
+				run_sound.stop()
 			if velocity.y < 0.0:
 				anim.play("jump")
 			else:
 				anim.play_backwards("jump")
+	else:
+		if is_instance_valid(run_sound) and run_sound.playing:
+			run_sound.stop()
 
 	was_on_floor_last_frame = is_on_floor()
 
@@ -219,6 +241,8 @@ func start_dash() -> void:
 	anim.play("dash")
 	if is_instance_valid(dust):
 		dust.emitting = true
+	if is_instance_valid(run_sound) and run_sound.playing:
+		run_sound.stop()
 	
 	# I-Frames: Desativa colisão com inimigos (Layer 2)
 	set_collision_mask_value(2, false)
@@ -232,6 +256,9 @@ func start_attack() -> void:
 	is_attacking = true
 	var is_air = not is_on_floor()
 	var active_hitbox = get_attack_hitbox(is_air)
+	
+	if is_instance_valid(run_sound) and run_sound.playing:
+		run_sound.stop()
 	
 	# Forward Step: Pequeno avanço para frente ao golpear
 	if not is_air:
@@ -306,6 +333,9 @@ func take_damage(amount: int = 10) -> void:
 	
 	add_camera_shake(8.0, 8.0)
 
+	if is_instance_valid(run_sound) and run_sound.playing:
+		run_sound.stop()
+
 	if current_health <= 0:
 		die()
 	else:
@@ -323,6 +353,8 @@ func die() -> void:
 	is_dead = true
 	if is_instance_valid(dust):
 		dust.emitting = false
+	if is_instance_valid(run_sound) and run_sound.playing:
+		run_sound.stop()
 	anim.play("death")
 	await anim.animation_finished
 	get_tree().reload_current_scene()

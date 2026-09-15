@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D  #sewerMutant
 
 @export var max_health: int = 3
 @export var speed: float = 65.0
@@ -15,6 +15,8 @@ var base_scale: Vector2 = Vector2(0.48, 0.48)
 @onready var ledge_detector: RayCast2D = get_node_or_null("LedgeDetector")
 @onready var wall_detector: RayCast2D = get_node_or_null("WallDetector")
 @onready var hitbox: Area2D = get_node_or_null("HitboxDano")
+
+@onready var mutant_sound = $mutant001
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -79,7 +81,7 @@ func take_damage(amount: int = 1, knockback_source: Vector2 = Vector2.ZERO) -> v
 	sprite.modulate = Color(2.0, 0.3, 0.3, 1.0)
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.15)
-	
+	mutant_sound.play() 
 	if current_health <= 0:
 		die()
 	else:

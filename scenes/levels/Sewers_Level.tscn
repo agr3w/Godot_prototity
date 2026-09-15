@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="10_mutant"]
 [ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="11_cultist"]
 [ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://assets/sprites/ui/hud_vida.png" id="12_hud"]
+[ext_resource type="AudioStream" uid="uid://dv8nqnob2k1wc" path="res://assets/audio/Sewer Sound.wav" id="13_ubb0o"]
 
 [sub_resource type="Gradient" id="Gradient_photon"]
 colors = PackedColorArray(0.2, 0.85, 1, 1, 0, 0, 0, 0)
@@ -161,7 +162,7 @@ position = Vector2(350, 335)
 position = Vector2(-35, 306)
 
 [node name="PhotonLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=500000081]
-position = Vector2(0, -5)
+position = Vector2(-12, 31)
 color = Color(0.2, 0.85, 1, 1)
 texture = SubResource("GradientTexture2D_photon")
 texture_scale = 3.2
@@ -198,7 +199,16 @@ texture_progress = ExtResource("12_hud")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -62.0
+offset_right = 2.0
+offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1894408527]
+stream = ExtResource("13_ubb0o")
+volume_db = 10.783
+autoplay = true

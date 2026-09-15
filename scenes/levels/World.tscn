@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://un1ymck64olx" path="res://scenes/environment/Passarela.tscn" id="7_1kp85"]
 [ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://scenes/characters/player/Player.tscn" id="7_6ct3r"]
 [ext_resource type="Texture2D" uid="uid://cba7fei7cybjb" path="res://assets/sprites/environment/Crane_Suport.png" id="7_qnedo"]
+[ext_resource type="AudioStream" uid="uid://byys8vl7hmbge" path="res://assets/audio/Dark Techno Music _ Cyberpunk.mp3" id="10_xrdug"]
+[ext_resource type="Script" uid="uid://c41e6ptmp5a3g" path="res://scenes/levels/besta.gd" id="11_0ekff"]
+[ext_resource type="Texture2D" uid="uid://btvw47yo7nrc1" path="res://assets/sprites/characters/enemies/bestaVerde.png" id="11_abf5c"]
 [ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://assets/sprites/ui/hud_vida.png" id="11_wyqjk"]
 [ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://scenes/characters/enemies/Enemy.tscn" id="13_k85er"]
 [ext_resource type="Texture2D" uid="uid://dy6xbdhcv2i4m" path="res://assets/sprites/background/Buildings 1.png" id="18_sxias"]
-[ext_resource type="Script" path="res://scenes/levels/ChaseZoneTrigger.gd" id="20_chase"]
-[ext_resource type="PackedScene" uid="uid://cx6y8v2q9k5ml" path="res://scenes/environment/CrumblingBridge.tscn" id="21_cbridge"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger_chase"]
-size = Vector2(700, 180)
+[ext_resource type="Script" uid="uid://cmbsgo235m0je" path="res://scenes/levels/ChaseZoneTrigger.gd" id="20_chase"]
+[ext_resource type="PackedScene" uid="uid://cx6y8v2rak5ml" path="res://scenes/environment/CrumblingBridge.tscn" id="21_cbridge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_486m6"]
 size = Vector2(121.984055, 211.65851)
@@ -113,9 +113,52 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ucfvk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger_chase"]
+size = Vector2(700, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw46y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ekff"]
+atlas = ExtResource("11_abf5c")
+region = Rect2(180, 0, 180, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puasx"]
+atlas = ExtResource("11_abf5c")
+region = Rect2(0, 0, 180, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl8ol"]
+atlas = ExtResource("11_abf5c")
+region = Rect2(360, 0, 180, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_navfu"]
+atlas = ExtResource("11_abf5c")
+region = Rect2(540, 0, 180, 159)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhkub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ekff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puasx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl8ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_navfu")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="Mundo" type="Node2D" unique_id=1196308655]
+rotation = -0.0013625522
 
 [node name="ParallaxBackground" parent="." unique_id=1215163660 instance=ExtResource("1_para")]
+position = Vector2(-0.99999917, -0.0013625518)
 
 [node name="CranesPlataforma_1" type="Node2D" parent="." unique_id=1514143032]
 position = Vector2(-285, 344)
@@ -261,7 +304,7 @@ skew = 0.021145701
 texture = ExtResource("7_qnedo")
 
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("7_6ct3r")]
-position = Vector2(-517, 353)
+position = Vector2(-516.4819, 353.2966)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894754065]
 
@@ -288,7 +331,8 @@ color = Color(0, 0, 0, 1)
 tile_set = SubResource("TileSet_486m6")
 
 [node name="TerrainEnemy_1" parent="." unique_id=129693592 instance=ExtResource("13_k85er")]
-position = Vector2(-15, 339)
+position = Vector2(633.54834, 331.86356)
+rotation = -0.20012203
 
 [node name="ChaseZoneTrigger" type="Area2D" parent="." unique_id=74819201]
 position = Vector2(700, 340)
@@ -300,4 +344,30 @@ shake_intensity = 4.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseZoneTrigger" unique_id=74819202]
 shape = SubResource("RectangleShape2D_trigger_chase")
 
+[node name="SoundMundo" type="AudioStreamPlayer2D" parent="." unique_id=2092602251]
+stream = ExtResource("10_xrdug")
+volume_db = -0.615
+autoplay = true
 
+[node name="besta" type="Node2D" parent="." unique_id=1185019046]
+position = Vector2(-475.08945, 65.35271)
+scale = Vector2(1, 1.1997275)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="besta" unique_id=1428730044]
+position = Vector2(-257.3745, 228.9267)
+scale = Vector2(0.5167065, 0.46375427)
+script = ExtResource("11_0ekff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="besta/CharacterBody2D" unique_id=2074761281]
+shape = SubResource("RectangleShape2D_sw46y")
+
+[node name="Sprite2D" type="Sprite2D" parent="besta/CharacterBody2D/CollisionShape2D" unique_id=1517112239]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="besta/CharacterBody2D/CollisionShape2D/Sprite2D" unique_id=664059880]
+position = Vector2(52.24083, 9.052745)
+scale = Vector2(0.7399124, 0.61151546)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+animation = &"walk"
+autoplay = "walk"
+frame = 3
+frame_progress = 1.0

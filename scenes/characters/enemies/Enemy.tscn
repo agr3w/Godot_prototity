@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dltoqg77xjrh5" path="res://scenes/characters/enemies/Enemy.gd" id="1_xgnx5"]
 [ext_resource type="Texture2D" uid="uid://crm01cwpx8wmk" path="res://assets/sprites/characters/enemies/Enemy_terrain_1.png" id="2_xgnx5"]
+[ext_resource type="AudioStream" uid="uid://n1jkmogxwkf1" path="res://assets/audio/morteEnemy.wav" id="3_qwnff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
 size = Vector2(50, 47)
@@ -14,6 +15,9 @@ size = Vector2(41, 47)
 [node name="TerrainEnemy_1" type="CharacterBody2D" parent="." unique_id=2071876100]
 collision_layer = 2
 script = ExtResource("1_xgnx5")
+
+[node name="Terrain" type="AudioStreamPlayer" parent="TerrainEnemy_1" unique_id=1822426530]
+stream = ExtResource("3_qwnff")
 
 [node name="HitboxDano" type="Area2D" parent="TerrainEnemy_1" unique_id=1673978219]
 collision_layer = 0
