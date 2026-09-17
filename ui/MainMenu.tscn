@@ -1,18 +1,10 @@
 [gd_scene format=3 uid="uid://i3gmuluhtukx"]
 
 [ext_resource type="Script" uid="uid://dl18owl7mqcrv" path="res://ui/MainMenu.gd" id="1_gmcsc"]
-[ext_resource type="Texture2D" uid="uid://c6x700q8iuxvc" path="res://assets/sprites/background/background_mainMenu.jpg" id="2_ul6ys"]
-[ext_resource type="AudioStream" uid="uid://blohj08ot7rsv" path="res://assets/audio/guilhermebernardes-never-again-108445.mp3" id="3_ul6ys"]
+[ext_resource type="Texture2D" uid="uid://dalo1imoiocoi" path="res://assets/sprites/background/background_mainMenu.png" id="2_nmrkx"]
+[ext_resource type="AudioStream" uid="uid://csl6ioeraomtk" path="res://assets/audio/mainMenu.wav" id="3_nmrkx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1aav"]
-bg_color = Color(0.10980392, 0.12941177, 0.16862746, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.18039216, 0.21176471, 0.2627451, 1)
-shadow_size = 3
-shadow_offset = Vector2(0, 2)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmrkx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c543n"]
 bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
@@ -22,6 +14,8 @@ bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhq4y"]
 bg_color = Color(0.8509804, 0.2627451, 0.21176471, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_g6r01"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_gmcsc"]
 
@@ -38,18 +32,10 @@ script = ExtResource("1_gmcsc")
 repeat_size = Vector2(2320, 0)
 autoscroll = Vector2(50, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=15690667]
-position = Vector2(0, 2.0000002)
-scale = Vector2(0.80625004, 0.6281801)
-texture = ExtResource("2_ul6ys")
-centered = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=910699163]
-position = Vector2(1160, 2)
-scale = Vector2(0.80625004, 0.6281801)
-texture = ExtResource("2_ul6ys")
-centered = false
-flip_h = true
+[node name="BackgroundMainMenu" type="Sprite2D" parent="Parallax2D" unique_id=2050524078]
+position = Vector2(-53, 354)
+scale = Vector2(1.0713627, 1)
+texture = ExtResource("2_nmrkx")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1606446080]
 layout_mode = 1
@@ -65,7 +51,7 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme_override_styles/panel = SubResource("StyleBoxFlat_f1aav")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nmrkx")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2089162107]
 layout_mode = 2
@@ -101,19 +87,13 @@ text = "SAIR"
 
 [node name="PainelConfigs" type="PanelContainer" parent="." unique_id=551649913]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -206.0
-offset_top = -253.0
-offset_right = 2.0
-offset_bottom = 3.5
-grow_horizontal = 2
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 196.0
+offset_bottom = -172.0
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme_override_styles/panel = SubResource("StyleBoxFlat_f1aav")
+theme_override_styles/panel = SubResource("StyleBoxLine_g6r01")
 
 [node name="MarginContainer" type="MarginContainer" parent="PainelConfigs" unique_id=2008786489]
 layout_mode = 2
@@ -183,14 +163,14 @@ text = "Controles"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2013074092]
-stream = ExtResource("3_ul6ys")
+stream = ExtResource("3_nmrkx")
 autoplay = true
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnNovoJogo" to="." method="_on_btn_novo_jogo_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnConfigs" to="." method="_on_btn_configs_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]
-[connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/HBoxContainer/X" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/HBoxContainer/X" to="." method="_on_btn_fechar_pressed"]
+[connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/HBoxContainer/X" to="." method="_on_x_pressed"]
 [connection signal="value_changed" from="PainelConfigs/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/Tela/HBoxContainer2/BtnJanela" to="." method="_on_btn_janela_pressed"]
 [connection signal="pressed" from="PainelConfigs/MarginContainer/VBoxContainer/Tela/HBoxContainer2/BtnTelaCheia" to="." method="_on_btn_tela_cheia_pressed"]
