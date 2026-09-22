@@ -25,6 +25,9 @@ var can_dash: bool = true
 @export var hit_duration: float = 0.35
 @export var hitstop_duration: float = 0.06
 
+# --- SONS DE ATAQUE (randômico entre variações) ---
+var last_attack_sound_index: int = -1
+
 # --- ASSISTENTES DE PULO ---
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
@@ -38,7 +41,10 @@ const JUMP_BUFFER_MAX: float = 0.10
 @onready var dust: GPUParticles2D = $GPUParticles2D
 @onready var run_sound: AudioStreamPlayer = $Run
 @onready var jump_sound: AudioStreamPlayer = $Jump
-@onready var sword_sound: AudioStreamPlayer = $Atack
+@onready var attack_sound_1: AudioStreamPlayer = $Atack1
+@onready var attack_sound_2: AudioStreamPlayer = $Atack2
+@onready var attack_sound_3: AudioStreamPlayer = $Atack3
+@onready var attack_sounds: Array[AudioStreamPlayer] = [attack_sound_1, attack_sound_2,attack_sound_3]
 @onready var sword_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/CollisionShape2D")
 @onready var ground_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/GroundCollision")
 @onready var air_hitbox: CollisionShape2D = get_node_or_null("SwordHitbox/AirCollision")
@@ -148,7 +154,7 @@ func _physics_process(delta: float) -> void:
 
 	# 4. ATAQUE COM FORWARD STEP
 	if Input.is_action_just_pressed("attack") and not is_attacking:
-		sword_sound.play()
+		play_random_attack_sound()
 		
 		start_attack()
 	
@@ -234,6 +240,19 @@ func update_hitbox_facing(dir_sign: float) -> void:
 		ground_hitbox.position.x = abs(ground_hitbox.position.x) * dir_sign
 	if air_hitbox:
 		air_hitbox.position.x = abs(air_hitbox.position.x) * dir_sign
+
+func play_random_attack_sound() -> void:
+	if attack_sounds.is_empty():
+		return
+	var index := randi() % attack_sounds.size()
+	# Evita repetir o mesmo som duas vezes seguidas (se houver mais de 1 opção)
+	if attack_sounds.size() > 1:
+		while index == last_attack_sound_index:
+			index = randi() % attack_sounds.size()
+	last_attack_sound_index = index
+	var chosen_player := attack_sounds[index]
+	if is_instance_valid(chosen_player):
+		chosen_player.play()
 
 func start_dash() -> void:
 	is_dashing = true

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://h03f8bywytda"]
+
+[ext_resource type="Texture2D" uid="uid://dsrnqlgw2nxl1" path="res://boss006.png" id="1_vdvg8"]
+[ext_resource type="Script" uid="uid://kcq2u7rvkfm1" path="res://boss001.gd" id="2_vdvg8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhkub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26cxc"]
+atlas = ExtResource("1_vdvg8")
+region = Rect2(0, 0, 768, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj17n"]
+atlas = ExtResource("1_vdvg8")
+region = Rect2(768, 0, 768, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mftvg"]
+atlas = ExtResource("1_vdvg8")
+region = Rect2(0, 512, 768, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijcy7"]
+atlas = ExtResource("1_vdvg8")
+region = Rect2(768, 512, 768, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sw46y"]
+animations = [{
+"frames": [{
+"duration": 2.2,
+"texture": SubResource("AtlasTexture_26cxc")
+}, {
+"duration": 2.2,
+"texture": SubResource("AtlasTexture_cj17n")
+}, {
+"duration": 2.2,
+"texture": SubResource("AtlasTexture_mftvg")
+}, {
+"duration": 2.2,
+"texture": SubResource("AtlasTexture_ijcy7")
+}],
+"loop": 1,
+"name": &"atack",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkub"]
+size = Vector2(20, 13)
+
+[node name="machine_enemy" type="CharacterBody2D" unique_id=1007187107]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=770015871]
+shape = SubResource("CapsuleShape2D_bhkub")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=698767711]
+scale = Vector2(0.24850145, 0.6301454)
+sprite_frames = SubResource("SpriteFrames_sw46y")
+animation = &"atack"
+autoplay = "atack"
+frame_progress = 0.09553079
+script = ExtResource("2_vdvg8")
+
+[node name="HitBox" type="Area2D" parent="CollisionShape2D/AnimatedSprite2D" unique_id=631482677]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/AnimatedSprite2D/HitBox" unique_id=852584971]
+visible = false
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_bhkub")
+debug_color = Color(0.89807415, 0.273193, 0.41320667, 0.41960785)
+
+[node name="FireBol" type="Marker2D" parent="CollisionShape2D/AnimatedSprite2D/HitBox/CollisionShape2D" unique_id=610621413]
+visible = false
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=571762934]
+visible = false
+target_position = Vector2(0, 8)
+
+[node name="PlayerDetector" type="RayCast2D" parent="." unique_id=521803357]
+visible = false
+target_position = Vector2(50, 0)

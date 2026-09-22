@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://censbk6qma2q6"]
 
-[ext_resource type="Texture2D" uid="uid://c18nha187bm0r" path="res://icon.svg" id="1_rk47r"]
+[ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://scenes/characters/player/Player.tscn" id="1_xa2lp"]
 
-[node name="Node2D" type="Node2D" unique_id=229231645]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkub"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=782542942]
-texture = ExtResource("1_rk47r")
+[node name="IronFloor" type="Node2D" unique_id=229231645]
+position = Vector2(294, 550)
+
+[node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("1_xa2lp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1067399977]
+position = Vector2(461, 75)
+scale = Vector2(77.086716, -0.49246415)
+shape = SubResource("RectangleShape2D_bhkub")

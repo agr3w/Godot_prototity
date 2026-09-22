@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://ctgjlk35wees6" path="res://assets/sprites/characters/player/spr_StrikerRun_strip.png" id="10_dyvev"]
 [ext_resource type="AudioStream" uid="uid://b8vhw0g7oobat" path="res://assets/audio/runing.mp3" id="11_wwjds"]
 [ext_resource type="AudioStream" uid="uid://r671va64gs83" path="res://assets/audio/jump.wav" id="12_jevs6"]
-[ext_resource type="AudioStream" uid="uid://cniynui64l2bo" path="res://assets/audio/sword.wav" id="13_iugeb"]
+[ext_resource type="AudioStream" uid="uid://divmdjsqfitx3" path="res://assets/audio/sword002.wav" id="13_iugeb"]
+[ext_resource type="AudioStream" uid="uid://cniynui64l2bo" path="res://assets/audio/sword.wav" id="14_tdog2"]
+[ext_resource type="AudioStream" uid="uid://bft5d11cjid8" path="res://assets/audio/som de luta.wav" id="15_n0ygo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1aav"]
 size = Vector2(23, 34)
@@ -525,7 +527,14 @@ stream = ExtResource("11_wwjds")
 [node name="Jump" type="AudioStreamPlayer" parent="." unique_id=81944706]
 stream = ExtResource("12_jevs6")
 
-[node name="Atack" type="AudioStreamPlayer" parent="." unique_id=805528802]
+[node name="Atack1" type="AudioStreamPlayer" parent="." unique_id=805528802]
 stream = ExtResource("13_iugeb")
+
+[node name="Atack2" type="AudioStreamPlayer" parent="." unique_id=630010624]
+stream = ExtResource("14_tdog2")
+volume_db = -13.136
+
+[node name="Atack3" type="AudioStreamPlayer" parent="." unique_id=1136674722]
+stream = ExtResource("15_n0ygo")
 
 [connection signal="body_entered" from="SwordHitbox" to="." method="_on_sword_hitbox_body_entered"]

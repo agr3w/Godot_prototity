@@ -1,1 +1,6 @@
-res://ui/MainMenu.tscn
+res://IronSnow.tscn
+res://machine_enemy.tscn
+res://predios_2.gd
+res://nave.gd
+res://nave_02.gd
+res://scenes/levels/World.tscn

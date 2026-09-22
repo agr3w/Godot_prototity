@@ -354,6 +354,7 @@ position = Vector2(-475.08945, 65.35271)
 scale = Vector2(1, 1.1997275)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="besta" unique_id=1428730044]
+visible = false
 position = Vector2(-257.3745, 228.9267)
 scale = Vector2(0.5167065, 0.46375427)
 script = ExtResource("11_0ekff")
