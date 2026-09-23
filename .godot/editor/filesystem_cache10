@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1790105635
+::res://::1790138733
 base001.png::CompressedTexture2D::6789289175692887880::1789691324::1789691267::1::::<><><>0<>0<>8b114bdc800c80d25e0596814924728f<>res://.godot/imported/base001.png-4bcebdb1edc67906a541e881bc1566f0.ctex::
 boss004.png::CompressedTexture2D::6724219577126324940::1790102873::1790102840::0::::<><><>0<>0<>6467b8ad2e98a59217485c03cafb6bcb<>::
 boss005.png::CompressedTexture2D::4364674513082658674::1790102902::1790102902::1::::<><><>0<>0<>eca029759e47893026ea05683b5c522c<>res://.godot/imported/boss005.png-f6fb3d0666aadd522b7f640f151fa14a.ctex::
@@ -7,17 +7,18 @@ boss006.png::CompressedTexture2D::8458574140053221060::1790105635::1790105636::1
 default_bus_layout.tres::AudioBusLayout::2834939482975429191::1789147842::0::1::::<><><>0<>0<><>::
 DRAG.png::CompressedTexture2D::569663764217559320::1790105418::1790105419::1::::<><><>0<>0<>ab8a20d38b1869f847310b3c5af0f558<>res://.godot/imported/DRAG.png-a4019e20a5a5466bf20481a99f0a32c7.ctex::
 icon.svg::CompressedTexture2D::6666677631029415611::1788087136::1788087313::1::::<><><>0<>0<>883109cfb6a393dd7f50c325d1d6f7ee<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-IronSnow.tscn::PackedScene::9222692533304892140::1790103280::0::1::::<><><>0<>0<><>::uid://binu1nxo2tjge::::res://assets/sprites/ship.png<>uid://dg4k8g0gsbb7m::::res://nave.gd<>uid://ysnbkclciloh::::res://assets/base001.png<>uid://cq7ba184ejgt7::::res://scenes/characters/player/Player.tscn<>uid://b4u58hcbbijju::::res://assets/sewer001 (1).png<>uid://c7bx6xixt45s0::::res://assets/moon001.png<>uid://dm8sq88lxlxys::::res://assets/plataforma003.png<>uid://e8dbam3cticj::::res://assets/darkBuild.png<>uid://5v6i5ip1hqae::::res://nave_02.gd<>uid://bekcxwcgdg2rk::::res://predios_2.gd<>uid://bdp47eudj2h40::::res://predios.png<>uid://cb5y3k1v8qwoa::::res://scenes/environment/SewerWaterDrips.tscn<>uid://b5m8y1lx7v3q4::::res://scenes/characters/enemies/TorchCultist.tscn<>uid://cb3q4m8y1lx7v::::res://scenes/characters/enemies/SewerMutant.tscn<>uid://dw6dp0s2ctagu::::res://assets/baseFloor001.png<>uid://btcdqdxgprkhu::::res://assets/build001.png<>uid://h03f8bywytda::::res://machine_enemy.tscn
-machine_enemy.tscn::PackedScene::544642090020880658::1790103204::0::1::::<><><>0<>0<><>::uid://b3gjs0t4q17ys::::res://boss005.png<>uid://kcq2u7rvkfm1::::res://boss001.gd
+IronSnow.tscn::PackedScene::9222692533304892140::1790138733::0::1::::<><><>0<>0<><>::uid://binu1nxo2tjge::::res://assets/sprites/ship.png<>uid://dg4k8g0gsbb7m::::res://nave.gd<>uid://ysnbkclciloh::::res://assets/base001.png<>uid://cq7ba184ejgt7::::res://scenes/characters/player/Player.tscn<>uid://b4u58hcbbijju::::res://assets/sewer001 (1).png<>uid://c7bx6xixt45s0::::res://assets/moon001.png<>uid://dm8sq88lxlxys::::res://assets/plataforma003.png<>uid://e8dbam3cticj::::res://assets/darkBuild.png<>uid://5v6i5ip1hqae::::res://nave_02.gd<>uid://bekcxwcgdg2rk::::res://predios_2.gd<>uid://bdp47eudj2h40::::res://predios.png<>uid://cb5y3k1v8qwoa::::res://scenes/environment/SewerWaterDrips.tscn<>uid://b5m8y1lx7v3q4::::res://scenes/characters/enemies/TorchCultist.tscn<>uid://cb3q4m8y1lx7v::::res://scenes/characters/enemies/SewerMutant.tscn<>uid://dw6dp0s2ctagu::::res://assets/baseFloor001.png<>uid://btcdqdxgprkhu::::res://assets/build001.png<>uid://h03f8bywytda::::res://machine_enemy.tscn<>uid://bux61rork6fxc::::res://GatilhoPredio_2d.gd
+machine_enemy.tscn::PackedScene::544642090020880658::1790105798::0::1::::<><><>0<>0<><>::uid://dsrnqlgw2nxl1::::res://boss006.png<>uid://kcq2u7rvkfm1::::res://boss001.gd
 menu_principal.gd::GDScript::1159128975123392502::1789512343::0::1::::<>Control<><>0<>0<><>::
 menu_principal.tscn::PackedScene::159892000535673820::1788302289::0::1::::<><><>0<>0<><>::res://menu_principal.gd<>res://background_mainMenu.jpg<>res://guilhermebernardes-never-again-108445.mp3
 predios.png::CompressedTexture2D::2629771060252171479::1789691277::1789691166::1::::<><><>0<>0<>92c02bc0c7474b92e357cb5893fd1cdc<>res://.godot/imported/predios.png-fc194eeae4ad8299abc1a2d6a38db91a.ctex::
-predios_2.gd::GDScript::2687983501911375064::1789707256::0::1::::<>ParallaxLayer<><>0<>0<><>::
+predios_2.gd::GDScript::2687983501911375064::1790138204::0::1::::<>ParallaxLayer<><>0<>0<><>::
 projetoFloor001.png::CompressedTexture2D::7408202047775467028::1789691250::1789691115::1::::<><><>0<>0<>f92b0d85f1536ed788543dcc2ad135d1<>res://.godot/imported/projetoFloor001.png-77a3f6eb53d584510f0ac371f0bf9611.ctex::
 README.md::TextFile::-1::1788087136::0::1::::<><><>0<>0<><>::
 nave.gd::GDScript::7640928522958676600::1789708154::0::1::::<>Sprite2D<><>0<>0<><>::
 nave_02.gd::GDScript::2150915343878735740::1789708020::0::1::::<>Sprite2D<><>0<>0<><>::
 boss001.gd::GDScript::707037980909747718::1790103129::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
+GatilhoPredio_2d.gd::GDScript::3839607817525616092::1790137021::0::1::::<>Area2D<><>0<>0<><>::
 ship.png::CompressedTexture2D::6554145915530237413::1789704154::1789704145::1::::<><><>0<>0<>fd15b5aab9055ae83381e1f3bb0ba063<>res://.godot/imported/ship.png-232cf3806b465084ad9b06c70afe8991.ctex::
 ::res://assets/::1790102810
 backgroun Manu.png::CompressedTexture2D::5608504117190477673::1789609937::1789609938::1::::<><><>0<>0<>d18f1b7c4636903ee25f06933659a6bb<>res://.godot/imported/backgroun Manu.png-0e802382c0cc372901ae7313fa06b8e6.ctex::
@@ -30,9 +31,10 @@ plataforma003.png::CompressedTexture2D::8070775903972024710::1790096934::1790096
 predios.png::CompressedTexture2D::6564461364028680687::1789691396::1789691397::1::::<><><>0<>0<>0e98ad3bdb1874f191bc75a3136da6a3<>res://.godot/imported/predios.png-59b343fa7a36ea9b371739af77478d81.ctex::
 sewer001 (1).png::CompressedTexture2D::4465065516059247962::1790091100::1790091087::1::::<><><>0<>0<>aca02f8884fb8217e1d78ac1a68030a1<>res://.godot/imported/sewer001 (1).png-3d6e887c4ae845890f8b5124a81b56e0.ctex::
 ship.png::CompressedTexture2D::8222781833316591289::1789704966::1789704967::1::::<><><>0<>0<>4b8cd31f1621a7fc8bb660752bb745f6<>res://.godot/imported/ship.png-0b2a8e7064d2d88a0149f9491a8ea676.ctex::
-::res://assets/audio/::1789618665
+::res://assets/audio/::1790141999
 creatureSond.wav::AudioStreamWAV::2473863418314670777::1789155740::1789155741::1::::<><><>0<>0<>e8653a694984e6907a8eae801bcb610d<>res://.godot/imported/creatureSond.wav-1f6aab9cb9cabb5b790859227c87abf4.sample::
 Dark Techno Music _ Cyberpunk.mp3::AudioStreamMP3::4121650955618933348::1789149160::1789149160::1::::<><><>0<>0<>d301df497c2f810d4c484da37f4218d3<>res://.godot/imported/Dark Techno Music _ Cyberpunk.mp3-58c459ff3357478b30cf1ebc4adb97c5.mp3str::
+emergency.wav::AudioStreamWAV::1191679180000261872::1790141999::1790141999::1::::<><><>0<>0<>b820ea7e488a889165593b99b53b7007<>res://.godot/imported/emergency.wav-ad83bcc5bb14a0df1358be2df57fb22a.sample::
 jump.wav::AudioStreamWAV::1259196531070320422::1789149501::1789149502::1::::<><><>0<>0<>6f8fd8603fb23e4fab69fbc4154ae556<>res://.godot/imported/jump.wav-7ea4d93114fa52c0b9979f6b2117f13f.sample::
 mainMenu.wav::AudioStreamWAV::6060845963571528784::1789615475::1789615477::1::::<><><>0<>0<>17a1369166a2e5711f7c1d4371a6602f<>res://.godot/imported/mainMenu.wav-b8a2a598648832fd500bbc259c42a7f1.sample::
 Metal Breaking.mp3::AudioStreamMP3::2148374358441457882::1789151917::1789151918::1::::<><><>0<>0<>8bf516a6472753bbb0885dbe4786c4a4<>res://.godot/imported/Metal Breaking.mp3-eed3376dccb0bb5bdaa0ae9d81914fb1.mp3str::
