@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5y3k1v8qwoa" path="res://scenes/environment/SewerWaterDrips.tscn" id="6_qslqx"]
 [ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="7_5ab6p"]
 [ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="7_r7t82"]
-[ext_resource type="AudioStream" uid="uid://q8i1t8i301fw" path="res://assets/audio/emergency.wav" id="10_sctn6"]
+[ext_resource type="AudioStream" uid="uid://buosn44arqv7h" path="res://assets/emergency.wav" id="9_rmjy5"]
 [ext_resource type="Texture2D" uid="uid://dw6dp0s2ctagu" path="res://assets/baseFloor001.png" id="13_qwhlx"]
 [ext_resource type="Texture2D" uid="uid://btcdqdxgprkhu" path="res://assets/build001.png" id="14_na6d1"]
 [ext_resource type="PackedScene" uid="uid://h03f8bywytda" path="res://machine_enemy.tscn" id="17_i1n6h"]
@@ -119,6 +119,7 @@ motion_scale = Vector2(0.7, 0.7)
 motion_mirroring = Vector2(736, 0)
 script = ExtResource("4_0r0gc")
 texture_predio2 = ExtResource("5_3ui1f")
+emergency_label_path = NodePath("EmergencyLabel/TextEmergency")
 
 [node name="Area2D" type="Area2D" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/predios2" unique_id=1461675351]
 position = Vector2(858, 323.64868)
@@ -135,12 +136,27 @@ shape = SubResource("CapsuleShape2D_dp7o2")
 debug_color = Color(0.22166668, 0.95, 0, 0.41960785)
 
 [node name="Emergency" type="AudioStreamPlayer" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/predios2/Area2D" unique_id=1089431211]
-stream = ExtResource("10_sctn6")
+stream = ExtResource("9_rmjy5")
+volume_db = -4.5
 
 [node name="Sprite2D" type="Sprite2D" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/predios2" unique_id=487266555]
 position = Vector2(341, 428.99997)
 scale = Vector2(0.52883047, 0.33423913)
 texture = ExtResource("3_ob0wk")
+
+[node name="EmergencyLabel" type="CanvasLayer" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/predios2" unique_id=1655999872]
+
+[node name="TextEmergency" type="Label" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/predios2/EmergencyLabel" unique_id=2052876982]
+z_as_relative = false
+offset_left = 352.0
+offset_top = 206.0
+offset_right = 448.0
+offset_bottom = 229.0
+scale = Vector2(3.8976414, 2.2353594)
+text = "EMERGENCY"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
 
 [node name="chão" type="ParallaxLayer" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground" unique_id=276508300]
 position = Vector2(326, 144)
@@ -196,7 +212,7 @@ autoplay = "default"
 frame_progress = 0.8565899
 
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("1_ykawg")]
-position = Vector2(714, 337)
+position = Vector2(-106, 337)
 
 [node name="SewerMutant" parent="." unique_id=460000001 instance=ExtResource("7_r7t82")]
 position = Vector2(180, 367)
@@ -237,6 +253,15 @@ position = Vector2(206, 208)
 scale = Vector2(0.08000183, -0.7214668)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio2" unique_id=1030056621]
+position = Vector2(274.13696, -68.120636)
+scale = Vector2(8.067228, 0.79534024)
+shape = SubResource("RectangleShape2D_sw46y")
+
+[node name="PilarBloqeuio11" type="StaticBody2D" parent="." unique_id=1223445010]
+position = Vector2(458, 242)
+scale = Vector2(0.08000183, -0.7214668)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio11" unique_id=1475353154]
 position = Vector2(274.13696, -68.120636)
 scale = Vector2(8.067228, 0.79534024)
 shape = SubResource("RectangleShape2D_sw46y")
