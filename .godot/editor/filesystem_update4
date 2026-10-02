@@ -1,7 +1,9 @@
 res://IronSnow.tscn
 res://machine_enemy.tscn
-res://predios_2.gd
-res://nave.gd
-res://nave_02.gd
-res://scenes/levels/World.tscn
-res://GatilhoPredio_2d.gd
+res://scenes/levels/Sewers_Level.tscn
+res://scenes/environment/SewerPlatform.tscn
+res://scenes/environment/SewerWallStructure.tscn
+res://scenes/levels/plataforma.gd
+res://scenes/levels/plataformaMovel01.gd
+res://scenes/levels/plataforma001.gd
+res://scenes/levels/pilar_novo_2.gd

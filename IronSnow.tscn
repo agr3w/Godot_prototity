@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5y3k1v8qwoa" path="res://scenes/environment/SewerWaterDrips.tscn" id="6_qslqx"]
 [ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="7_5ab6p"]
 [ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="7_r7t82"]
-[ext_resource type="AudioStream" uid="uid://buosn44arqv7h" path="res://assets/emergency.wav" id="9_rmjy5"]
+[ext_resource type="AudioStream" uid="uid://buosn44arqv7h" path="res://assets/audio/emergency.wav" id="9_rmjy5"]
 [ext_resource type="Texture2D" uid="uid://dw6dp0s2ctagu" path="res://assets/baseFloor001.png" id="13_qwhlx"]
 [ext_resource type="Texture2D" uid="uid://btcdqdxgprkhu" path="res://assets/build001.png" id="14_na6d1"]
 [ext_resource type="PackedScene" uid="uid://h03f8bywytda" path="res://machine_enemy.tscn" id="17_i1n6h"]
@@ -72,10 +72,6 @@ position = Vector2(288, 233)
 [node name="TorchCultist2" parent="." unique_id=1616375459 instance=ExtResource("7_5ab6p")]
 position = Vector2(2109, 304)
 
-[node name="machine_enemy" parent="." unique_id=1007187107 instance=ExtResource("17_i1n6h")]
-position = Vector2(2151, 276)
-scale = Vector2(2.56, 1.2016268)
-
 [node name="floor" type="StaticBody2D" parent="." unique_id=1664555410]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=898488938]
@@ -88,16 +84,6 @@ shape = SubResource("RectangleShape2D_bhkub")
 position = Vector2(-65.52574, 2.1852593)
 scale = Vector2(-0.0054708817, -0.002493823)
 texture = ExtResource("1_gpmwn")
-
-[node name="SewerWaterDrips" parent="floor/CollisionShape2D/Sprite2D" unique_id=420000001 instance=ExtResource("6_qslqx")]
-position = Vector2(-61807.418, -36.695595)
-scale = Vector2(132.21432, 7.7596226)
-amount = 25
-
-[node name="SewerWaterDrips2" parent="floor/CollisionShape2D/Sprite2D" unique_id=1182875355 instance=ExtResource("6_qslqx")]
-position = Vector2(-16333.434, -367.00775)
-scale = Vector2(132.21432, 7.7596226)
-amount = 25
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="floor/CollisionShape2D/Sprite2D" unique_id=2097730804]
 
@@ -189,6 +175,17 @@ scale = Vector2(0.42986545, -0.4821316)
 texture = ExtResource("2_n2bgg")
 flip_h = true
 
+[node name="SewerWaterDrips" parent="OutSewer2" unique_id=420000001 instance=ExtResource("6_qslqx")]
+position = Vector2(23259.438, 271.5016)
+rotation = 3.1415925
+scale = Vector2(80.85472, -1.3591645)
+amount = 25
+
+[node name="SewerWaterDrips2" parent="OutSewer2/SewerWaterDrips" unique_id=1182875355 instance=ExtResource("6_qslqx")]
+position = Vector2(298.1423, -86.8313)
+scale = Vector2(-0.20244667, -3.379624)
+amount = 25
+
 [node name="nave01" type="Sprite2D" parent="." unique_id=613272661]
 position = Vector2(-645, 4)
 scale = Vector2(0.19343145, 0.20053335)
@@ -212,7 +209,8 @@ autoplay = "default"
 frame_progress = 0.8565899
 
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("1_ykawg")]
-position = Vector2(-106, 337)
+position = Vector2(-149, 280)
+scale = Vector2(0.95999753, 1.2400048)
 
 [node name="SewerMutant" parent="." unique_id=460000001 instance=ExtResource("7_r7t82")]
 position = Vector2(180, 367)
@@ -329,3 +327,6 @@ shape = SubResource("RectangleShape2D_sw46y")
 [node name="TorchCultist" parent="." unique_id=470000001 instance=ExtResource("7_5ab6p")]
 position = Vector2(1575, 308.00006)
 scale = Vector2(0.99999994, 1)
+
+[node name="machine_enemy" parent="." unique_id=1007187107 instance=ExtResource("17_i1n6h")]
+scale = Vector2(8.724234, 3.8818564)

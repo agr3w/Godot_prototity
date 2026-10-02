@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsrnqlgw2nxl1"
-path="res://.godot/imported/boss006.png-d8ff5bd0b00be8a9c798e9143ba15487.ctex"
+uid="uid://d0qi5i4vna1ti"
+path="res://.godot/imported/drag002.png-d7f7cea715b17a52a461ace7a943a8da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss006.png"
-dest_files=["res://.godot/imported/boss006.png-d8ff5bd0b00be8a9c798e9143ba15487.ctex"]
+source_file="res://assets/drag002.png"
+dest_files=["res://.godot/imported/drag002.png-d7f7cea715b17a52a461ace7a943a8da.ctex"]
 
 [params]
 

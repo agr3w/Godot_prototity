@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://buosn44arqv7h"
-path="res://.godot/imported/emergency.wav-cc5f0136a73c143fe20ea7faf7576d18.sample"
+path="res://.godot/imported/emergency.wav-ad83bcc5bb14a0df1358be2df57fb22a.sample"
 
 [deps]
 
-source_file="res://assets/emergency.wav"
-dest_files=["res://.godot/imported/emergency.wav-cc5f0136a73c143fe20ea7faf7576d18.sample"]
+source_file="res://assets/audio/emergency.wav"
+dest_files=["res://.godot/imported/emergency.wav-ad83bcc5bb14a0df1358be2df57fb22a.sample"]
 
 [params]
 

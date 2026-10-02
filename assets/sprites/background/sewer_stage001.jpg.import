@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://id7jqqsv2ndw"
-path="res://.godot/imported/DRAG.png-a4019e20a5a5466bf20481a99f0a32c7.ctex"
+uid="uid://dqegw3sau8vtl"
+path="res://.godot/imported/sewer_stage001.jpg-b354ca45b992b821e238b241a411f1d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DRAG.png"
-dest_files=["res://.godot/imported/DRAG.png-a4019e20a5a5466bf20481a99f0a32c7.ctex"]
+source_file="res://assets/sprites/background/sewer_stage001.jpg"
+dest_files=["res://.godot/imported/sewer_stage001.jpg-b354ca45b992b821e238b241a411f1d7.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dg03k7yn2x8ra"]
 
-[ext_resource type="Texture2D" uid="uid://dv7k1x291n4q" path="res://assets/sprites/environment/sewer_brick_wall.png" id="1_wall_tex"]
+[ext_resource type="Texture2D" uid="uid://dqegw3sau8vtl" path="res://assets/sprites/background/sewer_stage001.jpg" id="1_3o44d"]
 
 [sub_resource type="Gradient" id="Gradient_lamp"]
 colors = PackedColorArray(1, 0.8, 0.4, 1, 0, 0, 0, 0)
@@ -13,25 +13,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_left"]
-size = Vector2(30, 320)
-
 [node name="SewerWallStructure" type="Node2D" unique_id=410000001]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=410000002]
-position = Vector2(0, 0)
+position = Vector2(-7, 29.999998)
 scale = Vector2(0.38, 0.38)
-texture = ExtResource("1_wall_tex")
+texture = ExtResource("1_3o44d")
 
 [node name="LampLight" type="PointLight2D" parent="." unique_id=410000003]
-position = Vector2(-40, -85)
+visible = false
+position = Vector2(28, -19)
 color = Color(1, 0.75, 0.35, 1)
 energy = 1.3
 texture = SubResource("GradientTexture2D_lamp")
 texture_scale = 2.4
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=410000004]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=410000005]
-position = Vector2(-155, 0)
-shape = SubResource("RectangleShape2D_wall_left")
