@@ -1,13 +1,13 @@
 extends CharacterBody2D  #sewerMutant
 
-@export var max_health: int = 3
+@export var max_health: int = 1
 @export var patrol_speed: float = 90.0     # antes: 65
 @export var chase_speed: float = 170.0     # velocidade perseguindo
 @export var gravity: float = 900.0
 @export var damage_amount: int = 15
 
 @export_group("Spawn")
-@export var spawn_delay: float = 10.0       # segundos parado antes de a gravidade começar
+@export var spawn_delay: float = 22.0       # segundos parado antes de a gravidade começar
 
 @export_group("Agressividade")
 @export var detection_range: float = 450.0  # começa a perseguir
@@ -178,7 +178,7 @@ func take_damage(amount: int = 1, knockback_source: Vector2 = Vector2.ZERO) -> v
 		velocity = Vector2(-direction * 180.0, -120.0)
 
 	# Flash vermelho de impacto
-	sprite.modulate = Color(2.0, 0.3, 0.3, 1.0)
+	sprite.modulate = Color(0.226, 1.63, 0.413, 1.0)
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.15)
 	mutant_sound.play()

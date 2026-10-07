@@ -329,4 +329,5 @@ position = Vector2(1575, 308.00006)
 scale = Vector2(0.99999994, 1)
 
 [node name="machine_enemy" parent="." unique_id=1007187107 instance=ExtResource("17_i1n6h")]
-scale = Vector2(8.724234, 3.8818564)
+position = Vector2(2268, 346)
+scale = Vector2(9.8442335, 8.721857)

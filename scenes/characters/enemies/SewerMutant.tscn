@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb3q4m8y1lx7v"]
 
-[ext_resource type="Script" uid="uid://vyee254dcwpq" path="res://scenes/characters/enemies/SewerMutant.gd" id="1_mutant_script"]
+[ext_resource type="Script" uid="uid://dk2ryv2ba4u88" path="res://scenes/characters/enemies/sewer_mutant4.gd" id="1_yjto2"]
 [ext_resource type="Texture2D" uid="uid://4skdai3kja11" path="res://assets/sprites/characters/enemies/sewer_mutant.png" id="2_mutant_tex"]
 [ext_resource type="AudioStream" uid="uid://bbimf0o44x6xh" path="res://assets/audio/creatureSond.wav" id="3_yjto2"]
 
@@ -12,7 +12,7 @@ size = Vector2(50, 32)
 
 [node name="SewerMutant" type="CharacterBody2D" unique_id=460000001 groups=["enemy"]]
 collision_layer = 2
-script = ExtResource("1_mutant_script")
+script = ExtResource("1_yjto2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=460000002]
 position = Vector2(0, -3)

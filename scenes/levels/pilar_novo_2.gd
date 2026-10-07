@@ -1,6 +1,6 @@
 extends AnimatableBody2D
 
-@export var distancia: float = 150.0
+@export var distancia: float = 450.0
 @export var velocidade: float = 90.0
 
 func _ready() -> void:

@@ -7,3 +7,11 @@ res://scenes/levels/plataforma.gd
 res://scenes/levels/plataformaMovel01.gd
 res://scenes/levels/plataforma001.gd
 res://scenes/levels/pilar_novo_2.gd
+res://scenes/characters/enemies/SewerMutant.gd
+res://scenes/characters/player/Player.gd
+res://scenes/characters/enemies/sewer_mutant01.gd
+res://scenes/characters/enemies/sewer_mutant4.gd
+res://scenes/characters/enemies/sewer_mutant04.gd
+res://scenes/characters/enemies/SewerMutant.tscn
+res://scenes/characters/enemies/TorchCultist.gd
+res://scenes/levels/troca_faze.gd

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5f4y8x3m1n8q" path="res://scenes/environment/SewerLampPost.tscn" id="4_lamp_post"]
 [ext_resource type="PackedScene" uid="uid://cb5y3k1v8qwoa" path="res://scenes/environment/SewerWaterDrips.tscn" id="6_drips"]
 [ext_resource type="PackedScene" uid="uid://cx41k8yqm3qav" path="res://scenes/environment/SewerGroundFog.tscn" id="7_fog"]
+[ext_resource type="Script" uid="uid://bey25ughksc4s" path="res://scenes/characters/enemies/sewer_mutant01.gd" id="9_c25rs"]
 [ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://scenes/characters/player/Player.tscn" id="9_player"]
 [ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="10_mutant"]
 [ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="11_cultist"]
@@ -14,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dm8sq88lxlxys" path="res://assets/plataforma003.png" id="13_183pc"]
 [ext_resource type="AudioStream" uid="uid://dv8nqnob2k1wc" path="res://assets/audio/Sewer Sound.wav" id="13_ubb0o"]
 [ext_resource type="Script" uid="uid://cjgt13ognlf75" path="res://scenes/levels/pilar_novo_2.gd" id="14_183pc"]
+[ext_resource type="Texture2D" uid="uid://bkv0lbi7keiow" path="res://assets/sprites/bueiro.png" id="15_5xqe0"]
+[ext_resource type="Script" uid="uid://bvw5o305p35n" path="res://scenes/levels/troca_faze.gd" id="17_6y8iw"]
 
 [sub_resource type="Gradient" id="Gradient_photon"]
 colors = PackedColorArray(0.2, 0.85, 1, 1, 0, 0, 0, 0)
@@ -29,14 +32,130 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7diy0"]
 size = Vector2(49.18281, 1037.855)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y8iw"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(185, 0, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vicyb"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(370, 0, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7ct8"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(555, 0, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wmr8"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(0, 145, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxoc1"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(185, 145, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ywa0"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(370, 145, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlsho"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(555, 145, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm4yk"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(0, 290, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2oo7"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(185, 290, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m7dj"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(370, 290, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekuws"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(555, 290, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqnpe"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(0, 435, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyhnm"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(185, 435, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4lfy"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(370, 435, 185, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxeve"]
+atlas = ExtResource("15_5xqe0")
+region = Rect2(555, 435, 185, 145)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhkub"]
+animations = [{
+"frames": [{
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_6y8iw")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_vicyb")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_c7ct8")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_5wmr8")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_cxoc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ywa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlsho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm4yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2oo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m7dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekuws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqnpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyhnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4lfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxeve")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkub"]
+
 [node name="SewersLevel" type="Node2D" unique_id=500000001]
 script = ExtResource("1_sewer_script")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=500000002]
 position = Vector2(-48, 26)
 color = Color(0.04, 0.05, 0.07, 1)
-energy = 1.3
+energy = 0.38
 blend_mode = 2
+max_distance = 9317.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=500000003]
 position = Vector2(0, 224.99998)
@@ -60,17 +179,39 @@ scale = Vector2(22.427826, 9.518791)
 [node name="GotasPoco" parent="EfeitosParticulas" unique_id=500000071 instance=ExtResource("6_drips")]
 position = Vector2(120, 140)
 
+[node name="GotasPoco2" parent="EfeitosParticulas" unique_id=420000001 instance=ExtResource("6_drips")]
+position = Vector2(1053, -83)
+
+[node name="GotasPoco3" parent="EfeitosParticulas" unique_id=1409027221 instance=ExtResource("6_drips")]
+position = Vector2(1760, 138)
+
+[node name="GotasPoco4" parent="EfeitosParticulas" unique_id=54785731 instance=ExtResource("6_drips")]
+position = Vector2(628, 485)
+scale = Vector2(0.887008, 1)
+
+[node name="GotasPoco5" parent="EfeitosParticulas" unique_id=1131810346 instance=ExtResource("6_drips")]
+position = Vector2(1638.0001, 445)
+scale = Vector2(0.887008, 1)
+
+[node name="GotasPoco6" parent="EfeitosParticulas" unique_id=1393993477 instance=ExtResource("6_drips")]
+position = Vector2(-900.9999, 442)
+scale = Vector2(0.887008, 1)
+
+[node name="GotasPoco7" parent="EfeitosParticulas" unique_id=1825973357 instance=ExtResource("6_drips")]
+position = Vector2(-237.00006, 457)
+scale = Vector2(0.887008, 1)
+
 [node name="GotasPonte" parent="EfeitosParticulas" unique_id=500000072 instance=ExtResource("6_drips")]
 position = Vector2(520, -10)
 
 [node name="GotasEscadaria" parent="EfeitosParticulas" unique_id=500000073 instance=ExtResource("6_drips")]
-position = Vector2(460, -240)
+position = Vector2(-595, -88)
 
 [node name="NevoaPoco" parent="EfeitosParticulas" unique_id=500000074 instance=ExtResource("7_fog")]
-position = Vector2(350, 335)
+position = Vector2(626, 303)
 
 [node name="CharacterBody2D" parent="." unique_id=500000080 instance=ExtResource("9_player")]
-position = Vector2(-800, -197)
+position = Vector2(-764, -65)
 
 [node name="PhotonLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=500000081]
 position = Vector2(-12, 31)
@@ -83,25 +224,26 @@ position = Vector2(870.99994, -5)
 scale = Vector2(0.9955531, 1)
 
 [node name="MutantPoco1" parent="Inimigos" unique_id=500000091 instance=ExtResource("10_mutant")]
-position = Vector2(-143.63876, 50)
+position = Vector2(-590.6264, -123)
+rotation = 0.05650437
+script = ExtResource("9_c25rs")
+spawn_delay = 12.0
 
-[node name="MutantPoco3" parent="Inimigos" unique_id=460000001 instance=ExtResource("10_mutant")]
-position = Vector2(-226.00497, 604)
-
-[node name="MutantPoco4" parent="Inimigos" unique_id=918601658 instance=ExtResource("10_mutant")]
-position = Vector2(170.7594, 617)
-
-[node name="MutantPoco5" parent="Inimigos" unique_id=331387134 instance=ExtResource("10_mutant")]
-position = Vector2(-1301.7888, 616)
-
-[node name="MutantPoco2" parent="Inimigos" unique_id=500000092 instance=ExtResource("10_mutant")]
-position = Vector2(-92.410934, 591)
+[node name="MutantPoco2" parent="Inimigos" unique_id=460000001 instance=ExtResource("10_mutant")]
+position = Vector2(-657.92566, 494)
+rotation = 0.05650437
+script = ExtResource("9_c25rs")
+spawn_delay = 12.0
 
 [node name="CultistPonte" parent="Inimigos" unique_id=500000093 instance=ExtResource("11_cultist")]
-position = Vector2(450, 55)
+position = Vector2(572.5461, 364)
+rotation = 0.0008676308
 
 [node name="CultistDegrau" parent="Inimigos" unique_id=500000094 instance=ExtResource("11_cultist")]
 position = Vector2(620, -100)
+
+[node name="CultistDegrau2" parent="Inimigos" unique_id=470000001 instance=ExtResource("11_cultist")]
+position = Vector2(-1296.7666, 601)
 
 [node name="MutantEscada" parent="Inimigos" unique_id=500000095 instance=ExtResource("10_mutant")]
 position = Vector2(460, -175)
@@ -116,20 +258,6 @@ offset_bottom = 81.0
 scale = Vector2(0.7, 0.7)
 value = 100.0
 texture_progress = ExtResource("12_hud")
-
-[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer" unique_id=500000102]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -62.0
-offset_right = 2.0
-offset_bottom = -62.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1894408527]
 stream = ExtResource("13_ubb0o")
@@ -159,7 +287,7 @@ scale = Vector2(21.986471, -0.4301573)
 shape = SubResource("RectangleShape2D_7diy0")
 
 [node name="pilar_novo" type="AnimatableBody2D" parent="." unique_id=1414422507]
-position = Vector2(-208, -200)
+position = Vector2(-1275, -123)
 script = ExtResource("12_ubb0o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo" unique_id=2087850003]
@@ -175,127 +303,8 @@ scale = Vector2(0.14280477, -42.833633)
 skew = -3.1471252e-05
 texture = ExtResource("13_183pc")
 
-[node name="pilar_novo4" type="AnimatableBody2D" parent="." unique_id=1861017120]
-position = Vector2(-669, -36)
-script = ExtResource("12_ubb0o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo4" unique_id=361410200]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo4/CollisionShape2D" unique_id=743788481]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
-[node name="pilar_novo2" type="AnimatableBody2D" parent="." unique_id=494219221]
-position = Vector2(636, 8)
-script = ExtResource("14_183pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo2" unique_id=1968390047]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo2/CollisionShape2D" unique_id=1171525142]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
-[node name="pilar_novo9" type="AnimatableBody2D" parent="." unique_id=902077583]
-position = Vector2(1180, 38)
-script = ExtResource("14_183pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo9" unique_id=1319301902]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo9/CollisionShape2D" unique_id=1972429714]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
-[node name="pilar_novo6" type="AnimatableBody2D" parent="." unique_id=451935442]
-position = Vector2(-824, 251)
-script = ExtResource("14_183pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo6" unique_id=174140940]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo6/CollisionShape2D" unique_id=416806336]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
-[node name="pilar_novo7" type="AnimatableBody2D" parent="." unique_id=320021258]
-position = Vector2(878, 150)
-script = ExtResource("14_183pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo7" unique_id=868908867]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo7/CollisionShape2D" unique_id=610762128]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
-[node name="pilar_novo8" type="AnimatableBody2D" parent="." unique_id=1819296263]
-position = Vector2(1621, 1)
-script = ExtResource("14_183pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo8" unique_id=1110694522]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo8/CollisionShape2D" unique_id=1040663947]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
-[node name="pilar_novo5" type="AnimatableBody2D" parent="." unique_id=971617858]
-position = Vector2(-206, 122)
-script = ExtResource("14_183pc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo5" unique_id=1343308935]
-position = Vector2(326.0764, 154.14262)
-rotation = 3.1415927
-scale = Vector2(2.2878976, -0.00635925)
-shape = SubResource("RectangleShape2D_7diy0")
-
-[node name="Sprite2D" type="Sprite2D" parent="pilar_novo5/CollisionShape2D" unique_id=36002570]
-position = Vector2(1.7817177, 2650.8442)
-rotation = -3.1415613
-scale = Vector2(0.14280477, -42.833633)
-skew = -3.1471252e-05
-texture = ExtResource("13_183pc")
-
 [node name="pilar_novo3" type="AnimatableBody2D" parent="." unique_id=1072408100]
-position = Vector2(-1138, -146)
+position = Vector2(-259, -44)
 script = ExtResource("14_183pc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo3" unique_id=1278891041]
@@ -412,14 +421,51 @@ position = Vector2(316.39282, -17055.627)
 scale = Vector2(21.986471, -0.4301573)
 shape = SubResource("RectangleShape2D_7diy0")
 
-[node name="PilarBloqeuio19" type="StaticBody2D" parent="." unique_id=2132107839]
-modulate = Color(0, 1.7694412, 1.8921474, 1)
-self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
-position = Vector2(1307.9999, -108.00001)
-rotation = -0.036443055
-scale = Vector2(0.11971749, -0.0030546202)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1768304970]
+position = Vector2(-997, 588)
+scale = Vector2(0.620273, 0.96535677)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame = 2
+frame_progress = 0.48173133
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio19" unique_id=1623831470]
-position = Vector2(316.39282, -17055.627)
-scale = Vector2(21.986471, -0.4301573)
-shape = SubResource("RectangleShape2D_7diy0")
+[node name="Sprite2D4" type="AnimatedSprite2D" parent="." unique_id=1525137823]
+position = Vector2(-616.00006, 10.000002)
+scale = Vector2(0.51588386, 0.80707914)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame = 2
+frame_progress = 0.27865335
+
+[node name="Sprite2D5" type="AnimatedSprite2D" parent="." unique_id=1266764682]
+position = Vector2(1035, -4.0000005)
+scale = Vector2(0.51588386, 0.80707914)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame = 10
+frame_progress = 0.6676515
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=718210214]
+position = Vector2(717, 594)
+scale = Vector2(0.620273, 0.96535677)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame = 5
+frame_progress = 0.1750588
+
+[node name="Sprite2D3" type="AnimatedSprite2D" parent="." unique_id=1562351345]
+position = Vector2(546, 589)
+scale = Vector2(0.620273, 0.96535677)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame = 9
+frame_progress = 0.017419854
+flip_h = true
+
+[node name="troca_faze" type="Area2D" parent="." unique_id=1701703542]
+position = Vector2(98.99999, -216)
+scale = Vector2(11.32, 3.08)
+script = ExtResource("17_6y8iw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="troca_faze" unique_id=1530851825]
+shape = SubResource("RectangleShape2D_bhkub")

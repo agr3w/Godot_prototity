@@ -1,13 +1,13 @@
 extends CharacterBody2D  #sewerMutant
 
-@export var max_health: int = 3
+@export var max_health: int = 1
 @export var patrol_speed: float = 90.0     # antes: 65
 @export var chase_speed: float = 170.0     # velocidade perseguindo
 @export var gravity: float = 900.0
 @export var damage_amount: int = 15
 
 @export_group("Spawn")
-@export var spawn_delay: float = 10.0       # segundos parado antes de a gravidade começar
+@export var spawn_delay: float = 12.0       # segundos parado antes de a gravidade começar
 
 @export_group("Agressividade")
 @export var detection_range: float = 450.0  # começa a perseguir

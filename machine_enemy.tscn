@@ -68,6 +68,7 @@ sprite_frames = SubResource("SpriteFrames_sw46y")
 animation = &"walking"
 autoplay = "walking"
 frame_progress = 0.73512524
+flip_h = true
 script = ExtResource("2_vdvg8")
 
 [node name="HitBox" type="Area2D" parent="CollisionShape2D/AnimatedSprite2D" unique_id=631482677]

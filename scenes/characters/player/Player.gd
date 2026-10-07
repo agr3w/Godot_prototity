@@ -54,8 +54,8 @@ const CAMERA_SMOOTH_SPEED: float = 4.0
 
 # --- SISTEMA DE VIDA ---
 @export_group("Vida")
-@export var max_health: int = 100
-var current_health: int = 100
+@export var max_health: int = 200
+var current_health: int = 200
 @onready var health_bar: TextureProgressBar = get_node_or_null("../CanvasLayer/BarraVida")
 
 # --- ESTADOS ---
