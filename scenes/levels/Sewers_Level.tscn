@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cjgt13ognlf75" path="res://scenes/levels/pilar_novo_2.gd" id="14_183pc"]
 [ext_resource type="Texture2D" uid="uid://bkv0lbi7keiow" path="res://assets/sprites/bueiro.png" id="15_5xqe0"]
 [ext_resource type="Script" uid="uid://bvw5o305p35n" path="res://scenes/levels/troca_faze.gd" id="17_6y8iw"]
+[ext_resource type="Script" uid="uid://cwvnacj7jih2c" path="res://scenes/levels/controller.gd" id="18_vicyb"]
 
 [sub_resource type="Gradient" id="Gradient_photon"]
 colors = PackedColorArray(0.2, 0.85, 1, 1, 0, 0, 0, 0)
@@ -469,3 +470,6 @@ script = ExtResource("17_6y8iw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="troca_faze" unique_id=1530851825]
 shape = SubResource("RectangleShape2D_bhkub")
+
+[node name="controller" type="Node2D" parent="." unique_id=1455848994]
+script = ExtResource("18_vicyb")

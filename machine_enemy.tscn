@@ -1,9 +1,44 @@
 [gd_scene format=3 uid="uid://h03f8bywytda"]
 
+[ext_resource type="Script" uid="uid://crnta87w8d3kj" path="res://machine_enemy.gd" id="1_26cxc"]
 [ext_resource type="Texture2D" uid="uid://btvw47yo7nrc1" path="res://assets/sprites/characters/enemies/bestaVerde.png" id="1_vdvg8"]
-[ext_resource type="Script" uid="uid://kcq2u7rvkfm1" path="res://boss001.gd" id="2_vdvg8"]
+[ext_resource type="Texture2D" uid="uid://cfwwtgjuq82qf" path="res://assets/sprites/characters/besta002.png" id="3_26cxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhkub"]
+radius = 5.851773
+height = 11.703546
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdvg8"]
+atlas = ExtResource("1_vdvg8")
+region = Rect2(572, 498, 286, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5cpp"]
+atlas = ExtResource("1_vdvg8")
+region = Rect2(858, 498, 286, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlbcj"]
+atlas = ExtResource("3_26cxc")
+region = Rect2(16, 690, 297, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfil2"]
+atlas = ExtResource("3_26cxc")
+region = Rect2(289, 690, 270, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27mnd"]
+atlas = ExtResource("3_26cxc")
+region = Rect2(580, 678, 287, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81s2s"]
+atlas = ExtResource("3_26cxc")
+region = Rect2(888, 678, 293, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6y4u"]
+atlas = ExtResource("3_26cxc")
+region = Rect2(1224, 678, 303, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ouju"]
+atlas = ExtResource("3_26cxc")
+region = Rect2(1224, 904, 303, 113)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26cxc"]
 atlas = ExtResource("1_vdvg8")
@@ -27,9 +62,43 @@ region = Rect2(732, 332, 183, 166)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sw46y"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdvg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5cpp")
+}],
 "loop": 1,
 "name": &"atack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xlbcj")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_nfil2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_27mnd")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_81s2s")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_w6y4u")
+}],
+"loop": 1,
+"name": &"atackSegundo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ouju")
+}],
+"loop": 1,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -58,35 +127,25 @@ size = Vector2(20, 13)
 
 [node name="machine_enemy" type="CharacterBody2D" unique_id=1007187107]
 scale = Vector2(0.7011532, 0.6545746)
+script = ExtResource("1_26cxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=770015871]
+scale = Vector2(-1.4499186, 0.78320354)
 shape = SubResource("CapsuleShape2D_bhkub")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=698767711]
 scale = Vector2(0.1578864, 0.17009103)
 sprite_frames = SubResource("SpriteFrames_sw46y")
-animation = &"walking"
+animation = &"dead"
 autoplay = "walking"
-frame_progress = 0.73512524
 flip_h = true
-script = ExtResource("2_vdvg8")
 
 [node name="HitBox" type="Area2D" parent="CollisionShape2D/AnimatedSprite2D" unique_id=631482677]
-visible = false
+position = Vector2(18.690458, -68.80755)
+scale = Vector2(7.977767, -4.9633183)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/AnimatedSprite2D/HitBox" unique_id=852584971]
 visible = false
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_bhkub")
 debug_color = Color(0.89807415, 0.273193, 0.41320667, 0.41960785)
-
-[node name="FireBol" type="Marker2D" parent="CollisionShape2D/AnimatedSprite2D/HitBox/CollisionShape2D" unique_id=610621413]
-visible = false
-
-[node name="GroundDetector" type="RayCast2D" parent="." unique_id=571762934]
-visible = false
-target_position = Vector2(0, 8)
-
-[node name="PlayerDetector" type="RayCast2D" parent="." unique_id=521803357]
-visible = false
-target_position = Vector2(50, 0)

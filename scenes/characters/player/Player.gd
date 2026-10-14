@@ -71,6 +71,8 @@ var shake_intensity: float = 0.0
 var shake_decay: float = 10.0
 
 func _ready() -> void:
+	setup_joypad_inputs()   # mapeia os botões do controle nas ações
+
 	current_health = max_health
 	if is_instance_valid(sword_hitbox):
 		sword_hitbox.disabled = true
@@ -95,6 +97,24 @@ func _ready() -> void:
 		sword_area.area_entered.connect(_on_sword_hitbox_area_entered)
 	
 	was_on_floor_last_frame = is_on_floor()
+
+# --- CONTROLE (JOYSTICK) ---
+func setup_joypad_inputs() -> void:
+	add_joy_button("ui_accept", JOY_BUTTON_A)               # pulo: ✕ (botão 0)
+	add_joy_button("attack", JOY_BUTTON_X)                  # ataque: □ (botão 2)
+	add_joy_button("dash", JOY_BUTTON_RIGHT_SHOULDER)       # dash: R1 (botão 10)
+	add_joy_button("dash", JOY_BUTTON_B)                    # dash também no Círculo (botão 1)
+
+func add_joy_button(action: String, button: JoyButton) -> void:
+	if not InputMap.has_action(action):
+		InputMap.add_action(action)
+	# Evita duplicar o mesmo botão se a cena for recarregada
+	for e in InputMap.action_get_events(action):
+		if e is InputEventJoypadButton and e.button_index == button:
+			return
+	var ev := InputEventJoypadButton.new()
+	ev.button_index = button
+	InputMap.action_add_event(action, ev)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -210,10 +230,8 @@ func _physics_process(delta: float) -> void:
 			elif direction != 0.0:
 				anim.play("run")
 				dust.emitting = true
-				print("DEBUG: direction=", direction, " run_sound=", run_sound, " playing=", run_sound.playing if is_instance_valid(run_sound) else "N/A")
 				if is_instance_valid(run_sound) and not run_sound.playing:
 					run_sound.play()
-					print("DEBUG: run_sound.play() chamado")
 			else:
 				anim.play("idle")
 				dust.emitting = false
