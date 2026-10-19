@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://binu1nxo2tjge" path="res://assets/sprites/ship.png" id="1_2kuyk"]
 [ext_resource type="Script" uid="uid://dg4k8g0gsbb7m" path="res://nave.gd" id="1_fswtx"]
+[ext_resource type="Texture2D" uid="uid://ch44ik271lmwt" path="res://assets/moon002.png" id="1_p2igu"]
 [ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://scenes/characters/player/Player.tscn" id="1_ykawg"]
 [ext_resource type="Texture2D" uid="uid://b4u58hcbbijju" path="res://assets/sewer001 (1).png" id="2_n2bgg"]
-[ext_resource type="Texture2D" uid="uid://c7bx6xixt45s0" path="res://assets/moon001.png" id="2_ob0wk"]
 [ext_resource type="Texture2D" uid="uid://dm8sq88lxlxys" path="res://assets/plataforma003.png" id="2_qwhlx"]
 [ext_resource type="Texture2D" uid="uid://e8dbam3cticj" path="res://assets/darkBuild.png" id="3_ob0wk"]
 [ext_resource type="Script" uid="uid://5v6i5ip1hqae" path="res://nave_02.gd" id="3_vwq4g"]
@@ -12,24 +12,23 @@
 [ext_resource type="Texture2D" uid="uid://bdp47eudj2h40" path="res://predios.png" id="5_3ui1f"]
 [ext_resource type="PackedScene" uid="uid://cb5y3k1v8qwoa" path="res://scenes/environment/SewerWaterDrips.tscn" id="6_qslqx"]
 [ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="7_5ab6p"]
-[ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="7_r7t82"]
 [ext_resource type="AudioStream" uid="uid://buosn44arqv7h" path="res://assets/audio/emergency.wav" id="9_rmjy5"]
 [ext_resource type="Texture2D" uid="uid://dw6dp0s2ctagu" path="res://assets/baseFloor001.png" id="13_qwhlx"]
 [ext_resource type="Texture2D" uid="uid://btcdqdxgprkhu" path="res://assets/build001.png" id="14_na6d1"]
 [ext_resource type="PackedScene" uid="uid://h03f8bywytda" path="res://machine_enemy.tscn" id="17_i1n6h"]
 [ext_resource type="Script" uid="uid://bux61rork6fxc" path="res://GatilhoPredio_2d.gd" id="17_sctn6"]
+[ext_resource type="Script" uid="uid://b7evot55525iu" path="res://boss1.gd" id="18_ipbi4"]
 [ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://assets/sprites/ui/hud_vida.png" id="20_46t64"]
 [ext_resource type="Texture2D" uid="uid://bkv0lbi7keiow" path="res://assets/sprites/bueiro.png" id="21_g7l8a"]
 [ext_resource type="PackedScene" uid="uid://c5f4y8x3m1n8q" path="res://scenes/environment/SewerLampPost.tscn" id="22_6u1eu"]
-[ext_resource type="Script" uid="uid://beu0lfwf0dyjv" path="res://plataforma_01.gd" id="23_p2igu"]
+[ext_resource type="Script" uid="uid://dg60hfi6i3sc1" path="res://plataforma_Hide.gd" id="22_ipbi4"]
+[ext_resource type="Texture2D" uid="uid://cx2jjjbhw3deh" path="res://ui/Eclipse Solar em Chamas.png" id="23_ipbi4"]
 [ext_resource type="Script" uid="uid://dpew12x4ejvap" path="res://area_2d.gd" id="24_ipbi4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkub"]
-size = Vector2(191.50885, 0.8444977)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dp7o2"]
-radius = 22.459595
-height = 44.91919
+[ext_resource type="Texture2D" uid="uid://d3ek43k5wq3rd" path="res://assets/objectScene/sprite_sheet_5_quadros.png" id="25_uh18d"]
+[ext_resource type="Texture2D" uid="uid://b1x4857mdjin2" path="res://assets/sprites/tube.png" id="26_001s6"]
+[ext_resource type="Texture2D" uid="uid://bathjyhqafwv6" path="res://assets/sprites/environment/crane_terrain.png" id="27_45ucs"]
+[ext_resource type="Texture2D" uid="uid://7vnwl71k0t6y" path="res://assets/sprites/Torre de Comunicação Cyberpunk Neon.png" id="28_ixddc"]
+[ext_resource type="PackedScene" uid="uid://cfrl2djw5xvik" path="res://coletavel_vida.tscn" id="29_ihlgr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fswtx"]
 atlas = ExtResource("1_2kuyk")
@@ -66,6 +65,13 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkub"]
+size = Vector2(207.94197, 0.8444977)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dp7o2"]
+radius = 22.459595
+height = 44.91919
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6y8iw"]
 atlas = ExtResource("21_g7l8a")
@@ -180,22 +186,95 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flui1"]
+bg_color = Color(0.04874982, 0.21027794, 0.116517626, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clxak"]
+bg_color = Color(0.20896745, 0.7089541, 0.3547114, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ci34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipbi4"]
 size = Vector2(55.61008, 1037.855)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_001s6"]
+atlas = ExtResource("25_uh18d")
+region = Rect2(0, 0, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45ucs"]
+atlas = ExtResource("25_uh18d")
+region = Rect2(1024, 0, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixddc"]
+atlas = ExtResource("25_uh18d")
+region = Rect2(2048, 0, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihlgr"]
+atlas = ExtResource("25_uh18d")
+region = Rect2(3072, 0, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0m70"]
+atlas = ExtResource("25_uh18d")
+region = Rect2(4096, 0, 1024, 1536)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ci34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_001s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45ucs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixddc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihlgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0m70")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh18d"]
+size = Vector2(49.18281, 1037.855)
+
 [node name="Node2D" type="Node2D" unique_id=1383721976]
 position = Vector2(288, 233)
+
+[node name="nave02" type="Sprite2D" parent="." unique_id=1692481526]
+position = Vector2(502.99997, 236)
+scale = Vector2(0.19343145, 0.20053333)
+script = ExtResource("3_vwq4g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="nave02" unique_id=331749032]
+position = Vector2(36.188522, 0)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame_progress = 0.8565899
+
+[node name="chão da fase" type="Sprite2D" parent="." unique_id=1901424026]
+position = Vector2(555, 498.00006)
+scale = Vector2(5.1913757, -0.87765807)
+texture = ExtResource("13_qwhlx")
+
+[node name="chão da fase2" type="Sprite2D" parent="." unique_id=2013225067]
+position = Vector2(2542, 498)
+scale = Vector2(5.1913757, -0.87765807)
+texture = ExtResource("13_qwhlx")
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=1664555410]
 position = Vector2(-175.00002, -766)
 scale = Vector2(0.5496485, 2.887532)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=898488938]
-position = Vector2(6154.843, 404.4977)
+position = Vector2(5803.709, 455.4062)
 rotation = -3.1415925
-scale = Vector2(48.050953, 33.86346)
+scale = Vector2(47.963287, 33.86346)
 shape = SubResource("RectangleShape2D_bhkub")
 
 [node name="Sprite2D" type="Sprite2D" parent="floor/CollisionShape2D" unique_id=1233907886]
@@ -211,9 +290,14 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(736, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/lua" unique_id=811843357]
-position = Vector2(200, 252.75)
-scale = Vector2(0.5391215, 0.66508156)
-texture = ExtResource("2_ob0wk")
+position = Vector2(200, 252.75002)
+scale = Vector2(0.53912145, 0.6650815)
+texture = ExtResource("1_p2igu")
+
+[node name="eclipse" type="Sprite2D" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/lua" unique_id=6764169]
+position = Vector2(379, 150)
+scale = Vector2(0.36803055, 0.33862856)
+texture = ExtResource("23_ipbi4")
 
 [node name="predios2" type="ParallaxLayer" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground" unique_id=364403042]
 position = Vector2(-32, -161)
@@ -261,23 +345,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="chão" type="ParallaxLayer" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground" unique_id=276508300]
-visible = false
-position = Vector2(179, -455.00006)
-scale = Vector2(-0.15999997, 1.971416)
-motion_mirroring = Vector2(736, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="floor/CollisionShape2D/Sprite2D/ParallaxBackground/chão" unique_id=1580722333]
-visible = false
-position = Vector2(-30, 518)
-scale = Vector2(2.0147138, 0.2683256)
-texture = ExtResource("13_qwhlx")
-
 [node name="OutSewer3" type="Sprite2D" parent="floor" unique_id=480453219]
 position = Vector2(323.84332, 499.38843)
 rotation = -3.1415927
 scale = Vector2(0.93301195, -0.34450564)
 texture = ExtResource("14_na6d1")
+
+[node name="chão da fase3" type="Sprite2D" parent="floor" unique_id=2048074236]
+position = Vector2(314.74664, 425.9693)
+scale = Vector2(3.9444807, 0.5050717)
+texture = ExtResource("13_qwhlx")
 
 [node name="OutSewer2" type="Sprite2D" parent="." unique_id=924663560]
 position = Vector2(-9, 836)
@@ -298,8 +375,7 @@ scale = Vector2(-0.20244667, -3.379624)
 amount = 25
 
 [node name="nave01" type="Sprite2D" parent="." unique_id=613272661]
-visible = false
-position = Vector2(-645, 4)
+position = Vector2(246, 262)
 scale = Vector2(0.19343145, 0.20053335)
 script = ExtResource("1_fswtx")
 
@@ -309,34 +385,18 @@ sprite_frames = SubResource("SpriteFrames_bhkub")
 autoplay = "default"
 frame_progress = 0.09112928
 
-[node name="nave02" type="Sprite2D" parent="." unique_id=1692481526]
-visible = false
-position = Vector2(-539.00006, 59)
-scale = Vector2(0.19343145, 0.20053335)
-script = ExtResource("3_vwq4g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="nave02" unique_id=331749032]
-visible = false
-position = Vector2(36.188522, 0)
-sprite_frames = SubResource("SpriteFrames_bhkub")
-autoplay = "default"
-frame_progress = 0.8565899
-
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=485495802]
-visible = false
-position = Vector2(-418, 386.00003)
+position = Vector2(-285, 1006)
 scale = Vector2(0.620273, 0.96535677)
 sprite_frames = SubResource("SpriteFrames_6u1eu")
 autoplay = "default"
 
 [node name="PosteIluminacao1" parent="." unique_id=450000001 instance=ExtResource("22_6u1eu")]
-visible = false
-position = Vector2(-422, 453)
-rotation = 1.1867951
+position = Vector2(-212.00003, 1063)
+rotation = 1.176048
 scale = Vector2(-0.9720936, 2.0883954)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=568590707]
-visible = false
 
 [node name="BarraVida" type="TextureProgressBar" parent="CanvasLayer" unique_id=1041250943]
 offset_left = 10.0
@@ -347,39 +407,46 @@ scale = Vector2(0.7, 0.7)
 value = 100.0
 texture_progress = ExtResource("20_46t64")
 
-[node name="SewerMutant" parent="." unique_id=460000001 instance=ExtResource("7_r7t82")]
-visible = false
-position = Vector2(-386.00003, 470)
-rotation = 3.1415927
-scale = Vector2(0.8453721, -0.76568073)
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1326959510]
+offset_left = 352.00003
+offset_top = 588.0
+offset_right = 502.00003
+offset_bottom = 615.0
+scale = Vector2(3.4, 0.56000024)
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_flui1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_clxak")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+script = ExtResource("18_ipbi4")
 
 [node name="TorchCultist" parent="." unique_id=470000001 instance=ExtResource("7_5ab6p")]
-visible = false
-position = Vector2(783, 493)
+position = Vector2(622, 441)
 scale = Vector2(0.99999994, 1)
 
 [node name="machine_enemy" parent="." unique_id=1007187107 instance=ExtResource("17_i1n6h")]
-visible = false
-position = Vector2(1303, 614)
+position = Vector2(859, 482.9999)
 rotation = -2.903476
 scale = Vector2(3.1113493, -4.896866)
 
 [node name="TorchCultist2" parent="." unique_id=1616375459 instance=ExtResource("7_5ab6p")]
-visible = false
-position = Vector2(2066, 548)
+position = Vector2(2035, 375)
 
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("1_ykawg")]
-position = Vector2(-252, 995)
+position = Vector2(-262, 1021.0001)
 scale = Vector2(0.95999753, 1.2400048)
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="CharacterBody2D" unique_id=1296292774]
+
 [node name="plataforma" type="AnimatableBody2D" parent="." unique_id=1656729519]
-position = Vector2(-742, 903.9999)
-scale = Vector2(1.5719557, 0.8604785)
-script = ExtResource("23_p2igu")
+position = Vector2(-569, 950)
+scale = Vector2(0.9586653, 0.7523118)
+script = ExtResource("22_ipbi4")
 
 [node name="Area2D" type="Area2D" parent="plataforma" unique_id=361914663 node_paths=PackedStringArray("plataforma")]
 position = Vector2(-119.59624, -120.862915)
-scale = Vector2(0.63615024, 1.162144)
+scale = Vector2(0.63520485, 1.1702744)
 script = ExtResource("24_ipbi4")
 plataforma = NodePath("..")
 
@@ -401,3 +468,100 @@ rotation = -3.1415613
 scale = Vector2(0.14280477, -42.833633)
 skew = -3.1471252e-05
 texture = ExtResource("2_qwhlx")
+
+[node name="caixaDeSom" type="Sprite2D" parent="." unique_id=1604957521]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="caixaDeSom" unique_id=484568454]
+position = Vector2(563, 456)
+scale = Vector2(0.072551385, 0.06851869)
+sprite_frames = SubResource("SpriteFrames_5ci34")
+autoplay = "default"
+frame_progress = 0.093927026
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="caixaDeSom" unique_id=1644865424]
+position = Vector2(3205, 453)
+scale = Vector2(0.072551385, 0.06851869)
+sprite_frames = SubResource("SpriteFrames_5ci34")
+autoplay = "default"
+frame_progress = 0.093927026
+
+[node name="PilarBloqeuio16" type="StaticBody2D" parent="." unique_id=1006935704]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(3272.9998, 157)
+rotation = 1.5714893
+scale = Vector2(0.3883941, -0.006100194)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio16" unique_id=537830758]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_uh18d")
+
+[node name="PilarBloqeuio17" type="StaticBody2D" parent="." unique_id=1017370327]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(694, 466.99994)
+rotation = 1.5714893
+scale = Vector2(0.3883941, -0.006100194)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio17" unique_id=653217307]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_uh18d")
+
+[node name="PilarBloqeuio18" type="StaticBody2D" parent="." unique_id=2115212018]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(2255.85, 671.9197)
+rotation = 2.8096454
+scale = Vector2(0.63217795, -0.018365065)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio18" unique_id=2134604876]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_uh18d")
+
+[node name="PilarBloqeuio19" type="StaticBody2D" parent="." unique_id=1373195856]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(2536, 861.99994)
+rotation = 3.5565646
+scale = Vector2(0.506355, -0.02430413)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio19" unique_id=1245595566]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_uh18d")
+
+[node name="cano png" type="Sprite2D" parent="." unique_id=256640765]
+position = Vector2(-2.0000029, 812.00006)
+scale = Vector2(1.6360948, -0.57601196)
+texture = ExtResource("26_001s6")
+
+[node name="cano png2" type="Sprite2D" parent="." unique_id=1966536644]
+position = Vector2(409, 405)
+rotation = 1.5723059
+scale = Vector2(-0.65195304, -0.7685087)
+texture = ExtResource("26_001s6")
+
+[node name="cano png3" type="Sprite2D" parent="." unique_id=319385546]
+position = Vector2(2523, 412)
+rotation = 0.40401977
+scale = Vector2(-0.98749495, -0.6801382)
+texture = ExtResource("26_001s6")
+
+[node name="escada" type="Sprite2D" parent="." unique_id=1213008051]
+position = Vector2(2001.8502, 419.91962)
+rotation = 2.8089514
+scale = Vector2(2.8090053, -0.96934515)
+texture = ExtResource("27_45ucs")
+
+[node name="torre" type="Sprite2D" parent="." unique_id=116052454]
+position = Vector2(1164.9999, 163)
+rotation = 3.1384244
+scale = Vector2(-0.5910637, -0.5501359)
+texture = ExtResource("28_ixddc")
+
+[node name="coletavel_vida" parent="." unique_id=670393016 instance=ExtResource("29_ihlgr")]
+position = Vector2(2274, 326)
+scale = Vector2(0.5642242, 0.5492998)

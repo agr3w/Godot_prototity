@@ -56,6 +56,7 @@ const CAMERA_SMOOTH_SPEED: float = 4.0
 @export_group("Vida")
 @export var max_health: int = 200
 var current_health: int = 200
+var barra_tween: Tween
 @onready var health_bar: TextureProgressBar = get_node_or_null("../CanvasLayer/BarraVida")
 
 # --- ESTADOS ---
@@ -71,6 +72,7 @@ var shake_intensity: float = 0.0
 var shake_decay: float = 10.0
 
 func _ready() -> void:
+	add_to_group("player")   # o coletável de vida e o boss procuram o player por este grupo
 	setup_joypad_inputs()   # mapeia os botões do controle nas ações
 
 	current_health = max_health
@@ -366,6 +368,8 @@ func take_damage(amount: int = 10) -> void:
 
 	current_health -= amount
 	if health_bar:
+		if barra_tween:
+			barra_tween.kill()   # cancela a animação de cura, se estiver rodando
 		health_bar.value = current_health
 	
 	add_camera_shake(8.0, 8.0)
@@ -385,6 +389,28 @@ func take_damage(amount: int = 10) -> void:
 
 		await get_tree().create_timer(hit_duration - 0.1).timeout
 		is_hurt = false
+
+# Recupera vida (usado pelo coletável). Devolve false se estava morto ou com a vida cheia
+func curar(quantidade: int) -> bool:
+	if is_dead or current_health >= max_health:
+		return false
+
+	current_health = mini(current_health + quantidade, max_health)
+	if health_bar:
+		health_bar.max_value = max_health
+		# a barra enche aos poucos, para dar para ver a cura acontecendo
+		if barra_tween:
+			barra_tween.kill()
+		barra_tween = create_tween()
+		barra_tween.tween_property(health_bar, "value", float(current_health), 0.4)
+	else:
+		push_warning("Player sem health_bar: confira o caminho ../CanvasLayer/BarraVida")
+
+	# Flash verde de cura (volta ao normal)
+	sprite.modulate = Color(0.5, 1.6, 0.5)
+	var tween := create_tween()
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.3)
+	return true
 
 func die() -> void:
 	is_dead = true

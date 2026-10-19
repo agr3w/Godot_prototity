@@ -1,8 +1,9 @@
-Sprite2D
-CollisionShape2D
 Area2D
-Node2D
+CollisionShape2D
 AnimatedSprite2D
+Sprite2D
+ProgressBar
+Node2D
 DirectionalLight2D
 AnimatableBody2D
 PointLight2D
@@ -11,4 +12,3 @@ CanvasLayer
 TextEdit
 AudioStreamPlayer
 StaticBody2D
-RayCast2D

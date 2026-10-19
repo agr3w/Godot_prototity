@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cfrl2djw5xvik"]
+
+[ext_resource type="Script" uid="uid://c5disy41ihwg6" path="res://coletavel_vida.gd" id="1_qvxoj"]
+[ext_resource type="Texture2D" uid="uid://chk02n5xugy65" path="res://assets/life002.png" id="2_3osgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw46y"]
+size = Vector2(160.36525, 253.20251)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmqsg"]
+atlas = ExtResource("2_3osgw")
+region = Rect2(31, 12, 227, 547)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md71p"]
+atlas = ExtResource("2_3osgw")
+region = Rect2(258, 12, 227, 547)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2fuh"]
+atlas = ExtResource("2_3osgw")
+region = Rect2(462, 11, 112, 548)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nkj4"]
+atlas = ExtResource("2_3osgw")
+region = Rect2(545, 11, 225, 539)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lraa8"]
+atlas = ExtResource("2_3osgw")
+region = Rect2(770, 11, 225, 539)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhkub"]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_tmqsg")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_md71p")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_n2fuh")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_6nkj4")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_lraa8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="coletavel_vida" type="Area2D" unique_id=456004533]
+position = Vector2(-6, -1)
+scale = Vector2(0.76000094, 0.84000003)
+script = ExtResource("1_qvxoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1813888550]
+position = Vector2(18.42103, -85.71428)
+scale = Vector2(0.7283338, 0.34792405)
+shape = SubResource("RectangleShape2D_sw46y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=1575280235]
+position = Vector2(0.9032874, 5.240363)
+scale = Vector2(0.87518406, 0.97166777)
+sprite_frames = SubResource("SpriteFrames_bhkub")
+autoplay = "default"
+frame = 3
+frame_progress = 0.7798825
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=2145838142]
+position = Vector2(1.8065739, 160.8178)
+scale = Vector2(1.3729969, 2.8741906)
