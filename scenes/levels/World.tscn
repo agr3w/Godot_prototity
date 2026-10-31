@@ -1,20 +1,66 @@
 [gd_scene format=3 uid="uid://dcd11egb8vj4n"]
 
+[ext_resource type="Texture2D" uid="uid://b38ssukr4c1fi" path="res://assets/sprites/faze1.png" id="1_0ekff"]
 [ext_resource type="PackedScene" uid="uid://df7k38y5q2v1n" path="res://scenes/environment/ParallaxBackground.tscn" id="1_para"]
+[ext_resource type="Texture2D" uid="uid://benxedx1ril16" path="res://assets/sprites/truck.png" id="4_a0nxl"]
 [ext_resource type="PackedScene" uid="uid://un1ymck64olx" path="res://scenes/environment/Passarela.tscn" id="7_1kp85"]
 [ext_resource type="PackedScene" uid="uid://cq7ba184ejgt7" path="res://scenes/characters/player/Player.tscn" id="7_6ct3r"]
+[ext_resource type="Script" uid="uid://d12osnoxgeb76" path="res://scenes/levels/sugavida.gd" id="7_phmqw"]
 [ext_resource type="Texture2D" uid="uid://cba7fei7cybjb" path="res://assets/sprites/environment/Crane_Suport.png" id="7_qnedo"]
 [ext_resource type="AudioStream" uid="uid://byys8vl7hmbge" path="res://assets/audio/Dark Techno Music _ Cyberpunk.mp3" id="10_xrdug"]
-[ext_resource type="Script" uid="uid://c41e6ptmp5a3g" path="res://scenes/levels/besta.gd" id="11_0ekff"]
-[ext_resource type="Texture2D" uid="uid://btvw47yo7nrc1" path="res://assets/sprites/characters/enemies/bestaVerde.png" id="11_abf5c"]
+[ext_resource type="PackedScene" uid="uid://b5m8y1lx7v3q4" path="res://scenes/characters/enemies/TorchCultist.tscn" id="11_abf5c"]
 [ext_resource type="Texture2D" uid="uid://dx6w2tor4ohsm" path="res://assets/sprites/ui/hud_vida.png" id="11_wyqjk"]
 [ext_resource type="PackedScene" uid="uid://q003q8wnlfne" path="res://scenes/characters/enemies/Enemy.tscn" id="13_k85er"]
+[ext_resource type="Texture2D" uid="uid://b1x4857mdjin2" path="res://assets/sprites/tube.png" id="13_puasx"]
+[ext_resource type="Texture2D" uid="uid://d3ek43k5wq3rd" path="res://assets/objectScene/sprite_sheet_5_quadros.png" id="13_rl8ol"]
+[ext_resource type="PackedScene" uid="uid://cfrl2djw5xvik" path="res://coletavel_vida.tscn" id="15_navfu"]
+[ext_resource type="PackedScene" uid="uid://cb3q4m8y1lx7v" path="res://scenes/characters/enemies/SewerMutant.tscn" id="16_3ln1d"]
+[ext_resource type="Script" uid="uid://bey25ughksc4s" path="res://scenes/characters/enemies/sewer_mutant01.gd" id="17_a0nxl"]
 [ext_resource type="Texture2D" uid="uid://dy6xbdhcv2i4m" path="res://assets/sprites/background/Buildings 1.png" id="18_sxias"]
 [ext_resource type="Script" uid="uid://cmbsgo235m0je" path="res://scenes/levels/ChaseZoneTrigger.gd" id="20_chase"]
 [ext_resource type="PackedScene" uid="uid://cx6y8v2rak5ml" path="res://scenes/environment/CrumblingBridge.tscn" id="21_cbridge"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puasx"]
+size = Vector2(49.18281, 1037.855)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phmqw"]
+atlas = ExtResource("4_a0nxl")
+region = Rect2(0, 0, 434, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7vgw"]
+atlas = ExtResource("4_a0nxl")
+region = Rect2(434, 0, 434, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2qh6"]
+atlas = ExtResource("4_a0nxl")
+region = Rect2(868, 0, 434, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puhbu"]
+atlas = ExtResource("4_a0nxl")
+region = Rect2(434, 0, 434, 724)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_phmqw"]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_phmqw")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_s7vgw")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_p2qh6")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_puhbu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_486m6"]
-size = Vector2(121.984055, 211.65851)
+size = Vector2(42.72415, 301.8891)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ucfvk"]
 texture = ExtResource("18_sxias")
@@ -116,41 +162,46 @@ sources/0 = SubResource("TileSetAtlasSource_ucfvk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger_chase"]
 size = Vector2(700, 180)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw46y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_001s6"]
+atlas = ExtResource("13_rl8ol")
+region = Rect2(0, 0, 1024, 1536)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ekff"]
-atlas = ExtResource("11_abf5c")
-region = Rect2(180, 0, 180, 159)
+[sub_resource type="AtlasTexture" id="AtlasTexture_45ucs"]
+atlas = ExtResource("13_rl8ol")
+region = Rect2(1024, 0, 1024, 1536)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_puasx"]
-atlas = ExtResource("11_abf5c")
-region = Rect2(0, 0, 180, 159)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixddc"]
+atlas = ExtResource("13_rl8ol")
+region = Rect2(2048, 0, 1024, 1536)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rl8ol"]
-atlas = ExtResource("11_abf5c")
-region = Rect2(360, 0, 180, 159)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihlgr"]
+atlas = ExtResource("13_rl8ol")
+region = Rect2(3072, 0, 1024, 1536)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_navfu"]
-atlas = ExtResource("11_abf5c")
-region = Rect2(540, 0, 180, 159)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0m70"]
+atlas = ExtResource("13_rl8ol")
+region = Rect2(4096, 0, 1024, 1536)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bhkub"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_navfu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0ekff")
+"texture": SubResource("AtlasTexture_001s6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_puasx")
+"texture": SubResource("AtlasTexture_45ucs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rl8ol")
+"texture": SubResource("AtlasTexture_ixddc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_navfu")
+"texture": SubResource("AtlasTexture_ihlgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0m70")
 }],
 "loop": 1,
-"name": &"walk",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -159,6 +210,46 @@ rotation = -0.0013625522
 
 [node name="ParallaxBackground" parent="." unique_id=1215163660 instance=ExtResource("1_para")]
 position = Vector2(-0.99999917, -0.0013625518)
+
+[node name="fotoFaze" type="Sprite2D" parent="." unique_id=899453305]
+position = Vector2(-1171.4379, 320.40414)
+scale = Vector2(0.28255945, 0.30832207)
+texture = ExtResource("1_0ekff")
+
+[node name="PilarBloqeuio17" type="StaticBody2D" parent="fotoFaze" unique_id=887488638]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(-1186.2162, 420.1563)
+rotation = -0.0011363402
+scale = Vector2(3.7341452, 0.01681881)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fotoFaze/PilarBloqeuio17" unique_id=649303043]
+position = Vector2(316.4595, -14861.418)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_puasx")
+
+[node name="fotoFaze2" type="Sprite2D" parent="." unique_id=2019755152]
+position = Vector2(38.71791, 207.05295)
+scale = Vector2(0.34275043, 0.39279357)
+texture = ExtResource("1_0ekff")
+
+[node name="PilarBloqeuio18" type="StaticBody2D" parent="fotoFaze2" unique_id=403253596]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(-341.88068, 335.6482)
+rotation = -0.0010819744
+scale = Vector2(1.9110603, 0.013201872)
+skew = -0.000111460686
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fotoFaze2/PilarBloqeuio18" unique_id=1319048397]
+position = Vector2(316.4595, -14861.418)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_puasx")
+
+[node name="fotoFaze3" type="Sprite2D" parent="." unique_id=40554850]
+position = Vector2(1399.6227, 277.90732)
+scale = Vector2(0.34275043, 0.39279357)
+texture = ExtResource("1_0ekff")
 
 [node name="CranesPlataforma_1" type="Node2D" parent="." unique_id=1514143032]
 position = Vector2(-285, 344)
@@ -197,13 +288,15 @@ texture = ExtResource("7_qnedo")
 position = Vector2(-102.46155, 0)
 texture = ExtResource("7_qnedo")
 
+[node name="truck" type="AnimatedSprite2D" parent="." unique_id=975998575]
+position = Vector2(-1452.4318, 316.0213)
+scale = Vector2(0.5508331, 0.24318705)
+sprite_frames = SubResource("SpriteFrames_phmqw")
+autoplay = "default"
+frame_progress = 0.3807669
+
 [node name="Passarelas" type="Node2D" parent="." unique_id=1357693439]
 position = Vector2(-517, 372)
-
-[node name="Passarela" parent="Passarelas" unique_id=1978156886 instance=ExtResource("7_1kp85")]
-
-[node name="Passarela2" parent="Passarelas" unique_id=299282383 instance=ExtResource("7_1kp85")]
-position = Vector2(105, 0)
 
 [node name="Passarela23" parent="Passarelas" unique_id=1801086814 instance=ExtResource("7_1kp85")]
 position = Vector2(197, -75)
@@ -213,6 +306,12 @@ position = Vector2(258, -165)
 
 [node name="Passarela3" parent="Passarelas" unique_id=1728860908 instance=ExtResource("7_1kp85")]
 position = Vector2(213, 0)
+
+[node name="Passarela16" parent="Passarelas" unique_id=1978156886 instance=ExtResource("7_1kp85")]
+position = Vector2(109.49208, 0.4451167)
+
+[node name="Passarela17" parent="Passarelas" unique_id=844908899 instance=ExtResource("7_1kp85")]
+position = Vector2(3.4922028, 0.30068624)
 
 [node name="Passarela4" parent="Passarelas" unique_id=288310860 instance=ExtResource("7_1kp85")]
 position = Vector2(318, 0)
@@ -267,20 +366,21 @@ position = Vector2(1485, 0)
 position = Vector2(1590, 0)
 
 [node name="LimiteEsquerdo" type="Node2D" parent="." unique_id=631161522]
-position = Vector2(-783, 366.00003)
+position = Vector2(-1541.4957, 362.89996)
 rotation = 1.9844391
 scale = Vector2(0.63889456, 0.6229508)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LimiteEsquerdo" unique_id=562518013]
+scale = Vector2(1.0141394, 1.0196991)
 
-[node name="Sprite2D10" type="Sprite2D" parent="LimiteEsquerdo/StaticBody2D" unique_id=710269770]
-texture = ExtResource("7_qnedo")
+[node name="Area2D" type="Area2D" parent="LimiteEsquerdo/StaticBody2D" unique_id=651298819]
+script = ExtResource("7_phmqw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LimiteEsquerdo/StaticBody2D" unique_id=1664645653]
-position = Vector2(-78.35626, 34.997375)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimiteEsquerdo/StaticBody2D/Area2D" unique_id=1664645653]
+position = Vector2(-197.14459, -133.70547)
 rotation = -1.9844394
-scale = Vector2(1.021728, 0.9788956)
-skew = -0.018179178
+scale = Vector2(1.018835, 0.9789556)
+skew = -0.018179417
 shape = SubResource("RectangleShape2D_486m6")
 
 [node name="Sprite2D13" type="Sprite2D" parent="LimiteEsquerdo" unique_id=1592804059]
@@ -297,14 +397,18 @@ scale = Vector2(1.0118066, 0.9886446)
 skew = 0.025180459
 texture = ExtResource("7_qnedo")
 
+[node name="Sprite2D10" type="Sprite2D" parent="LimiteEsquerdo/Sprite2D11" unique_id=710269770]
+position = Vector2(-16.24878, -10.795898)
+rotation = -2.3854787
+scale = Vector2(1.0261126, 1.0081202)
+skew = -0.025180817
+texture = ExtResource("7_qnedo")
+
 [node name="Sprite2D12" type="Sprite2D" parent="LimiteEsquerdo" unique_id=89219503]
 rotation = 2.6352735
 scale = Vector2(1.005847, 0.9944095)
 skew = 0.021145701
 texture = ExtResource("7_qnedo")
-
-[node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("7_6ct3r")]
-position = Vector2(-516.4819, 353.2966)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1894754065]
 
@@ -331,7 +435,7 @@ color = Color(0, 0, 0, 1)
 tile_set = SubResource("TileSet_486m6")
 
 [node name="TerrainEnemy_1" parent="." unique_id=129693592 instance=ExtResource("13_k85er")]
-position = Vector2(633.54834, 331.86356)
+position = Vector2(-1063.4556, 333.55127)
 rotation = -0.20012203
 
 [node name="ChaseZoneTrigger" type="Area2D" parent="." unique_id=74819201]
@@ -349,26 +453,66 @@ stream = ExtResource("10_xrdug")
 volume_db = -0.615
 autoplay = true
 
-[node name="besta" type="Node2D" parent="." unique_id=1185019046]
-position = Vector2(-475.08945, 65.35271)
-scale = Vector2(1, 1.1997275)
+[node name="CultistPonte" parent="." unique_id=470000001 instance=ExtResource("11_abf5c")]
+position = Vector2(-957.4515, 330.69574)
+rotation = 0.0008676308
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="besta" unique_id=1428730044]
-visible = false
-position = Vector2(-257.3745, 228.9267)
-scale = Vector2(0.5167065, 0.46375427)
-script = ExtResource("11_0ekff")
+[node name="CultistPonte2" parent="." unique_id=1883787710 instance=ExtResource("11_abf5c")]
+position = Vector2(1051.5221, 351.43307)
+rotation = 0.0008676308
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="besta/CharacterBody2D" unique_id=2074761281]
-shape = SubResource("RectangleShape2D_sw46y")
+[node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("7_6ct3r")]
+position = Vector2(-1170.3354, 245.40561)
+scale = Vector2(1.0000004, 1.0000002)
 
-[node name="Sprite2D" type="Sprite2D" parent="besta/CharacterBody2D/CollisionShape2D" unique_id=1517112239]
+[node name="caixaDeSom" type="Sprite2D" parent="." unique_id=28470964]
+position = Vector2(-1212.6311, -271.65256)
+scale = Vector2(0.63994217, 1.151108)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="besta/CharacterBody2D/CollisionShape2D/Sprite2D" unique_id=664059880]
-position = Vector2(52.24083, 9.052745)
-scale = Vector2(0.7399124, 0.61151546)
-sprite_frames = SubResource("SpriteFrames_bhkub")
-animation = &"walk"
-autoplay = "walk"
-frame = 3
-frame_progress = 1.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="caixaDeSom" unique_id=388812272]
+position = Vector2(861.5786, 408.0866)
+scale = Vector2(0.060948335, 0.06868764)
+sprite_frames = SubResource("SpriteFrames_navfu")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="caixaDeSom" unique_id=1623086855]
+position = Vector2(3000.8901, 386.2514)
+scale = Vector2(0.072551385, 0.06851869)
+sprite_frames = SubResource("SpriteFrames_navfu")
+autoplay = "default"
+
+[node name="cano png2" type="Sprite2D" parent="." unique_id=984797650]
+position = Vector2(-658.4613, 338.10315)
+rotation = 1.5723059
+scale = Vector2(-0.65195304, -0.7685087)
+texture = ExtResource("13_puasx")
+
+[node name="cano png3" type="Sprite2D" parent="." unique_id=1320415524]
+position = Vector2(709.58777, 302.96713)
+rotation = 1.5723059
+scale = Vector2(-0.65195304, -0.7685087)
+texture = ExtResource("13_puasx")
+
+[node name="coletavel_vida" parent="cano png3" unique_id=456004533 instance=ExtResource("15_navfu")]
+position = Vector2(205.34438, -1107.365)
+rotation = 1.5700396
+scale = Vector2(0.46347052, 0.5660206)
+skew = 0.00021207333
+
+[node name="MutantPoco1" parent="." unique_id=460000001 instance=ExtResource("16_3ln1d")]
+position = Vector2(719.78143, 160.98091)
+rotation = 0.05650437
+script = ExtResource("17_a0nxl")
+spawn_delay = 12.0
+
+[node name="MutantPoco2" parent="." unique_id=104156255 instance=ExtResource("16_3ln1d")]
+position = Vector2(-661.25433, 186.09918)
+rotation = 0.05650437
+script = ExtResource("17_a0nxl")
+spawn_delay = 12.0
+
+[node name="MutantPoco3" parent="." unique_id=1164010488 instance=ExtResource("16_3ln1d")]
+position = Vector2(144.67694, 237.19739)
+rotation = 0.05650437
+script = ExtResource("17_a0nxl")
+spawn_delay = 12.0

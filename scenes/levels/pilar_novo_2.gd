@@ -1,7 +1,7 @@
 extends AnimatableBody2D
 
 @export var distancia: float = 450.0
-@export var velocidade: float = 90.0
+@export var velocidade: float = 130.0
 
 func _ready() -> void:
 	print("pilar_novo rodando")

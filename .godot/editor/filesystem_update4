@@ -1,7 +1,2 @@
-res://IronSnow.tscn
-res://boss1.gd
-res://machine_enemy.gd
-res://plataforma_Hide.gd
-res://coletavel_vida.gd
-res://scenes/characters/player/Player.gd
-res://coletavel_vida.tscn
+res://scenes/levels/World.tscn
+res://scenes/levels/sugavida.gd

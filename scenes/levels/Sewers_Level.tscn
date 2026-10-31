@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bkv0lbi7keiow" path="res://assets/sprites/bueiro.png" id="15_5xqe0"]
 [ext_resource type="Script" uid="uid://bvw5o305p35n" path="res://scenes/levels/troca_faze.gd" id="17_6y8iw"]
 [ext_resource type="Script" uid="uid://cwvnacj7jih2c" path="res://scenes/levels/controller.gd" id="18_vicyb"]
+[ext_resource type="PackedScene" uid="uid://cfrl2djw5xvik" path="res://coletavel_vida.tscn" id="19_c7ct8"]
 
 [sub_resource type="Gradient" id="Gradient_photon"]
 colors = PackedColorArray(0.2, 0.85, 1, 1, 0, 0, 0, 0)
@@ -472,4 +473,10 @@ script = ExtResource("17_6y8iw")
 shape = SubResource("RectangleShape2D_bhkub")
 
 [node name="controller" type="Node2D" parent="." unique_id=1455848994]
+position = Vector2(-9, -210)
+scale = Vector2(1.0000001, 1)
 script = ExtResource("18_vicyb")
+
+[node name="coletavel_vida" parent="controller" unique_id=456004533 instance=ExtResource("19_c7ct8")]
+position = Vector2(621.00006, 587)
+scale = Vector2(0.2553133, 0.363079)
