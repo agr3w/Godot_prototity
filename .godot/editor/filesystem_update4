@@ -1,2 +1,7 @@
 res://scenes/levels/World.tscn
-res://scenes/levels/sugavida.gd
+res://scenes/levels/torch_sparks.gd
+res://scenes/environment/ParallaxBackground.tscn
+res://scenes/levels/Sewers_Level.tscn
+res://scenes/characters/player/Player.tscn
+res://scenes/levels/plataforma001.gd
+res://IronSnow.tscn

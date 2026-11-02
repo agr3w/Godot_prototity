@@ -1,12 +1,12 @@
+CollisionShape2D
+PointLight2D
 Area2D
 Sprite2D
-CollisionShape2D
 AnimatedSprite2D
 ProgressBar
 Node2D
 DirectionalLight2D
 AnimatableBody2D
-PointLight2D
 Label
 CanvasLayer
 TextEdit

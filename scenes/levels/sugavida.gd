@@ -9,10 +9,18 @@ extends Area2D
 @export var repulsao_horizontal: float = 420.0
 @export var repulsao_vertical: float = -260.0   # negativo = joga o player para cima
 
+@export_group("Movimento")
+@export var distancia: float = 200.0   # pixels para a direita
+@export var duracao: float = 3.0       # segundos para percorrer a distância
+
 
 func _ready() -> void:
 	# Garante que a área detecta corpos
 	monitoring = true
+
+	# Move a parede 200px para a direita, igual ao caminhão
+	var tween := create_tween()
+	tween.tween_property(self, "position:x", position.x + distancia, duracao)
 
 
 func _physics_process(_delta: float) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2aedifw7h241"
-path="res://.godot/imported/caixa001.jpg-de02de2c88d4b2cf1708df84d9914d00.ctex"
+uid="uid://bop1a3o38bqi3"
+path="res://.godot/imported/spikes.png-96dcd08cb5f6ee429e14e23ef70f641d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/caixa001.jpg"
-dest_files=["res://.godot/imported/caixa001.jpg-de02de2c88d4b2cf1708df84d9914d00.ctex"]
+source_file="res://assets/sprites/spikes.png"
+dest_files=["res://.godot/imported/spikes.png-96dcd08cb5f6ee429e14e23ef70f641d.ctex"]
 
 [params]
 

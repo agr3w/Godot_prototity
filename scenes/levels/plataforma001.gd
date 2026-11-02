@@ -2,7 +2,7 @@ extends AnimatableBody2D
 
 @export var distancia_x: float = 2500.0
 @export var distancia_y: float = 400.0
-@export var velocidade: float = 100.0
+@export var velocidade: float = 200.0
 
 func _ready() -> void:
 	var inicio := position

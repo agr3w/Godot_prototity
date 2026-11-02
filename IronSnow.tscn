@@ -431,7 +431,7 @@ rotation = -2.903476
 scale = Vector2(3.1113493, -4.896866)
 
 [node name="TorchCultist2" parent="." unique_id=1616375459 instance=ExtResource("7_5ab6p")]
-position = Vector2(2035, 375)
+position = Vector2(3024, 477)
 
 [node name="CharacterBody2D" parent="." unique_id=75799113 instance=ExtResource("1_ykawg")]
 position = Vector2(-262, 1021.0001)

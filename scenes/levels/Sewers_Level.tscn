@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bvw5o305p35n" path="res://scenes/levels/troca_faze.gd" id="17_6y8iw"]
 [ext_resource type="Script" uid="uid://cwvnacj7jih2c" path="res://scenes/levels/controller.gd" id="18_vicyb"]
 [ext_resource type="PackedScene" uid="uid://cfrl2djw5xvik" path="res://coletavel_vida.tscn" id="19_c7ct8"]
+[ext_resource type="Texture2D" uid="uid://b1x4857mdjin2" path="res://assets/sprites/tube.png" id="20_5wmr8"]
 
 [sub_resource type="Gradient" id="Gradient_photon"]
 colors = PackedColorArray(0.2, 0.85, 1, 1, 0, 0, 0, 0)
@@ -206,6 +207,10 @@ scale = Vector2(0.887008, 1)
 [node name="GotasPonte" parent="EfeitosParticulas" unique_id=500000072 instance=ExtResource("6_drips")]
 position = Vector2(520, -10)
 
+[node name="GotasPonte2" parent="EfeitosParticulas" unique_id=1688587921 instance=ExtResource("6_drips")]
+position = Vector2(1274, 461)
+scale = Vector2(-0.096654855, 1)
+
 [node name="GotasEscadaria" parent="EfeitosParticulas" unique_id=500000073 instance=ExtResource("6_drips")]
 position = Vector2(-595, -88)
 
@@ -226,7 +231,7 @@ position = Vector2(870.99994, -5)
 scale = Vector2(0.9955531, 1)
 
 [node name="MutantPoco1" parent="Inimigos" unique_id=500000091 instance=ExtResource("10_mutant")]
-position = Vector2(-590.6264, -123)
+position = Vector2(509.26465, -183.00002)
 rotation = 0.05650437
 script = ExtResource("9_c25rs")
 spawn_delay = 12.0
@@ -238,17 +243,17 @@ script = ExtResource("9_c25rs")
 spawn_delay = 12.0
 
 [node name="CultistPonte" parent="Inimigos" unique_id=500000093 instance=ExtResource("11_cultist")]
-position = Vector2(572.5461, 364)
+position = Vector2(651.8989, 364.00003)
 rotation = 0.0008676308
 
 [node name="CultistDegrau" parent="Inimigos" unique_id=500000094 instance=ExtResource("11_cultist")]
-position = Vector2(620, -100)
+position = Vector2(-143.63867, 601)
 
 [node name="CultistDegrau2" parent="Inimigos" unique_id=470000001 instance=ExtResource("11_cultist")]
 position = Vector2(-1296.7666, 601)
 
 [node name="MutantEscada" parent="Inimigos" unique_id=500000095 instance=ExtResource("10_mutant")]
-position = Vector2(460, -175)
+position = Vector2(-808.5957, 99)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=500000100]
 
@@ -289,7 +294,7 @@ scale = Vector2(21.986471, -0.4301573)
 shape = SubResource("RectangleShape2D_7diy0")
 
 [node name="pilar_novo" type="AnimatableBody2D" parent="." unique_id=1414422507]
-position = Vector2(-1275, -123)
+position = Vector2(-1568, -123)
 script = ExtResource("12_ubb0o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pilar_novo" unique_id=2087850003]
@@ -340,6 +345,18 @@ position = Vector2(316.39282, -17055.627)
 scale = Vector2(21.986471, -0.4301573)
 shape = SubResource("RectangleShape2D_7diy0")
 
+[node name="PilarBloqeuio4" type="StaticBody2D" parent="." unique_id=999706293]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(-552.99994, 403.99994)
+rotation = -0.64562154
+scale = Vector2(0.19113143, -0.006924265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio4" unique_id=205231737]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_7diy0")
+
 [node name="PilarBloqeuio14" type="StaticBody2D" parent="." unique_id=1313248052]
 modulate = Color(0, 1.7694412, 1.8921474, 1)
 self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
@@ -359,6 +376,41 @@ position = Vector2(1426.0001, 277)
 scale = Vector2(0.31181014, -0.006924265)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio13" unique_id=908287697]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_7diy0")
+
+[node name="PilarBloqeuio19" type="StaticBody2D" parent="." unique_id=91452179]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(1796, 517)
+scale = Vector2(0.31181014, -0.006924265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio19" unique_id=1894632000]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_7diy0")
+
+[node name="PilarBloqeuio20" type="StaticBody2D" parent="." unique_id=626381709]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(2114, 5)
+rotation = 1.5263408
+scale = Vector2(0.7256368, -0.006924265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio20" unique_id=505153230]
+position = Vector2(316.39282, -17055.627)
+scale = Vector2(21.986471, -0.4301573)
+shape = SubResource("RectangleShape2D_7diy0")
+
+[node name="PilarBloqeuio21" type="StaticBody2D" parent="." unique_id=1433593269]
+modulate = Color(0, 1.7694412, 1.8921474, 1)
+self_modulate = Color(0.92, 0.70471996, 0.42319998, 0)
+position = Vector2(-899, 17)
+rotation = 1.5817372
+scale = Vector2(0.7256368, -0.006924265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PilarBloqeuio21" unique_id=394618250]
 position = Vector2(316.39282, -17055.627)
 scale = Vector2(21.986471, -0.4301573)
 shape = SubResource("RectangleShape2D_7diy0")
@@ -480,3 +532,32 @@ script = ExtResource("18_vicyb")
 [node name="coletavel_vida" parent="controller" unique_id=456004533 instance=ExtResource("19_c7ct8")]
 position = Vector2(621.00006, 587)
 scale = Vector2(0.2553133, 0.363079)
+
+[node name="cano png" type="Sprite2D" parent="." unique_id=518681920]
+position = Vector2(-465.99997, 494)
+rotation = -3.7941856
+scale = Vector2(0.6139924, 0.18834528)
+texture = ExtResource("20_5wmr8")
+
+[node name="cano png2" type="Sprite2D" parent="." unique_id=1447175228]
+position = Vector2(-383, 3)
+rotation = -4.703706
+scale = Vector2(0.6139924, 0.5508758)
+texture = ExtResource("20_5wmr8")
+
+[node name="cano png3" type="Sprite2D" parent="." unique_id=2088018792]
+position = Vector2(1186.5934, 18.632668)
+rotation = -4.703706
+scale = Vector2(0.6139924, 0.5508758)
+texture = ExtResource("20_5wmr8")
+
+[node name="cano png4" type="Sprite2D" parent="." unique_id=336001028]
+position = Vector2(1228.5934, 314.63266)
+rotation = -4.999256
+scale = Vector2(0.6139924, 0.5508758)
+texture = ExtResource("20_5wmr8")
+
+[node name="coletavel_vida2" parent="." unique_id=399630816 instance=ExtResource("19_c7ct8")]
+position = Vector2(620, 609.99994)
+rotation = 0.00086765806
+scale = Vector2(0.35618117, 0.3690191)
